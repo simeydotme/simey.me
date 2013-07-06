@@ -30,7 +30,12 @@
 		background-repeat: no-repeat;
 		background-size: 100% 130%;
 		
+		font-family: 'Averia Sans Libre', Helvetica, Arial; 
+		font-weight: 100; font-size: 16px;
+		
 	}
+	
+	a { text-decoration: none; color: #FFEAEE; }
 	
 	
 	
@@ -49,7 +54,7 @@
 	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
 	
 	.horizon-mask { position: absolute; bottom: 0; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
-	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-family: 'Averia Sans Libre', Helvetica, Arial; font-weight: 700; font-size: 48px; }
+	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-weight: 700; font-size: 48px; }
 	
 	
 	

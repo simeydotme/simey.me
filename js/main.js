@@ -56,6 +56,9 @@
 		var $overlay = $('.flickr-overlay').hide();
 		var $spinner = $('.flickr-preloader').hide();
 		
+		var $iclose = $('.flickr-close').on('click', function(e) {
+			$overlay.fadeOut(); e.preventDefault();
+		});
 		
 		$.getJSON( myset , function(set) {
 			
@@ -80,6 +83,7 @@
 						
 						if( !$(this).closest( $inner ).hasClass('dragging') ) { 
 							
+							$overlay.hide();
 							$spinner.fadeIn();
 													
 							var $overlayimg = 
@@ -93,7 +97,7 @@
 										
 										$this.css({ left: "", top: "", display: "block", position: "" });
 										$overlay.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" });
-										$overlay.css({ "margin-left": "-"+($this.width()*0.5)+"px" });
+										$overlay.css({ "margin-left": "-"+($this.width()*0.5 +30)+"px" });
 										$overlay.css({ left: "", top: "", display: "", position: "" }).fadeIn();
 										$spinner.fadeOut();
 										

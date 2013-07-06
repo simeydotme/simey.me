@@ -12,12 +12,26 @@
 		text-align: center; position: absolute; z-index: 999; display: none; opacity: 1;
 	}
 	
-	.flickr-overlay-image { padding: 30px; display: block; }
+	.flickr-overlay-image { padding: 10px; display: block; }
 	.flickr-preloader { 
 		width: 32px; height: 32px;
 		position: fixed; left: 50%; top: 50%; margin-left: -16px; margin-top: -16px; display: none;
 	}
 	
+	.flickr-close,
+	.flickr-open {
+		position: absolute; width: 60px; height: 60px; opacity: 0.1;
+		background-repeat: no-repeat; background-position: center center; 
+		-webkit-transition: opacity 0.4s ease; color: white; font-size: 30px; font-weight: 600;
+	}
+	.flickr-overlay:hover .flickr-close,
+	.flickr-overlay:hover .flickr-open { opacity: 1; }
+
+	.flickr-close { background-image: url('../img/close.png'); right : 10px; top: 10px; background-size: 20px; text-indent: -999em; overflow: hidden; }
+	.flickr-open { left: 50%; margin-left: -150px; top: 50%; margin-top: -30px; width: 300px; }
+
+
+
 
 	.flickr-feed { position: relative; margin: 100px 70px 0; height: 220px; }
 	.flickr-feed::before,
