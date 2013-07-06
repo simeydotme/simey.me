@@ -1,10 +1,16 @@
-	
-	
-	@import "normalize.min.css";
+﻿	
+	@import "normalize.min.css"; 
 	@import "main.css";
 	@import "animate-custom.css";
-	@import "simey-animations.less";
+	
+	@import "simey-animations.css";
+	@import "simey-flickr-bar.css";
 
+
+
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// BODY ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 	body, html { 
 	
@@ -22,7 +28,7 @@
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e85661', endColorstr='#ce484a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: 100% 130%;
 		
 	}
 	
@@ -42,25 +48,12 @@
 	.simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px; }
 	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
 	
-	
 	.horizon-mask { position: absolute; bottom: 0; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
-	
-	
 	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-family: 'Averia Sans Libre', Helvetica, Arial; font-weight: 700; font-size: 48px; }
 	
 	
 	
 	
-	
-
-
-
-
-
-
-
-
-
 
 
 

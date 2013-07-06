@@ -10,11 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 		
-		<link rel='stylesheet' 		href='http://fonts.googleapis.com/css?family=Averia+Sans+Libre:300,700,300italic,700italic'>
-        <link rel="stylesheet/less" href="css/simey.less">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Averia+Sans+Libre:300,700,300italic,700italic">
+        <link rel="stylesheet" type="text/css" href="css/simey.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-		<script src="js/vendor/less-1.4.0-beta.js"></script>
 		
     </head>
     <body>
@@ -37,16 +36,29 @@
 			
 		</header>
 		
-		<section class="flickr-feed">
+		<section class="flickr-wrapper">
+			
+			<section class="flickr-feed" id="flickr-feed">
+				<div class="flickr-feed-inner" id="flickr-feed-inner"></div>
+				<div class="flickr-arrow left">&larr;</div>
+				<div class="flickr-arrow right">&rarr;</div>
+			</section>
+			
+			<i class="flickr-preloader spinner"></i>
+			
+			<div class="flickr-overlay">
+				<a href="#" class="flickr-close">&times;</a>
+				<span class="flickr-overlay-image"></span>
+			</div>
+			
+			<p class="flickr-seemore"><a href="http://www.flickr.com/photos/95986769@N07/sets/72157634483069405/">See more flickrydoodas!</a></p>
 		
-		</section>
-		
-		
+		</section>	
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
-        <script src="js/vendor/instajam.min.js"></script>
+        <script src="js/vendor/iscroll-4.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
