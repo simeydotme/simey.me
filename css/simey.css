@@ -14,29 +14,39 @@
 
 	body, html { 
 	
-		color: #f5e1e2; font-size: 16px; 
+		color: #f5e1e2; font-size: 1.2em; 
 		min-height: 1000px;
 	
 		background: #e85661;  /* Old browsers */
 		background: rgb(232,86,97); /* Old browsers */
 		background: -moz-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%, rgba(206,72,74,1) 100%); /* FF3.6+ */
 		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(54%,rgba(232,86,97,1)), color-stop(100%,rgba(206,72,74,1))); /* Chrome,Safari4+ */
-		background: -webkit-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -webkit-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); /* Chrome10+,Safari5.1+ */
 		background: -o-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* Opera 12+ */
 		background: -ms-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* IE10+ */
-		background: radial-gradient(ellipse at center,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e85661', endColorstr='#ce484a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		background: radial-gradient(ellipse at center,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); /* W3C */
 		
 		background-repeat: no-repeat;
 		background-size: 100% 130%;
 		
-		font-family: 'Averia Sans Libre', Helvetica, Arial; 
-		font-weight: 100; font-size: 16px;
+		font-family: 'Roboto', Helvetica, Arial; 
+		font-weight: 100;
 		
 	}
 	
-	a { text-decoration: none; color: #FFEAEE; }
+	h1,h2,h3,h4,h5 { font-family: 'Averia Sans Libre', Helvetica, Arial; font-weight: 100; }
 	
+	a { text-decoration: none; color: #FFEAEE; font-weight: 400; }
+	
+	strong 			{ font-weight: 400; }
+	strong.more 	{ font-weight: 600; }
+	strong.most 	{ font-weight: 800; }
+	
+	.no-margin-b	{ margin-bottom: 0; }
+	.no-margin-t	{ margin-top: 0; }
+	
+	
+	.simey-container { margin: auto; width: 1200px; }
 	
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,10 +64,26 @@
 	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
 	
 	.horizon-mask { position: absolute; bottom: 0; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
-	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-weight: 700; font-size: 48px; }
+	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
 	
 	
 	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// body ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	.body { display: none; }
+
+
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// about ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+
+	.simey-about 		{ margin: 100px auto; padding: 50px; width: auto; background: #005772; border-width: 20px 0; border-style: solid; border-color: rgba(232, 86, 97, 0.47); }
+	.simey-about-inner 	{}
+	.simey-about h2,
+	.simey-about h3 	{ font-family: 'Roboto', Helvetica, Arial; }
 	
 
 
@@ -66,17 +92,35 @@
 
 
 
+	@media screen and ( max-width: 1300px ) {
+		
+		body,html { font-size: 1.15em; }
+		
+		.simey-container { width: 900px; }
 
+	}
 
 	@media screen and ( max-width: 1000px ) {
 		
 		body,html { background: #e85661; }
 		
+		.simey-container { width: 600px; }
 		
 	}
 
+	@media screen and ( max-width: 800px ) {
+		
+		body,html { font-size: 1.02em; }
 
+		.simey-container { width: 500px; }
 
+	}
+
+	@media screen and ( max-width: 600px ) {
+	
+		.simey-container { width: auto; }
+
+	}
 
 
 

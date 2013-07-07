@@ -4,7 +4,7 @@
 	
 	.simey-header.enter .letter-s {
 	
-		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:2s; -webkit-animation-fill-mode: forwards;  
+		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:3s; -webkit-animation-fill-mode: forwards;  
 		   -moz-animation: bounceInDown 2.2s ease;    -moz-animation-delay:2s;    -moz-animation-fill-mode: forwards;  
 			-ms-animation: bounceInDown 2.2s ease;     -ms-animation-delay:2s;     -ms-animation-fill-mode: forwards;  
 			 -o-animation: bounceInDown 2.2s ease;      -o-animation-delay:2s;      -o-animation-fill-mode: forwards;  
@@ -14,7 +14,7 @@
 			
 	.simey-header.enter .letter-i {
 			
-		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:2.2s; -webkit-animation-fill-mode: forwards;  
+		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:3.2s; -webkit-animation-fill-mode: forwards;  
 		   -moz-animation: bounceInDown 2.2s ease;    -moz-animation-delay:2.2s;    -moz-animation-fill-mode: forwards;  
 			-ms-animation: bounceInDown 2.2s ease;     -ms-animation-delay:2.2s;     -ms-animation-fill-mode: forwards;  
 			 -o-animation: bounceInDown 2.2s ease;      -o-animation-delay:2.2s;      -o-animation-fill-mode: forwards;  
@@ -44,7 +44,7 @@
 			
 	.simey-header.enter .letter-y {
 			
-		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:2.1s; -webkit-animation-fill-mode: forwards;  
+		-webkit-animation: bounceInDown 2.2s ease; -webkit-animation-delay:3.1s; -webkit-animation-fill-mode: forwards;  
 		   -moz-animation: bounceInDown 2.2s ease;    -moz-animation-delay:2.1s;    -moz-animation-fill-mode: forwards;  
 			-ms-animation: bounceInDown 2.2s ease;     -ms-animation-delay:2.1s;     -ms-animation-fill-mode: forwards;  
 			 -o-animation: bounceInDown 2.2s ease;      -o-animation-delay:2.1s;      -o-animation-fill-mode: forwards;  
@@ -115,17 +115,7 @@
 	}
 
 	
-	
-	
-	.flickr-feed:hover .flickr-arrow {
-		
-		-webkit-animation: flickr 0.8s ease forwards;
-		   -moz-animation: flickr 0.8s ease forwards;
-		    -ms-animation: flickr 0.8s ease forwards;
-		     -o-animation: flickr 0.8s ease forwards;
-		        animation: flickr 0.8s ease forwards;
-		
-	}
+
 	
 	
 	
@@ -253,27 +243,27 @@
 
 
 
-	@-webkit-keyframes flickr {
+	@-webkit-keyframes shakeSmall {
 		0%, 100% {-webkit-transform: translateX(0);}
 		20%, 60% {-webkit-transform: translateX(-20px);}
 		40%, 80% {-webkit-transform: translateX(20px);}
 	}
-	@-moz-keyframes flickr {
+	@-moz-keyframes shakeSmall {
 		0%, 100% {-moz-transform: translateX(0);}
 		20%, 60% {-moz-transform: translateX(-20px);}
 		40%, 80% {-moz-transform: translateX(20px);}
 	}
-	@-ms-keyframes flickr {
+	@-ms-keyframes shakeSmall {
 		0%, 100% {-ms-transform: translateX(0);}
 		20%, 60% {-ms-transform: translateX(-20px);}
 		40%, 80% {-ms-transform: translateX(20px);}
 	}
-	@-o-keyframes flickr {
+	@-o-keyframes shakeSmall {
 		0%, 100% {-o-transform: translateX(0);}
 		20%, 60% {-o-transform: translateX(-20px);}
 		40%, 80% {-o-transform: translateX(20px);}
 	}
-	@keyframes flickr {
+	@keyframes shakeSmall {
 		0%, 100% {transform: translateX(0);}
 		20%, 60% {transform: translateX(-20px);}
 		40%, 80% {transform: translateX(20px);}
@@ -285,6 +275,26 @@
 	@-webkit-keyframes spinner {
 		0% { -webkit-transform: rotate(0deg); }
 		100% { -webkit-transform: rotate(3600deg); }
+	}
+	
+	@-moz-keyframes spinner {
+		0% { -moz-transform: rotate(0deg); }
+		100% { -moz-transform: rotate(3600deg); }
+	}
+	
+	@-ms-keyframes spinner {
+		0% { -ms-transform: rotate(0deg); }
+		100% { -ms-transform: rotate(3600deg); }
+	}
+	
+	@-o-keyframes spinner {
+		0% { -o-transform: rotate(0deg); }
+		100% { -o-transform: rotate(3600deg); }
+	}
+	
+	@keyframes spinner {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(3600deg); }
 	}
 	
 	

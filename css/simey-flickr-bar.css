@@ -6,85 +6,87 @@
 	
 	
 	.flickr-wrapper { position: relative; }
-	.flickr-overlay {
-		width: auto; top: -70px; left: 50%; margin-left: -16px; min-width: 32px; min-height: 32px;
-		background: rgba(0,0,0,0.7); border-radius: 10px;
-		text-align: center; position: absolute; z-index: 999; display: none; opacity: 1;
-	}
 	
-	.flickr-overlay-image { padding: 10px; display: block; }
+	
+	
+	
 	.flickr-preloader { 
 		width: 32px; height: 32px;
 		position: fixed; left: 50%; top: 50%; margin-left: -16px; margin-top: -16px; display: none;
 	}
 	
+	
+	
 	.flickr-close,
 	.flickr-open {
-		position: absolute; width: 60px; height: 60px; opacity: 0.1;
+		position: absolute; width: 40px; opacity: 0.1;
 		background-repeat: no-repeat; background-position: center center; 
-		-webkit-transition: opacity 0.4s ease; color: white; font-size: 30px; font-weight: 600;
+		-webkit-transition: opacity 0.4s ease; color: white; font-size: 24px; font-weight: 200;
 	}
 	.flickr-overlay:hover .flickr-close,
 	.flickr-overlay:hover .flickr-open { opacity: 1; }
 
-	.flickr-close { background-image: url('../img/close.png'); right : 10px; top: 10px; background-size: 20px; text-indent: -999em; overflow: hidden; }
-	.flickr-open { left: 50%; margin-left: -150px; top: 50%; margin-top: -30px; width: 300px; }
+	.flickr-close { background-image: url('../img/close.png'); right : -10px; top: -40px; background-size: 20px; text-indent: -999em; overflow: hidden; }
+	.flickr-open { left: -20px; top: -40px; width: 188px; }
 
 
 
 
-	.flickr-feed { position: relative; margin: 100px 70px 0; height: 220px; }
-	.flickr-feed::before,
-	.flickr-feed::after {
-		content: "";
-		position: absolute; z-index: 2; 
-		left: 2px; top: 0; width: 41px; height: 220px;
-		border-radius: 100%;
-		box-shadow: -24px 0 0px 16px #E4545E, 9px 0 7px rgba(0, 0, 0, 0.1) inset;
-	}
-	.flickr-feed::after {
-		left: auto; right: 2px;
-		box-shadow: 24px 0 0px 16px #E4545E, -9px 0 7px rgba(0, 0, 0, 0.1) inset;
-	}
-	
-	
-	.flickr-feed-inner { width: 2000px; overflow: hidden; z-index:1; margin-top: 30px; }
-	.flickr-arrow {
-		position: absolute; top: 100px; 
-		width: 30px; height: 20px; opacity: 1;
-		text-indent: -999em; overflow:hidden;
-		background: url('../img/arrows.png') no-repeat center center;
-	}
-	.flickr-arrow.left { background-position: left center; background-size: 60px; left: 20px; }
-	.flickr-arrow.right { background-position: right center; background-size: 60px; right: 20px; }
-	
+
+	.flickr-feed { position: relative; margin: 100px 0px 0; height: 500px; }
+	.flickr-feed-inner { width:auto; overflow: hidden; z-index:1; margin-top: 30px; min-height: 360px; }
+
 	.flickr-feed .image-wrapper { 
 	
 		display: inline-block; *display: inline; *zoom: 1; position: relative; width: 162px; height: 162px;
-		margin: 0 5px 5px 0; border-radius: 8px; border: none;
-		background: rgba(48, 44, 58, 0.42); opacity: 0.2;
+		margin: 0 5px 5px 0; border-radius: 8px; border: none; text-align: left;
+		background: rgba(48, 44, 58, 0.42);
+		
+	}
+	
+	.flickr-feed .image-wrapper:hover { opacity: 1; }
+	.flickr-feed a { position: absolute; top: 6px; left: 6px; border: none; width: 150px; height: 150px; overflow: hidden; }
+	
+	.flickr-feed img { 
+		border-radius: 4px; position: absolute; border: none; 
 		
 		-webkit-transition: all 0.3s ease;
 		-moz-transition: all 0.3s ease;
 		-ms-transition: all 0.3s ease;
 		-o-transition: all 0.3s ease;
 		transition: all 0.3s ease;
+	}
+	
+	.flickr-feed img.fade { opacity: 0.3; }
+	.flickr-feed img.fade:hover { opacity: 0.8; }
+
+
+	
+	.flickr-mask {
+	
+		position: fixed; width: 100%; height: 100%;
+		top: 0; left: 0; display: none;
+		background: black; opacity: 0.7; z-index: 9000;
 	
 	}
-	.flickr-feed .image-wrapper:hover { opacity: 1; }
-	.flickr-feed a { position: absolute; top: 6px; left: 6px; border: none; width: 150px; height: 150px; overflow: hidden; }
-	.flickr-feed img {  border-radius: 4px; width: 150px; height: 150px; position: absolute; border: none; }
-
-	.flickr-feed .flickr-scrollbarH { 
-		position:absolute; z-index:100;
-		height:8px; bottom:10px; left:2px; right:2px;
-		
+	
+	.flickr-overlay {
+		width: auto; top: 50%; left: 50%; margin-left: -16px; min-width: 32px; min-height: 32px;
+		background: rgba(0,0,0,0.7); border-radius: 10px;
+		text-align: center; position: fixed; z-index: 9999; display: none; opacity: 1;
 	}
-	.flickr-feed .flickr-scrollbarH > div {
-		position:absolute; z-index:100;
-		width:100%; height: 6px; border-radius: 10px;
-		background: rgb(132, 29, 36); border: none; opacity: 0.4;
-	}
+	.flickr-overlay-image { padding: 10px; display: block; }
+	.flickr-overlay-image img { max-height: 430px; }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

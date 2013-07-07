@@ -6,17 +6,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        
+		<title>Simey.me - Simon Goellner - Frontend Web Developer</title>
+       
+	    <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 		
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Averia+Sans+Libre:300,700,300italic,700italic">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,300,700,900,100,500">
         <link rel="stylesheet" type="text/css" href="css/simey.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 		
     </head>
     <body>
+		
+		
 		
 		<header class="simey-header">
 			
@@ -32,34 +37,77 @@
 			
 			<div class="horizon-mask"></div>
 			
-			<p class="simey-is-doing">...<span>is still building this site</span></p>
+			<h2 class="simey-is-doing">...<span>is still building this site</span></h2>
 			
 		</header>
 		
-		<section class="flickr-wrapper">
+		
+		<div class="body">
+		
+		
+		
+			<section class="simey-about" id="about">
+				<div class="simey-about-inner simey-container">
+					
+					<h2>I'm a <strong class="more">Creative</strong> <strong>Frontend Web/UI Developer</strong></h2>
+					
+					<h3 class="no-margin-b">I am not a code monkey&hellip;</h3> 
+					<p class="no-margin-t">This bizzle is my <strong>hobby</strong>, <strong>passion</strong> 
+					and <strong>livelihood</strong> and I put as much effort into it before I even touch a keyboard 
+					as I do when writing code.</p>
+					
+					<h3 class="no-margin-b">I specialise in&hellip;</h3>
+					<p class="no-margin-t">standards compliant, cross browser and device <strong>HTML</strong>, <strong>CSS</strong> and JS; mainly <strong>jQuery</strong>. I 
+					enjoy thinking creatively about problems and developing solutions. The cooler the better!</p>
+					
+					<h3 class="no-margin-b">I dabble in&hellip;</h3> 
+					<p class="no-margin-t">ui design, <strong>accessibility</strong>, <strong>usability</strong>, I'm not an expert but I am interested!</p>
+					
+					<h3 class="no-margin-b">I try to stay away from&hellip;</h3>
+					<p class="no-margin-t"> backend code, flash, apps, mushrooms and internet explorer... but we all know sometimes you've gotta get dirty ;)</p>
+					
+					<p><small><strong>simey is a nickname, if you're wondering!</strong></small></p>
+				
+				</div>
+			</section>	
 			
-			<section class="flickr-feed" id="flickr-feed">
-				<div class="flickr-feed-inner" id="flickr-feed-inner"></div>
-				<div class="flickr-arrow left">&larr;</div>
-				<div class="flickr-arrow right">&rarr;</div>
+			
+			
+			
+			<section class="flickr-wrapper">
+				<div class="simey-container">
+				
+					<h2 class="no-margin-b">Flickry-doodas</h2>
+					<p class="no-margin-t">I sometimes take photos with my <strong>Nikon DSLR</strong> and <strong>HTC One</strong>, the good ones I upload to Flickr;</p>
+					
+					<section class="flickr-feed animated" id="flickr-feed">
+						<div class="flickr-feed-inner" id="flickr-feed-inner"></div>
+					</section>
+					
+					<i class="flickr-preloader spinner"></i>
+					
+					<div class="flickr-overlay">
+						<a href="#" class="flickr-close">&times;</a>
+						<a href="http://www.flickr.com/photos/95986769@N07/sets/72157634483069405/#view-holder" class="flickr-open">view on flickr</a>
+						<span class="flickr-overlay-image"></span>
+					</div>
+					
+					<div class="flickr-mask"></div>
+					
+				<div class="simey-container">
 			</section>
 			
-			<i class="flickr-preloader spinner"></i>
 			
-			<div class="flickr-overlay">
-				<a href="#" class="flickr-close">&times;</a>
-				<a href="http://www.flickr.com/photos/95986769@N07/sets/72157634483069405/" class="flickr-open">[ view on flickr ]</a>
-				<span class="flickr-overlay-image"></span>
-			</div>
 			
-			<p class="flickr-seemore"><a href="http://www.flickr.com/photos/95986769@N07/sets/72157634483069405/">See more flickrydoodas!</a></p>
-		
-		</section>	
+			
+			
+		</div>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 
-        <script src="js/vendor/iscroll-4.js"></script>
+        <script src="js/vendor/waypoints.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
