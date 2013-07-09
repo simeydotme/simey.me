@@ -46,7 +46,7 @@
 	.no-margin-t	{ margin-top: 0; }
 	
 	
-	.simey-container { margin: auto; width: 1200px; }
+	.simey-container { margin: auto; width: 1100px; padding: 0; }
 	
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,12 +80,14 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 
-	.simey-about 		{ margin: 100px auto; padding: 50px; width: auto; background: #005772; border-width: 20px 0; border-style: solid; border-color: rgba(232, 86, 97, 0.47); }
+	.simey-about 		{ margin: 100px auto; padding: 40px 0 80px; width: auto; background: #302C3A; border-width: 20px 0; border-style: solid; border-color: rgba(232, 86, 97, 0.47); }
 	.simey-about-inner 	{}
+	
 	.simey-about h2,
 	.simey-about h3 	{ font-family: 'Roboto', Helvetica, Arial; }
 	
-
+	.simey-about h2		{ font-size: 3em; line-height: 1; }
+	.simey-about h3		{ font-size: 2em; font-weight: 400; line-height: 1;  }
 
 
 
@@ -95,15 +97,13 @@
 	@media screen and ( max-width: 1300px ) {
 		
 		body,html { font-size: 1.15em; }
-		
-		.simey-container { width: 900px; }
+		.simey-container { width: 800px; }
 
 	}
 
 	@media screen and ( max-width: 1000px ) {
 		
 		body,html { background: #e85661; }
-		
 		.simey-container { width: 600px; }
 		
 	}
@@ -111,14 +111,15 @@
 	@media screen and ( max-width: 800px ) {
 		
 		body,html { font-size: 1.02em; }
-
-		.simey-container { width: 500px; }
+		.simey-container { width: 560px; }
+		
+		.simey-about { margin: 60px auto 30px;
 
 	}
 
 	@media screen and ( max-width: 600px ) {
 	
-		.simey-container { width: auto; }
+		.simey-container { width: auto; padding: 20px; }
 
 	}
 

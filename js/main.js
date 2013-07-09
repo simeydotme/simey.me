@@ -13,7 +13,7 @@
 			"is the king of the north",
 			"sik gong jat di gwong dung waa",
 			"was born in Canada",
-			"&hearts;s Hong Kong",
+			"&hearts;'s Hong Kong",
 			"has flipped a dodgem",
 			"makes a mean French Toast"
 		];
@@ -22,10 +22,20 @@
 		
 			var index = Math.floor( Math.random() * simeys.length );
 			
+			if( window.lastSimey == index ) { 
+				if( window.lastSimey == simeys.length ) {
+					index == 0;
+				} else {
+					index++;	
+				}
+			}
+			
 			$(element).removeClass( "flipInX" ).addClass( "animated short fadeOutDown" );
 			
-			setTimeout( function() { $(element).html( "&hellip;" + simeys[ index ] ); }, 500 );
+			setTimeout( function() { $(element).html( simeys[ index ] ); }, 500 );
 			setTimeout( function() { $(element).show().removeClass( "fadeOutDown short" ).addClass( "flipInX" ); }, 500 );
+			
+			window.lastSimey = index;
 			
 		});
 	
@@ -40,7 +50,7 @@
 			triggerOnce: true,
 			
 			handler: function(direction) {
-				loadFlickr(15);
+				loadFlickr(14);
 			}
 			
 		});	
