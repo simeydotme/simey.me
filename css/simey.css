@@ -17,20 +17,28 @@
 		color: #f5e1e2; font-size: 1.2em; 
 		min-height: 1000px;
 	
-		background: #e85661;  /* Old browsers */
-		background: rgb(232,86,97); /* Old browsers */
-		background: -moz-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%, rgba(206,72,74,1) 100%); /* FF3.6+ */
-		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(54%,rgba(232,86,97,1)), color-stop(100%,rgba(206,72,74,1))); /* Chrome,Safari4+ */
-		background: -webkit-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); /* Chrome10+,Safari5.1+ */
-		background: -o-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* Opera 12+ */
-		background: -ms-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); /* IE10+ */
-		background: radial-gradient(ellipse at center,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); /* W3C */
+		background: #e85661;
+		background: rgb(232,86,97);
+		background: -moz-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%, rgba(206,72,74,1) 100%); 
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(54%,rgba(232,86,97,1)), color-stop(100%,rgba(206,72,74,1)));
+		background: -webkit-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); 
+		background: -o-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); 
+		background: -ms-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); 
+		background: radial-gradient(ellipse at center,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); 
 		
 		background-repeat: no-repeat;
 		background-size: 100% 130%;
 		
 		font-family: 'Roboto', Helvetica, Arial; 
 		font-weight: 100;
+		
+		overflow-x: hidden;
+		
+		-webkit-transition: font-size 0.3s ease;
+		-moz-transition: font-size 0.3s ease;
+		-ms-transition: font-size 0.3s ease;
+		-o-transition: font-size 0.3s ease;
+		transition: font-size 0.3s ease;
 		
 	}
 	
@@ -46,7 +54,7 @@
 	.no-margin-t	{ margin-top: 0; }
 	
 	
-	.simey-container { margin: auto; width: 1100px; padding: 0; }
+	.simey-container { margin: auto; width: 1100px; padding: 0; position: relative; }
 	
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,8 +62,8 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 	
-	.simey-header { min-height: 460px; position: relative; text-align: center; }
-	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 35px; opacity: 0; }
+	.simey-header { min-height: 520px; position: relative; text-align: center; }
+	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 120px; opacity: 0; }
 	
 	.simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; }
 	.simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; }
@@ -63,8 +71,8 @@
 	.simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px; }
 	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
 	
-	.horizon-mask { position: absolute; bottom: 0; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
-	.simey-is-doing { position: absolute; bottom: 0; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
+	.horizon-mask { position: absolute; bottom: 75px; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
+	.simey-is-doing { position: absolute; bottom: 80px; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
 	
 	
 	
@@ -80,7 +88,13 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 
-	.simey-about 		{ margin: 100px auto; padding: 40px 0 80px; width: auto; background: #302C3A; border-width: 20px 0; border-style: solid; border-color: rgba(232, 86, 97, 0.47); }
+	.simey-about { 
+		margin: auto; padding: 40px 0 80px; width: auto; 
+		background: #302C3A; 
+		border-width: 20px 0; border-style: solid; 
+		border-color: rgba(232, 86, 97, 0.47) white rgba(40, 131, 182,0.47); 
+	}
+	
 	.simey-about-inner 	{}
 	
 	.simey-about h2,
@@ -113,8 +127,6 @@
 		body,html { font-size: 1.02em; }
 		.simey-container { width: 560px; }
 		
-		.simey-about { margin: 60px auto 30px;
-
 	}
 
 	@media screen and ( max-width: 600px ) {

@@ -11,23 +11,21 @@
 			"just bought a TT",
 			"plays on the internet",
 			"is the king of the north",
-			"sik gong jat di gwong dung waa",
+			"sik gong siu siu gwong dung waa",
 			"was born in Canada",
 			"&hearts;'s Hong Kong",
 			"has flipped a dodgem",
-			"makes a mean French Toast"
+			"makes a mean French Toast",
+			"takes photographs",
+			"messes with photoshop"
 		];
 		
 		return $(this).each( function( key, element ) {
 		
 			var index = Math.floor( Math.random() * simeys.length );
 			
-			if( window.lastSimey == index ) { 
-				if( window.lastSimey == simeys.length ) {
-					index == 0;
-				} else {
-					index++;	
-				}
+			if( window.lastSimey == index ) {
+				index = ( window.lastSimey == simeys.length ) ? 0 : index++;
 			}
 			
 			$(element).removeClass( "flipInX" ).addClass( "animated short fadeOutDown" );
@@ -139,7 +137,7 @@
 
 		var myapikey = 		"dd8e97ef9c1283583dcaf92b9ba80170";
 		var photoset = 		"72157634483069405";
-		var myset = 		"http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photosets.getPhotos&per_page="+imageCount+"&api_key="+myapikey+"&photoset_id="+photoset;
+		var myset = 		"http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photosets.getPhotos&api_key="+myapikey+"&photoset_id="+photoset;
 		
 		var $feed = 		$('.flickr-feed');
 		var $inner = 		$('.flickr-feed-inner');
@@ -154,7 +152,9 @@
 		
 		$.getJSON( myset , function(set) {
 			
-			$.each( set.photoset.photo.reverse(), function(k,v) {
+			var photos = set.photoset.photo.reverse().slice(0, imageCount);
+			
+			$.each( photos, function(k,v) {
 			
 				 var getimage = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key="+myapikey+"&photo_id="+v.id;
 				 
