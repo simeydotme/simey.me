@@ -1,0 +1,45 @@
+	
+	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// Project Styling ////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	
+	body { 
+		
+		position: relative; padding: 30px 0 100px;
+		
+		background-color: #2883B6;
+		background-image: url('../../img/grid.png');
+		
+		background-image: url('../../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
+		background-image: url('../../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
+		background-image: url('../../img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Chrome10+,Safari5.1+ */
+		background-image: url('../../img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Opera 12+ */
+		background-image: url('../../img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* IE10+ */
+		background-image: url('../../img/grid.png'), radial-gradient(ellipse at center,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* W3C */
+		
+		background-repeat: repeat;
+		background-repeat: repeat, no-repeat;
+		
+		background-size: auto;
+		
+	}
+		
+	.simey-header { height: 250px; min-height: auto; top: 0; }
+	.simey-header h1 { opacity: 0.15; }
+	.simey-header h2 { opacity: 1; font-size: 2.8em; position: relative; top: 50px; }
+	.simey-header [class^=letter-] { opacity: 1; bottom: 0; }
+
+
+	.body { display: block; }
+	
+	
+	.project-wrapper h3 { font-size: 1.5em; }
+
+
+
+
+
+
+

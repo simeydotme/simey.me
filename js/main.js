@@ -1,4 +1,8 @@
-
+	
+	
+	var mobileWidth = 800;
+	var photoCount = ( $(window).width() > 800 ) ? 14 : 6;
+	
 	
 	$.fn.randomSimey = function() {
 		
@@ -8,9 +12,8 @@
 			"writes jQuery plugins",
 			"takes photos",
 			"climbs mountains",
-			"just bought a TT",
 			"plays on the internet",
-			"is the king of the north",
+			"is the hand of the king",
 			"sik gong siu siu gwong dung waa",
 			"was born in Canada",
 			"&hearts;'s Hong Kong",
@@ -44,11 +47,11 @@
 		
 		$('.flickr-wrapper').waypoint({
 			
-			offset: 100,
+			offset: 300,
 			triggerOnce: true,
 			
 			handler: function(direction) {
-				loadFlickr(14);
+				loadFlickr( photoCount );
 			}
 			
 		});	
@@ -58,12 +61,22 @@
 	
 	$(function() {
 		
-		setTimeout( function() {
+		if( $.cookie('visited') === undefined ) {
+		
+			setTimeout( function() {
+				$('.simey-is-doing').randomSimey();
+				$('.body').fadeIn( 2000 , function() {
+					setUpWaypoints();	
+				});
+			}, 3000 );
+			
+		} else {
+			
 			$('.simey-is-doing').randomSimey();
-			$('.body').fadeIn( 2000 , function() {
-				setUpWaypoints();	
-			});
-		}, 3000 );
+			$('.body').show(); 
+			setUpWaypoints();
+			
+		}
 		
 		$('.simey-is-doing').on('click' , function() {
 			$('.simey-is-doing').randomSimey();
@@ -79,18 +92,62 @@
 	
 	$(function() {
 		
+		// make the header the height of the window
+		$('.simey-header')
+			.height( $(window).height() );
+				
+			
+		
 		if( Modernizr.cssanimations ) {
 		
 			// start the animation for entering the site, 
 			// and then allow for "hover" effect after the "e" has finished animating.
 			
-			var $simeyHeader = 
-				$('.simey-header')
+			scrolled = false;
+			
+			var $simeyHeader = $('.simey-header');
+			
+			if( $.cookie('visited') === undefined ) {
+			
+				$simeyHeader
 					.addClass('enter')
 					.on('webkitAnimationEnd oanimationend msAnimationEnd animationend', '.letter-i', function(e) {
+						
+						// make sure the letters don't fade out after animation
 						$simeyHeader.find('[class^=letter-]').css('opacity',1);
-						$simeyHeader.removeClass('enter')
+						$simeyHeader.removeClass('enter');
+						
+						if( !scrolled ) {
+							
+							// Assign the HTML, Body as a variable...
+							var $viewport = $('html, body');
+							
+							// Some event to trigger the scroll animation...
+							$viewport.animate({ scrollTop: $(window).height() }, 1700, "easeOutQuint" );
+							
+							// Stop the animation if the user scrolls. Defaults on .stop() should be fine
+							$viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
+								if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
+									 // This identifies the scroll as a user action, stops the animation, then unbinds the event straight after (optional)
+									 $viewport.stop().unbind('scroll mousedown DOMMouseScroll mousewheel keyup'); 
+								}
+							});
+							
+							scrolled = true;
+							
+						}
+						
+						var expires = new Date();
+						expires.setMinutes(expires.getMinutes() + 10);
+						$.cookie('visited', 'true', { expires: expires, path: '/' });
+						
 					});
+						
+			} else {
+			
+				$simeyHeader.find('[class^=letter-]').css('opacity',1).hide().fadeIn();
+				
+			}
 					
 			// variable used for timer.
 			var t;
@@ -112,6 +169,8 @@
 						
 					}
 					
+					
+					$.removeCookie('visited', { path: '/' });
 					e.preventDefault();
 				
 				});
@@ -158,14 +217,19 @@
 			
 				 var getimage = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key="+myapikey+"&photo_id="+v.id;
 				 
+				 //var getsizes = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getSizes&api_key="+myapikey+"&photo_id="+v.id;
+				 //$.getJSON( getsizes , function( result ) {
+				 //console.log( result );
+				 //});
+				 
 				 $.getJSON( getimage , function(result) {
 					
 					var ismall = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_q.jpg';
 					var ilarge = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_z.jpg';
-					var ihuge = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_h.jpg';
+					var ihuge = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
 					
 					var $iwrapper = $('<div class="image-wrapper" />');
-					var $ilink = $('<a href="#"/>');
+					var $ilink = $('<a href="'+ihuge+'"/>');
 					var $iimg = $('<img src="'+ ismall +'"/>');
 					
 					$iwrapper.append( $ilink.append( $iimg ) );
@@ -178,41 +242,42 @@
 						}, 1000 );
 					});
 					
-
-					$ilink.on('click', function(e) {
+					// I do not want the lightbox to happen on mobile.
+					
+					if( $(window).width() > mobileWidth ) {
 						
-						if( !$(this).closest( $inner ).hasClass('dragging') ) { 
-							
-							$overlay.hide();
-							$spinner.fadeIn();
-													
-							var $overlayimg = 
-								$('<img src="'+ ilarge +'"/>')
-								.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" })
-								.appendTo( $overlay.find('.flickr-overlay-image').empty() )
-								.load( function(e) {
+								$ilink.on('click', function(e) {
 									
-									var $this = $(this);
+									$overlay.hide();
+									$spinner.fadeIn();
+															
+									var $overlayimg = 
+										$('<img src="'+ ilarge +'"/>')
+										.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" })
+										.appendTo( $overlay.find('.flickr-overlay-image').empty() )
+										.load( function(e) {
+											
+											var $this = $(this);
+											
+											clearTimeout( positionTimer );
+											positionTimer = setTimeout( function() {
+												
+												$this.css({ left: "", top: "", display: "block", position: "" });
+												$overlay.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" });
+												$overlay.css({ "margin-left": "-"+($this.width()*0.5 +30)+"px", "margin-top": "-"+($this.height()*0.5 +30)+"px" });
+												$overlay.css({ left: "", top: "", display: "", position: "" }).fadeIn();
+												$mask.fadeTo( 300, 0.6 );
+												$spinner.fadeOut();
+												
+											}, 1500 );
+											
+										});
 									
-									clearTimeout( positionTimer );
-									positionTimer = setTimeout( function() {
-										
-										$this.css({ left: "", top: "", display: "block", position: "" });
-										$overlay.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" });
-										$overlay.css({ "margin-left": "-"+($this.width()*0.5 +30)+"px", "margin-top": "-"+($this.height()*0.5 +30)+"px" });
-										$overlay.css({ left: "", top: "", display: "", position: "" }).fadeIn();
-										$mask.fadeTo( 300, 0.3 );
-										$spinner.fadeOut();
-										
-									}, 1500 );
-									
+									e.preventDefault();
+								
 								});
-							
-						}
 						
-						e.preventDefault();
-						
-					});
+					}
 
 				});
 			
@@ -228,15 +293,6 @@
 		});
 		
 	};
-	
-	
-	
-	
-	$(function() {
-		
-		
-		
-	});
 	
 	
 	

@@ -54,7 +54,78 @@
 	.no-margin-t	{ margin-top: 0; }
 	
 	
+	
+	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// Social Font ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+	@font-face {
+		font-family: 'simey-social';
+		src:url('../font/simey-social.eot');
+		src:url('../font/simey-social.eot?#iefix') format('embedded-opentype'),
+			url('../font/simey-social.woff') format('woff'),
+			url('../font/simey-social.ttf') format('truetype'),
+			url('../font/simey-social.svg#simey-social') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	[data-icon]:before {
+		font-family: 'simey-social';
+		content: attr(data-icon);
+		speak: none;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+	}
+	
+	.icon-facebook, .icon-codepen, .icon-twitter, .icon-phone, .icon-github, .icon-flickr, .icon-instagram, .icon-envelope {
+		font-family: 'simey-social';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+	}
+	.icon-facebook:before {
+		content: "\e000";
+	}
+	.icon-codepen:before {
+		content: "\e001";
+	}
+	.icon-twitter:before {
+		content: "\e002";
+	}
+	.icon-phone:before {
+		content: "\e003";
+	}
+	.icon-github:before {
+		content: "\e004";
+	}
+	.icon-flickr:before {
+		content: "\e005";
+	}
+	.icon-instagram:before {
+		content: "\e006";
+	}
+	.icon-envelope:before {
+		content: "\e007";
+	}
+	
+		
+	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// Container ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
 	.simey-container { margin: auto; width: 1100px; padding: 0; position: relative; }
+		
 	
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,8 +133,10 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 	
-	.simey-header { min-height: 520px; position: relative; text-align: center; }
-	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 120px; opacity: 0; }
+	.simey-header { min-height: 620px; position: relative; text-align: center; }
+	.simey-header h1 { margin: 0; }
+	
+	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 36%; opacity: 0; }
 	
 	.simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; }
 	.simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; }
@@ -71,9 +144,54 @@
 	.simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px; }
 	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
 	
-	.horizon-mask { position: absolute; bottom: 75px; width: 100%; height: 190px; background: url('../img/horizon.png') no-repeat top center; }
-	.simey-is-doing { position: absolute; bottom: 80px; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
+	.horizon-mask { position: absolute; bottom: 36%; width: 100%; height: 190px; margin-bottom: -50px; background: url('../img/horizon.png') no-repeat top center; }
+	.simey-is-doing { position: absolute; top: 64%; margin-top: -90px; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
 	
+	
+	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// Contact ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	.contact { list-style: none; padding: 0; margin: 0; position: absolute; top: 0em; width: 100%; height: 4em; }
+	.contact li span { position: absolute; left: -999em; top: -999em; }
+	.contact li a { color: #e85661; display: block; width: 100%; height: 100%; line-height: 1.5em; }
+
+	.contact li { 
+		display: inline-block; font-size: 1.45em; width: 1.5em; height: 1.5em; 
+		border-radius: 100%; margin: 1em 0 0; background: #CF3F4A;
+		
+		-webkit-transform: translate(0,-1.25em) scale(0.8);
+		-moz-transform: translate(0,-1.25em) scale(0.8);
+		-ms-transform: translate(0,-1.25em) scale(0.8);
+		-o-transform: translate(0,-1.25em) scale(0.8);
+		transform: translate(0,-1.25em) scale(0.8);
+	}
+
+	.contact:hover li {
+		margin: 1em .15em 0; 
+		
+		-webkit-transform: scale(1) translate(0,0);  
+		-moz-transform: scale(1) translate(0,0);  
+		-ms-transform: scale(1) translate(0,0);  
+		-o-transform: scale(1) translate(0,0);  
+		transform: scale(1) translate(0,0);  
+	
+	}
+	
+	.contact li:hover { background: transparent; }
+	.contact li:hover a { color: #FFE2E4; }
+	
+	.contact li,
+	.contact li a {
+	
+		-webkit-transition: all 0.2s ease;
+		   -moz-transition: all 0.2s ease; 
+			-ms-transition: all 0.2s ease; 
+			 -o-transition: all 0.2s ease; 
+				transition: all 0.2s ease;
+		
+	}
 	
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,9 +208,9 @@
 
 	.simey-about { 
 		margin: auto; padding: 40px 0 80px; width: auto; 
-		background: #302C3A; 
+		background: #302C3A; color: white; color: rgba(255,255,255,0.95);
 		border-width: 20px 0; border-style: solid; 
-		border-color: rgba(232, 86, 97, 0.47) white rgba(40, 131, 182,0.47); 
+		border-color: rgba(232, 86, 97, 0.47) white rgba(255, 255, 255,0.47); 
 	}
 	
 	.simey-about-inner 	{}
@@ -102,6 +220,49 @@
 	
 	.simey-about h2		{ font-size: 3em; line-height: 1; }
 	.simey-about h3		{ font-size: 2em; font-weight: 400; line-height: 1;  }
+
+
+
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// Github ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	.github-wrapper { 
+		
+		display:none; 
+		position: relative; padding: 100px 0;
+		
+		background-color: #2883B6;
+		background-image: url('../img/grid.png');
+		
+		background-image: url('../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
+		background-image: url('../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
+		background-image: url('../img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Chrome10+,Safari5.1+ */
+		background-image: url('../img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Opera 12+ */
+		background-image: url('../img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* IE10+ */
+		background-image: url('../img/grid.png'), radial-gradient(ellipse at center,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* W3C */
+		
+		background-repeat: repeat;
+		background-repeat: repeat, no-repeat;
+		
+		border-top: 15px solid rgba(255,255,255,0.5);
+		
+	}
+	
+	.github-wrapper h3 { font-size: 1.2em; padding: 0 16px; }	
+	.github-wrapper .github-project p { font-size: 0.8em;  padding: 0 16px; }
+	
+	.github-wrapper .github-project { display: inline-block; width: 50%; position: relative; border-right: 2px solid; vertical-align: top; margin-left: -5px; }
+	.github-wrapper .github-project:nth-child(2n) { border: none; }
+	
+	.github-wrapper .github-project .browser { background: url('../img/chrome-window.png') no-repeat; width: 100%; min-height: 340px; background-size: contain; }
+	
+
+
+
+
+
+
 
 
 
@@ -127,12 +288,46 @@
 		body,html { font-size: 1.02em; }
 		.simey-container { width: 560px; }
 		
+		.contact { top: 1em; }
+		.contact li { 
+			margin: 0.5em .15em 0; 
+			
+			-webkit-transform: scale(1) translate(0);  
+			-moz-transform: scale(1) translate(0);  
+			-ms-transform: scale(1) translate(0);  
+			-o-transform: scale(1) translate(0);  
+			transform: scale(1) translate(0);  
+		}
+		.contact:hover li {	
+			margin: 0.5em .15em 0; 
+					
+			-webkit-transform: scale(1) translate(0);  
+			-moz-transform: scale(1) translate(0);  
+			-ms-transform: scale(1) translate(0);  
+			-o-transform: scale(1) translate(0);  
+			transform: scale(1) translate(0);  
+		 }
+		
 	}
 
 	@media screen and ( max-width: 600px ) {
 	
 		.simey-container { width: auto; padding: 20px; }
 
+
+		.simey-header [class^=letter-] { height: 140px; bottom: 40%; background-size: 100%; }
+		.horizon-mask { bottom: 40%; margin-bottom: -116px; background-size: 800px auto; }
+
+		.simey-header .letter-s { width: 90px; background-image: url('../img/s.png'); margin-left: -162px; }
+		.simey-header .letter-i { width: 62px; background-image: url('../img/i.png'); margin-left: -104px; }
+		.simey-header .letter-m { width: 116px; background-image: url('../img/m.png'); margin-left: -74px; }
+		.simey-header .letter-e { width: 103px; background-image: url('../img/e.png'); margin-left: 5px; }
+		.simey-header .letter-y { width: 106px; background-image: url('../img/y.png'); margin-left: 70px; }
+		
+		.simey-is-doing { bottom: auto; margin: auto; top: 60%; margin-top: -27px; font-size: 2em; line-height: 1; }
+
+		.contact { width: 220px; position: static; margin: auto; }
+		.contact li { margin: 0.4em .15em 0; }
 	}
 
 
