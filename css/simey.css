@@ -229,7 +229,6 @@
 	
 	.github-wrapper { 
 		
-		display:none; 
 		position: relative; padding: 100px 0;
 		
 		background-color: #2883B6;
@@ -249,13 +248,29 @@
 		
 	}
 	
-	.github-wrapper h3 { font-size: 1.2em; padding: 0 16px; }	
-	.github-wrapper .github-project p { font-size: 0.8em;  padding: 0 16px; }
+	.github-wrapper h2 { font-size: 3em; }	
+	.github-wrapper hr { border-top: 2px dashed rgba(255,255,255,0.7); }
 	
-	.github-wrapper .github-project { display: inline-block; width: 50%; position: relative; border-right: 2px solid; vertical-align: top; margin-left: -5px; }
-	.github-wrapper .github-project:nth-child(2n) { border: none; }
+	.github-project { display: inline-block; width: 50%; position: relative; vertical-align: top; margin-left: -5px; }
+	.github-project-inner { padding: 10px; }
+	.github-project h3 { font-size: 1.2em; }	
+	.github-project p { font-size: 0.8em; }
 	
-	.github-wrapper .github-project .browser { background: url('../img/chrome-window.png') no-repeat; width: 100%; min-height: 340px; background-size: contain; }
+	.github-project .browser {
+		 width: 100%; position: relative;
+		 border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.3); 
+		 border-radius: 13px 13px 0 0; box-shadow: 0 0 10px 4px rgba(0,0,0,0.1);
+	}
+	.github-project .browser-bar {
+		background: url('../img/chrome.png') no-repeat 0 0; background-size: 100%; 
+		display: block; min-height: 90px;
+	}
+	.github-project .firefox .browser-bar { background: url('../img/firefox.png') no-repeat 0 0; background-size: 100%; }
+	.github-project .safari .browser-bar { background: url('../img/safari.png') no-repeat 0 0; background-size: 100%; }
+	.github-project .browser-page { padding: 10px; }
+	
+	.github-project .browser-link { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+	
 	
 
 
@@ -273,7 +288,11 @@
 		
 		body,html { font-size: 1.15em; }
 		.simey-container { width: 800px; }
-
+		
+		
+		
+		.github-project .browser {border-radius: 10px 10px 0 0; }
+		.github-project .browser-bar { min-height: 65px; }
 	}
 
 	@media screen and ( max-width: 1000px ) {
@@ -281,6 +300,10 @@
 		body,html { background: #e85661; }
 		.simey-container { width: 600px; }
 		
+		
+		
+		.github-project .browser {border-radius: 6px 6px 0 0; }
+		.github-project .browser-bar { min-height: 50px; }
 	}
 
 	@media screen and ( max-width: 800px ) {
@@ -328,6 +351,18 @@
 
 		.contact { width: 220px; position: static; margin: auto; }
 		.contact li { margin: 0.4em .15em 0; }
+		
+		
+		
+		.github-project { display: block; width: auto; position: relative; margin: 0 0 30px; }
+		.github-project-inner { padding: 0; }
+		.github-project .browser { border-radius: 5px; }
+		.github-project .browser-bar { display: none; }
+		
+		
+		
+		
+		
 	}
 
 

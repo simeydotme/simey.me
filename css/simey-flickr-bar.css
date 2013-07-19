@@ -35,11 +35,22 @@
 	}
 	
 	
-	.flickr-camera {
+	.flickr-camera,
+	.flickr-camera-full {
 		
 		width: 300px; height: 225px; position: absolute; top: -30px; right: 20px;
 		background: url('../img/dslr-black.png') no-repeat -300px 0;
 		text-indent: -999em; opacity: 0.4;
+		
+		-webkit-transition: all 0.3s ease 0.1s;
+		-moz-animation: all 0.3s ease 0.1s;
+		-ms-animation: all 0.3s ease 0.1s;
+		-o-animation: all 0.3s ease 0.1s;
+		animation: all 0.3s ease 0.1s;
+	
+	}
+	
+	.flickr-camera {
 		
 		-webkit-animation: cameraBG 6s steps(1) infinite;
 		-moz-animation: cameraBG 6s steps(1) infinite;
@@ -47,22 +58,27 @@
 		-o-animation: cameraBG 6s steps(1) infinite;
 		animation: cameraBG 6s steps(1) infinite;		
 		
-		-webkit-transition: all 0.3s ease;
-		-moz-animation: all 0.3s ease;
-		-ms-animation: all 0.3s ease;
-		-o-animation: all 0.3s ease;
-		animation: all 0.3s ease;
-	
 	}
 	
-	.flickr-camera:hover {
-		-webkit-animation-play-state:paused;
-		-moz-animation-play-state:paused;
-		-ms-animation-play-state:paused;
-		-o-animation-play-state:paused; 
-		animation-play-state:paused;
+	.flickr-camera-full {
+	
+		background: url('../img/dslr-full.png') no-repeat 0 0;
+		opacity: 0;
+
+	}
+
+	.cameras:hover .flickr-camera {
+		-webkit-animation:none;
+		-moz-animation:none;
+		-ms-animation:none;
+		-o-animation:none; 
+		animation:none;
 		
-		opacity: 0.6;
+		opacity: 0;
+	}
+	
+	.cameras:hover .flickr-camera-full {
+		opacity: 0.9;
 	}
 	
 	
