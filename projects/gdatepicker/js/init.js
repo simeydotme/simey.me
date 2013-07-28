@@ -3,9 +3,17 @@
 
 	$(document).ready(function(e) {
 		 
-		$('[data-calendar]').gdatepicker();
+		$('.example, .example1').gdatepicker();
 		 
-		 
+		$('.theme-mint').gdatepicker({
+			theme: "mint"	
+		});
+		
+		$('.theme-default').gdatepicker();
+		
+		$('.theme-dark').gdatepicker({
+			theme: "dark"	
+		});
 		 
 		 
 	});

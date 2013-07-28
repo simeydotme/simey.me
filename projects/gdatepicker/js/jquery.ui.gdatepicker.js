@@ -1,30 +1,73 @@
 // Version 0.3.0
+;if( typeof( $.widget ) !== "function" ) {
+	throw new Error("Plugin requires jQuery UI Widget Factory (http://jqueryui.com/widget/)");
+}
 
-$.widget('simey.gdatepicker', {
+;$.widget('simey.gdatepicker', {
 		
 	options: {
 			
-			placeholder:		"Pick a date...",						// string:			eg: "Pick me!" - generated input's placeholder if original input doesn't have.
-			selected:			"",										// array:			eg: [ 31, 12, 2012 ] - default date that is selected/highlighted. leave blank for today.
-			format:				"dd-MM-yyyy",							// string:			eg: "dd-MM-yyyy" - format of original input
-			formatOutput:		"MMM dSX, yyyy",						// string:			eg: "dd of MMMM, yyyy" - format of generated output
-			days: 				['M','T','W','T','F','S','S'],			// array:			eg: ['L','M','M','J','V','S','D'] - days of week in header
-			position: 			[3,0],									// array: 			eg: [0,0] - position of calendar
-			scrollSpeed:		300,									// integer: 		eg: 300
-			overlayType:		"both",									// string, bool: 	eg: false, "both", "month", "year"
-			overlayAnimation:	"drop",									// string: 			eg: "drop", "fade"
-			theme:				false									// string, bool: 	eg: false, "dark", "green" - sets the css theme style.
-			
-			
-			
+			placeholder:		"Pick a date...",	 				
+								// string:	
+								// eg: "Pick me!"
+								// generated input's placeholder if original input doesn't have.
+								
+			selected:			"",										
+								// string, array
+								// eg: "", [ 31, 12, 2012 ]
+								// default date that is selected/highlighted. 
+								// leave as blank string for none
+								// overridden if input has "value=" with same format as "format" option
+								
+			format:				"dd-MM-yyyy",							
+								// string 
+								// eg: "dd-MM-yyyy"
+								// format of original input
+								
+			formatOutput:		"MMM dSX, yyyy",						
+								// string
+								// eg: "dd of MMMM, yyyy" 
+								// format of generated output
+								
+			days: 				['M','T','W','T','F','S','S'],			
+								// array
+								// eg: ['L','M','M','J','V','S','D']
+								// days of week in header
+								
+			position: 			[3,0],									
+								// array
+								// eg: [0,0] 
+								// position of calendar
+								
+			scrollSpeed:		300,									
+								// integer
+								// eg: 300
+								// how fast the calendar scrolls up and down
+								
+			overlayType:		"both",									
+								// string, bool
+								// eg: false, "both", "month", "year"
+								// do we show the overlay for scrolling months/years
+								
+			overlayAnimation:	"drop",									
+								// string
+								// eg: "drop", "fade"
+								// how the overlay is animated in and out
+								
+			theme:				false									
+								// string, bool
+								// eg: false, "dark", "mint", "..."
+								// sets the css theme style, supply your own string for custom
 			
 	},
+	
+	
 	
 	_create: function () {
 			
 		// --------------------------------------------------------------------------------------------------
 		// we need a synched copy of the "this" object 
-		// for use inside of events or jQuery functions
+		// for use when "this" context changes
 		
 			var mommy = this;
 			
@@ -39,7 +82,14 @@ $.widget('simey.gdatepicker', {
 				return false; 
 			}
 			
+		// --------------------------------------------------------------------------------------------------
+		// before we do anything, make sure we have $.ui.position
+		// it is needed for positioning the calendar.
 			
+			if( typeof( $.ui.position ) === undefined ) {
+				throw new Error("Plugin requires jQuery UI Position (http://jqueryui.com/position/)");
+			}
+
 			
 		// --------------------------------------------------------------------------------------------------
 		// set the active month and year.
@@ -75,7 +125,7 @@ $.widget('simey.gdatepicker', {
 			
 			this._$pickerElement =			this.element.addClass('has-gdatepicker');
 			this._$pickerInput = 			$('<input class="ui-gdatepicker-input" type="text"/>').attr( 'id' , 'gdatepicker_' + this.uuid ).addClass( addTheme() );
-			this._$pickerEmpty = 			$('<span class="ui-gdatepicker-empty"><span>Clear</span></span>').addClass( addTheme() );
+			this._$pickerEmpty = 			$('<span class="ui-gdatepicker-empty"><span>Clear</span></span>').addClass( addTheme() ).hide();
 			
 			this._generateHead();
 			this._generateBody( this._active.month , this._active.year );
@@ -97,7 +147,7 @@ $.widget('simey.gdatepicker', {
 				.prop( 'placeholder' , this.options.placeholder )
 				.insertAfter( this._$pickerElement )
 				.after( this._$pickerEmpty );
-			
+							
 			
 			
 		// --------------------------------------------------------------------------------------------------
@@ -121,6 +171,22 @@ $.widget('simey.gdatepicker', {
 			
 			
 			
+		// --------------------------------------------------------------------------------------------------
+		// place the "x" for clearing the field
+		// until I can figure out a better way, 
+		// it's in a timeout because it needs to 
+		// be positioned after everything is done
+		// rendering
+		
+			$(document).ready(function(e) {
+				
+				setTimeout( function() {
+					mommy._$pickerEmpty.fadeIn();
+					mommy.positionEmpty();
+				},500);
+				
+			});
+			
 			
 			
 			
@@ -130,7 +196,10 @@ $.widget('simey.gdatepicker', {
 		// --------------------------------------------------------------------------------------------------
 			
 			$(window).on('resize.gdatepicker' , function() {
+				
 				mommy.reposition();
+				mommy.positionEmpty();
+				
 			});
 			
 			// when we click a day in the calendar we highlight it
@@ -143,30 +212,32 @@ $.widget('simey.gdatepicker', {
 			});
 			
 			
-			this._$pickerInput
-			
-				.on( 'click' , function( e ) { })
+			this._$pickerInput.on({
 				
-				.on( 'change' , function( e ) {
+				'click': function(e) {},
+				
+				'change': function(e) {
 
-					mommy._trigger( "changeValue", e, { selected: mommy.options.selected } );
+					mommy._trigger( "changeValue", e, { 
+						selected: mommy.options.selected 
+					});
 					
-				})
+				},
 				
-				.on( 'mouseover' , function() {
+				'mouseover': function() {
 					
 					mommy._$pickerEmpty.addClass('ui-gdatepicker-empty-hover');
 					
-				})
+				},
 				
-				.on( 'mouseout' , function() {
+				'mouseout': function() {
 					
 					mommy._$pickerEmpty.removeClass('ui-gdatepicker-empty-hover');
 					
-				})
+				},
 				
 				// show the datepicker on focus of element.
-				.on( 'focus' , function( e ) {
+				'focus': function(e) {
 					
 					if( !mommy._$picker.is(':visible') ) {
 						
@@ -177,10 +248,10 @@ $.widget('simey.gdatepicker', {
 					
 					}
 				
-				})
+				},
 				
 				// hide the datepicker if we've "tabbed" away from it
-				.on( 'keydown' , function( e ) {
+				'keydown': function(e) {
 					
 					if( e.keyCode === 9 ) {
 						
@@ -190,9 +261,9 @@ $.widget('simey.gdatepicker', {
 						mommy._$pickerInput.removeClass( "ui-gdatepicker-active" );
 					}
 					
-				})
+				},
 				
-				.on( 'keyup' , function( e ) {
+				'keyup': function(e) {
 				
 					if( e.keyCode == 13 ) {
 					
@@ -221,7 +292,9 @@ $.widget('simey.gdatepicker', {
 						
 					}
 					
-				});
+				}
+				
+			});
 			
 			
 			
@@ -514,11 +587,31 @@ $.widget('simey.gdatepicker', {
 		
 		// position the datepicker at the offset of the
 		// input fields position
-		this._$picker.position({ my: 'left+'+left+' top+'+top, at: 'left bottom', of: this._$pickerInput });
+		this._$picker.position({ 
+			my: 'left+'+left+' top+'+top, 
+			at: 'left bottom', 
+			of: this._$pickerInput 
+		});
 			
 	},
 	
 	
+	
+	positionEmpty: function( top , right ) {
+		
+		// set the distance to offset the "x"
+		var top = top || 0;
+		var right = right || -10;
+		
+		// position the "x" at the offset of the
+		// input fields position
+		this._$pickerEmpty.position({
+			my: 'right center',
+			at: 'right+'+right+' center+'+top,
+			of: this._$pickerInput
+		});
+		
+	},
 	
 	
 	
@@ -735,6 +828,8 @@ $.widget('simey.gdatepicker', {
 			this._$pickerEmpty.remove();
 			this._$pickerElement.removeClass('has-gdatepicker');
 			
+			$(window).off('resize.gdatepicker');
+			
 		}
 		
 	},
@@ -775,7 +870,7 @@ $.widget('simey.gdatepicker', {
 		// So technically there's only ever 5 months in the calendar.
 			
 			// set month to the month before.
-			if ( month == 0 ) { 
+			if ( month === 0 ) { 
 				month = 11; 
 				year -= 1; 
 			} else { 
@@ -813,7 +908,7 @@ $.widget('simey.gdatepicker', {
 				// if the offset is 0 we actually want to count down from 7, because
 				// we show sunday as the last day in the week, not the first.
 				var offset = new Date( year, month, 1 ).getDay();
-				if (offset == 0) { offset = 7; }
+				if (offset === 0) { offset = 7; }
 				
 				// count down from the offset to populate all days in previous month 
 				for( o = offset-1; o > 0; o-- ) {
@@ -890,9 +985,9 @@ $.widget('simey.gdatepicker', {
 				
 			}
 						
-			// because of the scroll animation required a lot of
+			// because of the scroll animation requires a lot of
 			// extra space to move around, we set the rendered months
-			// to 5.
+			// to 5, it could be less if there was no animation.
 			
 			html += previousDays( month, year );
 			html += addMonths( month, year, 5 );
@@ -907,7 +1002,7 @@ $.widget('simey.gdatepicker', {
 		_generateHead: function() {
 			
 			// populate the head with the days
-			html = "";
+			var html = "";
 			
 			for( i=0; i<7; i++ ) {
 				html += "<span class=\"ui-gdatepicker-day\" data-day=\""+this.options.days[i]+"\">";
@@ -926,21 +1021,3 @@ $.widget('simey.gdatepicker', {
 	
 		
 });
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

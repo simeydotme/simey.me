@@ -9,37 +9,66 @@
 		
 		position: relative; padding: 30px 0 100px;
 		
-		background-color: #2883B6;
+		background-color: #fefefe;
 		background-image: url('../../img/grid.png');
 		
-		background-image: url('../../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
-		background-image: url('../../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
-		background-image: url('../../img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Chrome10+,Safari5.1+ */
-		background-image: url('../../img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Opera 12+ */
-		background-image: url('../../img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* IE10+ */
-		background-image: url('../../img/grid.png'), radial-gradient(ellipse at center,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* W3C */
-		
+		background-image: url('../../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(252,252,252,1) 0%, rgba(239,239,239,1) 100%); /* FF3.6+ */
+		background-image: url('../../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(239,239,239,1))); /* Chrome,Safari4+ */
+		background-image: url('../../img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%); /* Chrome10+,Safari5.1+ */
+		background-image: url('../../img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%); /* Opera 12+ */
+		background-image: url('../../img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%); /* IE10+ */
+		background-image: url('../../img/grid.png'), radial-gradient(ellipse at center,  rgba(252,252,252,1) 0%,rgba(239,239,239,1) 100%); /* W3C */
+
 		background-repeat: repeat;
 		background-repeat: repeat, no-repeat;
 		
 		background-size: auto;
 		
-	}
+		color: #555;
 		
-	.simey-header { height: 250px; min-height: auto; top: 0; }
-	.simey-header h1 { opacity: 0.15; }
-	.simey-header h2 { opacity: 1; font-size: 2.8em; position: relative; top: 50px; }
-	.simey-header [class^=letter-] { opacity: 1; bottom: 0; }
+		padding-bottom: 250px;
+		
+	}
+	
+	a { color: #111; }
+	hr { border-top: 2px solid #ccc; }
+	
+	ul.square { list-style: square; }
+	
+	
+	.row { max-width: none; }
+@media only screen and (max-width: 960px) {
+	.row { padding: 0; }
+}		
 
+
+	
+	.simey-header { height: 250px; min-height: auto; top: 0; }
+	.simey-header h1 {  }
+	.simey-header h2 { opacity: 1; font-size: 2.8em; position: relative; top: 50px; }
+	.simey-header p { font-weight: 300; position: relative; top: -20px; }
+	.simey-header [class^=letter-] { opacity: 0.6; bottom: 0; }
+
+	.simey-header .letter-s { background-image: url('../img/s-dark.png'); }
+	.simey-header .letter-i { background-image: url('../img/i-dark.png'); }
+	.simey-header .letter-m { background-image: url('../img/m-dark.png'); }
+	.simey-header .letter-e { background-image: url('../img/e-dark.png'); }
+	.simey-header .letter-y { background-image: url('../img/y-dark.png'); }
 
 	.body { display: block; }
 	
 	
+	.project-wrapper { font-size: 0.8em; font-weight: 300; }
+	.project-wrapper h2 { font-size: 2.2em; }
 	.project-wrapper h3 { font-size: 1.5em; }
+	.project-wrapper h4 { font-size: 1.2em; margin-bottom: 0; }
+	
+	.project-wrapper a { text-decoration: underline; }
 
+	
+	.project-wrapper .columns .ui-gdatepicker-input {margin-top: 1em;}
 
-
-
+	.project-wrapper .example-row { text-align: center; margin: 20px 0 50px; }
 
 
 
