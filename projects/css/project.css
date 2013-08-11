@@ -43,7 +43,7 @@
 
 
 	
-	.simey-header { height: 250px; min-height: auto; top: 0; }
+	.simey-header { height: 250px; min-height: 250px; top: 0; }
 	.simey-header h1 {  }
 	.simey-header h2 { opacity: 1; font-size: 2.8em; position: relative; top: 50px; }
 	.simey-header p { font-weight: 300; position: relative; top: -20px; }
@@ -64,11 +64,24 @@
 	.project-wrapper h4 { font-size: 1.2em; margin-bottom: 0; }
 	
 	.project-wrapper a { text-decoration: underline; }
+	.project-wrapper code {
+		font-family:Monaco,Menlo,Consolas,"Courier New",monospace;font-size:12px;color:#333333;border-radius:3px;
+		padding:2px 4px;color:#d14;background-color:#f7f7f9;border:1px solid #e1e1e8;white-space:nowrap;
+	}
 
 	
 	.project-wrapper .columns .ui-gdatepicker-input {margin-top: 1em;}
 
 	.project-wrapper .example-row { text-align: center; margin: 20px 0 50px; }
+	
+	.project-wrapper .slider-table tr td:first-child { width: 50%; padding: 26px; }
+	
+	
+	
+	
+	
+	
+	
 
 
 
