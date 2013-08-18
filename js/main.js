@@ -14,6 +14,7 @@
 		
 		function revealBody() {
 			
+			console.log('reveal');
 			$('.simey-is-doing').randomSimey();
 			$('.body').removeClass('hide');
 						
@@ -33,7 +34,9 @@
 		
 				if( $.cookie('visited') === undefined ) {
 					
-					setTimeout( revealBody() , 3000 );
+					setTimeout( function() {
+						revealBody();	
+					}, 3000 );
 					
 				} else {
 					

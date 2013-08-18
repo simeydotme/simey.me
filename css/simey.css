@@ -220,7 +220,17 @@
 	}
 	
 	.body.hide { 
-		opacity: 0; height: 0; overflow: hidden;
+		opacity: 0; overflow: hidden; height:0;
+		-webkit-transform: translateY(-300px);
+		-webkit-transition: none;
+		-moz-transform: translateY(-300px);
+		-moz-transition: none;
+		-ms-transform: translateY(-300px);
+		-ms-transition: none;
+		-o-transform: translateY(-300px);
+		-o-transition: none;
+		transform: translateY(-300px);
+		transition: none;
 	}
 
 
