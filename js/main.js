@@ -4,36 +4,122 @@
 	var photoCount = ( $(window).width() > 800 ) ? 14 : 6;
 	
 	
-	$.fn.randomSimey = function() {
+	$(function() {
+		
+		
+		
+		
+		
+		// ================================================================ //
+		
+		function revealBody() {
+			
+			$('.simey-is-doing').randomSimey();
+			$('.body').removeClass('hide');
+						
+		};
+		
+		function hashy() {
+			
+			var h = window.location.hash.replace('#','');
+			if( h === "cv" || h === "resume" ) {
+				
+				$('.simey-is-doing').randomSimey(true);
+				viewResume();
+				
+			} else {
+				
+				$('.body').addClass('hide');
+		
+				if( $.cookie('visited') === undefined ) {
+					
+					setTimeout( revealBody() , 3000 );
+					
+				} else {
+					
+					revealBody();
+					
+				}
+				
+				viewContent();
+				
+			}
+			
+		};
+		
+		
+		$(window).on('hashchange', function() {
+			hashy();
+		});
+		
+		$('.simey-is-doing').on('click' , function() {
+			$('.simey-is-doing').randomSimey();
+		});
+
+		
+		hashy();
+		headerAnimation();
+		
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	function viewResume() {
+		$('.body').empty().load('projects/resume.html');	
+	}
+		
+	function viewContent() {
+		$('.body')
+			.empty()
+			.load('projects/content.html', function() {
+				setUpWaypoints();
+			});	
+	}
+		
+	$.fn.randomSimey = function( cv ) {
 		
 		var simeys = [
 			"eats pizza (without mushrooms)",
 			"builds websites",
 			"writes jQuery plugins",
-			"takes photos",
+			"improves the internet",
 			"climbs mountains",
 			"plays on the internet",
 			"is the hand of the king",
-			"sik gong siu siu gwong dung waa",
+			"sik gong siu siu gwong dung wa",
 			"was born in Canada",
-			"&hearts;'s Hong Kong",
+			"&hearts;'s animals",
 			"has flipped a dodgem",
 			"makes a mean French Toast",
 			"takes photographs",
-			"messes with photoshop"
+			"messes with photoshop",
+			"drinks as much bubble tea as possible"
 		];
 		
 		return $(this).each( function( key, element ) {
 		
 			var index = Math.floor( Math.random() * simeys.length );
 			
-			if( window.lastSimey == index ) {
-				index = ( window.lastSimey == simeys.length ) ? 0 : index++;
+			if( window.lastSimey === index ) {
+				if( window.lastSimey >= simeys.length ) {
+					index = 0;
+				} else {
+					index++;
+				}
 			}
+			
+			var text = simeys[ index ];
+			if( cv ) { text = "Simon Goellner"; }
 			
 			$(element).removeClass( "flipInX" ).addClass( "animated short fadeOutDown" );
 			
-			setTimeout( function() { $(element).html( simeys[ index ] ); }, 500 );
+			setTimeout( function() { $(element).html( text ); }, 500 );
 			setTimeout( function() { $(element).show().removeClass( "fadeOutDown short" ).addClass( "flipInX" ); }, 500 );
 			
 			window.lastSimey = index;
@@ -41,7 +127,6 @@
 		});
 	
 	};
-	
 	
 	function setUpWaypoints() {
 		
@@ -58,39 +143,7 @@
 	
 	}
 	
-	
-	$(function() {
-		
-		if( $.cookie('visited') === undefined ) {
-		
-			setTimeout( function() {
-				$('.simey-is-doing').randomSimey();
-				$('.body').fadeIn( 2000 , function() {
-					setUpWaypoints();	
-				});
-			}, 3000 );
-			
-		} else {
-			
-			$('.simey-is-doing').randomSimey();
-			$('.body').show(); 
-			setUpWaypoints();
-			
-		}
-		
-		$('.simey-is-doing').on('click' , function() {
-			$('.simey-is-doing').randomSimey();
-		});
-		
-	});
-	
-	
-	
-	
-	
-	
-	
-	$(function() {
+	function headerAnimation() {
 		
 		// make the header the height of the window
 		$('.simey-header')
@@ -106,8 +159,9 @@
 			scrolled = false;
 			
 			var $simeyHeader = $('.simey-header');
+			$simeyHeader.find('[class^=letter-]').css('opacity',0);
 			
-			if( $.cookie('visited') === undefined ) {
+			if( $.cookie('visited') === undefined && window.location.hash === "" ) {
 			
 				$simeyHeader
 					.addClass('enter')
@@ -136,18 +190,23 @@
 							scrolled = true;
 							
 						}
-						
-						var expires = new Date();
-						expires.setMinutes(expires.getMinutes() + 10);
-						$.cookie('visited', 'true', { expires: expires, path: '/' });
-						
+												
 					});
 						
 			} else {
-			
-				$simeyHeader.find('[class^=letter-]').css('opacity',1).hide().fadeIn();
+				
+				$simeyHeader.find('[class^=letter-]').css('opacity',1).hide().fadeIn(2000);
 				
 			}
+			
+			
+			// resets cookie after 10 minutes
+			var expires = new Date();
+			expires.setMinutes(expires.getMinutes() + 10);
+			$.cookie('visited', 'true', { expires: expires, path: '/' });
+
+			
+			
 					
 			// variable used for timer.
 			var t;
@@ -181,12 +240,7 @@
 			
 		}
 		
-	});
-	
-	
-	
-	
-	
+	};
 	
 	function loadFlickr( imageCount ) {
 		

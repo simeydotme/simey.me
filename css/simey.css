@@ -14,7 +14,10 @@
 
 	body, html { 
 	
-		color: #f5e1e2; font-size: 1.2em; 
+		color: #fff;
+		color: rgba(255,255,255,0.9); 
+		
+		font-size: 1.2em; 
 		min-height: 1000px;
 	
 		background: #e85661;
@@ -54,7 +57,17 @@
 	.no-margin-t	{ margin-top: 0; }
 	
 	
-	
+	ul.stacky {
+		list-style: square inside;
+		margin: 0; padding: 0;
+	}
+	ul.stacky li {
+		width: 48%; display: inline-block;
+		border-bottom: 1px dotted rgba(0,0,0,0.2);
+		border-left: 1px dotted rgba(0,0,0,0.2);
+		text-indent: 10px; margin-top: 8px;
+		padding: 4px 0; margin-left: 4px;
+	}
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////// Social Font ////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +149,7 @@
 	.simey-header { min-height: 620px; position: relative; text-align: center; }
 	.simey-header h1 { margin: 0; }
 	
-	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 36%; opacity: 0; }
+	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 36%; opacity: 1; }
 	
 	.simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; }
 	.simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; }
@@ -198,7 +211,17 @@
 	//////////////////// body ////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
-	.body { display: none; }
+	.body {
+		-webkit-transition: all 1s ease;
+		   -moz-transition: all 1s ease; 
+			-ms-transition: all 1s ease; 
+			 -o-transition: all 1s ease; 
+				transition: all 1s ease;
+	}
+	
+	.body.hide { 
+		opacity: 0; height: 0; overflow: hidden;
+	}
 
 
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +273,8 @@
 	
 	.github-wrapper h2 { font-size: 3em; }	
 	.github-wrapper hr { border-top: 2px dashed rgba(255,255,255,0.7); }
-	
+	.github-wrapper a { color: rgba(255,255,255,0.9); }
+
 	.github-project { display: inline-block; width: 50%; position: relative; vertical-align: top; margin-left: -5px; }
 	.github-project-inner { padding: 10px; }
 	.github-project h3 { font-size: 1.2em; }	
@@ -274,16 +298,71 @@
 	
 	
 
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// codepen ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
 
+	.simey-codepen { 
+		margin: auto; padding: 40px 0 80px; width: auto; 
+		background: #302C3A; color: white; color: rgba(255,255,255,0.95);
+		border-width: 20px 0; border-style: solid; 
+		border-color: rgba(8, 102, 155, 0.47) white rgba(255, 255, 255,0.47); 
+	}
 
+	.simey-codepen h2,
+	.simey-codepen h3 	{ font-family: 'Roboto', Helvetica, Arial; }
+	
+	.simey-codepen h2		{ font-size: 3em; line-height: 1; }
+	.simey-codepen h3		{ font-size: 2em; font-weight: 400; line-height: 1;  }
 
+	.simey-codepen a { color: rgba(255,255,255,0.9); }
 
+	.simey-codepen .code-pen {
+	
+		width: 47%; display: inline-block; margin: 20px 1%; vertical-align: top;
+		font-size: 0.9em;
+		
+	}
+	
+	
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// secret ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	.secret-wrapper {
+		
+		position: relative; padding: 100px 0;
+		
+		background: #eee; /* Old browsers */
+		color: #302C3A;
+		background-repeat: no-repeat;
+		background-size: cover;
+		font-weight: 300;
+	}
+	
 
+	.secret-wrapper h2,
+	.secret-wrapper h3 { 
+		font-size: 3em; 
+		font-family: 'Roboto', Helvetica, Arial; 
+		font-weight: 900;
+	}	
+	
+	.secret-wrapper h3 { 
+		font-size: 1.7em; 
+		font-weight: 300; 
+		text-transform: uppercase;
+		line-height: 1;
+	}	
+	
+	.secret-wrapper a { color: #3498db; }
+	
 
-
-
-
-
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////// media queries ////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
 
 	@media screen and ( max-width: 1300px ) {
 		
@@ -337,6 +416,10 @@
 	@media screen and ( max-width: 600px ) {
 	
 		.simey-container { width: auto; padding: 20px; }
+		
+		ul.stacky li {
+			width: 100%; margin: 0 0 10px;
+		}
 
 
 		.simey-header [class^=letter-] { height: 140px; bottom: 40%; background-size: 100%; }
@@ -361,7 +444,8 @@
 		.github-project .browser-bar { display: none; }
 		
 		
-		
+		.simey-codepen .code-pen { width: 100%; margin: auto; }
+		.simey-codepen .code-pen img { margin: 10px 0; }
 		
 		
 	}

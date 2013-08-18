@@ -31,7 +31,7 @@
 	}
 	
 	a { color: #111; }
-	hr { border-top: 2px solid #ccc; }
+	hr { border-top: 1px solid #A0B1CF; }
 	
 	ul.square { list-style: square; }
 	
@@ -43,10 +43,10 @@
 
 
 	
-	.simey-header { height: 250px; min-height: 250px; top: 0; }
+	.simey-header { position: static; top: auto; height: auto; min-height: 0; }
 	.simey-header h1 {  }
-	.simey-header h2 { opacity: 1; font-size: 2.8em; position: relative; top: 50px; }
-	.simey-header p { font-weight: 300; position: relative; top: -20px; }
+	.simey-header h2 { opacity: 1; font-size: 2.8em; margin-bottom: 0; }
+	.simey-header p { font-weight: 300; position: static; }
 	.simey-header [class^=letter-] { opacity: 0.6; bottom: 0; }
 
 	.simey-header .letter-s { background-image: url('../img/s-dark.png'); }
@@ -70,15 +70,16 @@
 	}
 
 	
-	.project-wrapper .columns .ui-gdatepicker-input {margin-top: 1em;}
+	.project-wrapper .columns .ui-gdatepicker-input { margin-top: 1em; max-width: 86%; }
+	.project-wrapper .columns .ui-slider-vertical { height: 180px; }
 
 	.project-wrapper .example-row { text-align: center; margin: 20px 0 50px; }
 	
 	.project-wrapper .slider-table tr td:first-child { width: 50%; padding: 26px; }
 	
-	
-	
-	
+@media only screen and (max-width: 600px) {
+	.simey-header h2 {font-size: 2em; }
+}
 	
 	
 	

@@ -27,7 +27,7 @@
 
 	.flickr-wrapper h2 { font-size: 3em; font-family: 'Roboto', Helvetica, Arial; }	
 	.flickr-wrapper .strap { font-weight: 300; width: 50%; }
-	
+	.flickr-wrapper a { color: rgba(0,0,0,0.8); }
 	
 	.flickr-preloader { 
 		width: 32px; height: 32px;
@@ -90,10 +90,12 @@
 	}
 	.flickr-overlay:hover .flickr-close,
 	.flickr-overlay:hover .flickr-open { opacity: 1; }
+	
+	.flickr-overlay a { color: white; }
 
 	.flickr-close { background-image: url('../img/close.png'); right : -10px; top: -40px; background-size: 20px; text-indent: -999em; overflow: hidden; }
 	.flickr-open { left: -20px; top: -40px; width: 188px; }
-
+	
 
 	.flickr-feed { position: relative; margin: 50px 0 0; }
 	.flickr-feed-inner { width:auto; overflow: hidden; z-index:1; margin-top: 30px; min-height: 360px; }
@@ -236,6 +238,46 @@
 	
 	
 	@-webkit-keyframes cameraBG {
+		
+		0% { background-position-x: -300px; }
+		25% { background-position-x: -600px; }
+		50% { background-position-x: -900px; }
+		75% { background-position-x: 0px; }
+		100% { background-position-x: -300px; }
+		
+	}
+	
+	@-moz-keyframes cameraBG {
+		
+		0% { background-position-x: -300px; }
+		25% { background-position-x: -600px; }
+		50% { background-position-x: -900px; }
+		75% { background-position-x: 0px; }
+		100% { background-position-x: -300px; }
+		
+	}
+	
+	@-ms-keyframes cameraBG {
+		
+		0% { background-position-x: -300px; }
+		25% { background-position-x: -600px; }
+		50% { background-position-x: -900px; }
+		75% { background-position-x: 0px; }
+		100% { background-position-x: -300px; }
+		
+	}
+	
+	@-o-keyframes cameraBG {
+		
+		0% { background-position-x: -300px; }
+		25% { background-position-x: -600px; }
+		50% { background-position-x: -900px; }
+		75% { background-position-x: 0px; }
+		100% { background-position-x: -300px; }
+		
+	}
+	
+	@keyframes cameraBG {
 		
 		0% { background-position-x: -300px; }
 		25% { background-position-x: -600px; }
