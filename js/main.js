@@ -200,6 +200,7 @@
 
 			handler: function(direction) {
 
+				$('.codepen-loader').fadeIn();
 				$('#penlist').getPens("simeydotme", { minHearts: 10 });
 
 			}

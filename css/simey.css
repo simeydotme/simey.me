@@ -401,7 +401,12 @@
 	.simey-codepen .code-pen .icon-heart:before { color: #CF61C6; }
 	.simey-codepen .code-pen .icon-eye:before { margin-top: -0.4em; }
 
-	.simey-codepen .codepen-loader { display: block; width: 100%; height: 200px; background-position: center; }
+	.simey-codepen .codepen-loader { 
+		display: none; width: 32px; height: 32px; 
+		background-position: center; 
+		position: fixed; left: 50%; top: 50%;
+		margin-left: -16px; margin-top: -16px; 
+	}
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////// secret ////////////////////////////////////////////////////////////////////////////////

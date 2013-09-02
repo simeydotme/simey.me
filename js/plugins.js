@@ -98,7 +98,7 @@ $.fn.getPens = function( username , options ) {
 
             }
 
-            $('.codepen-loader').remove();
+            $('.codepen-loader').fadeOut( function() { $(this).remove(); });
 
         });
 
