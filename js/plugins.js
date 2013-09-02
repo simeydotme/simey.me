@@ -9,11 +9,12 @@ $.fn.getPens = function( username , options ) {
 
     var defaults = {
 
-        reverse: true,
+        reverse: false, // show in reverse order
         type: "public",
-        minHearts: 5,
-        minViews: 1000,
-        maxPens: null
+        minHearts: 5, // show only pens with > 4 hearths
+        minViews: 1000, // show only pens with > 999 views.
+        maxPens: 4,
+        orderBy: "hearts" // (or views or comments or null)
 
     };
 
@@ -33,6 +34,7 @@ $.fn.getPens = function( username , options ) {
         // some semi-global variables we need.
         var $this = $(this);
         var template = $this.text();
+        var limit = 0;
 
 
         // we will use a Deffered to append the pens.
@@ -44,7 +46,13 @@ $.fn.getPens = function( username , options ) {
         // (this appends the pens via an arg (array))
         def.done( function( pens ) {
             
-            // the pens were in chrono order, we want them reversed
+            // sort hte array if we wish!
+            if( options.orderBy !== null ) {
+                pens.sort(function(a, b) { return a[options.orderBy] - b[options.orderBy]; });
+                pens.reverse();
+            }
+           
+            // who wants a reversed set of pens!!?? 
             if( options.reverse ) {
                 pens.reverse();
             }
@@ -52,49 +60,54 @@ $.fn.getPens = function( username , options ) {
             // for each pen given to us by the argument (array)
             for( pen in pens ) {
 
-                // couple of needed vars for the curent array item
-                // and for the template
-                var thisPen = pens[pen];
-                var temp = template;
+                if( limit < options.maxPens ) {
 
-                // if this pen has more hearts or more views than
-                // supplied, then we want to show this badboy
-                if( thisPen.hearts >= options.minHearts || 
-                    thisPen.views >= options.minViews ) {
+                    // couple of needed vars for the curent array item
+                    // and for the template
+                    var thisPen = pens[pen];
+                    var temp = template;
+
+                    // if this pen has more hearts or more views than
+                    // supplied, then we want to show this badboy
+                    if( thisPen.hearts >= options.minHearts || 
+                        thisPen.views >= options.minViews ) {
+                        
+                        var handlebars = template.match(/\{\{.*?\}\}/gi);
+                        var handlebarsURL = template.match(/\{\{url\..*?\}\}/gi);
+
+                        // replace the urls first as we have to perform a irreversible
+                        // damage to the {{}} in the next two for loops
+
+                        for( bar in handlebarsURL ) {
+                            var stripbar = handlebarsURL[bar].replace("{{","").replace("}}","").replace("url.","");
+                            temp = temp.replace( handlebarsURL[bar] , thisPen["url"][stripbar] );
+                        }
+
+                        // if the element is null, dont show null!!!!! meh.
+
+                        for( bar in handlebars ) {
+                            var stripbar = handlebars[bar].replace("{{","").replace("}}","");
+                            if( thisPen[stripbar] === null ) { thisPen[stripbar] = ""; }
+                            temp = temp.replace( handlebars[bar] , thisPen[stripbar] );
+                        }
+
+                        // if the window is small, we dont want
+                        // to load the iframe, as it is probably
+                        // a mobile device and will be slowed
+                        // by loading many pens!
+
+                        if( $(window).width() < codepenWidth ) {
+                            temp = temp.replace( temp.match(/<iframe.*?<\/iframe>/gi) , "");
+                        }
+
+                        // shove this motherlicker on to the webpage!!
+                        $this.before( temp );
+                        limit++;
+
+                    }
                     
-                    var handlebars = template.match(/\{\{.*?\}\}/gi);
-                    var handlebarsURL = template.match(/\{\{url\..*?\}\}/gi);
-
-                    // replace the urls first as we have to perform a irreversible
-                    // damage to the {{}} in the next two for loops
-
-                    for( bar in handlebarsURL ) {
-                        var stripbar = handlebarsURL[bar].replace("{{","").replace("}}","").replace("url.","");
-                        temp = temp.replace( handlebarsURL[bar] , thisPen["url"][stripbar] );
-                    }
-
-                    // if the element is null, dont show null!!!!! meh.
-
-                    for( bar in handlebars ) {
-                        var stripbar = handlebars[bar].replace("{{","").replace("}}","");
-                        if( thisPen[stripbar] === null ) { thisPen[stripbar] = ""; }
-                        temp = temp.replace( handlebars[bar] , thisPen[stripbar] );
-                    }
-
-                    // if the window is small, we dont want
-                    // to load the iframe, as it is probably
-                    // a mobile device and will be slowed
-                    // by loading many pens!
-
-                    if( $(window).width() < codepenWidth ) {
-                        temp = temp.replace( temp.match(/<iframe.*?<\/iframe>/gi) , "");
-                    }
-
-                    // shove this motherlicker on to the webpage!!
-                    $this.after( temp );
 
                 }
-
 
             }
 

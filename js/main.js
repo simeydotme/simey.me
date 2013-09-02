@@ -201,7 +201,7 @@
 			handler: function(direction) {
 
 				$('.codepen-loader').fadeIn();
-				$('#penlist').getPens("simeydotme", { minHearts: 10 });
+				$('#penlist').getPens("simeydotme", { minHearts: 10, maxPens: 8 });
 
 			}
 
