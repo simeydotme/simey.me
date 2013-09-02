@@ -114,8 +114,13 @@
 	.spinner {
 		
 		width: 32px; height: 32px;
-		background: url('../img/preloader.png') no-repeat 0 0;
+		background: url('../img/preloader.png') no-repeat center center;
+
 		-webkit-animation: spinner 4s linear infinite;
+		-moz-animation: spinner 4s linear infinite;
+		-ms-animation: spinner 4s linear infinite;
+		-o-animation: spinner 4s linear infinite;
+		animation: spinner 4s linear infinite;
 		
 	}
 	

@@ -1,7 +1,8 @@
 	
 	
 	var mobileWidth = 800;
-	var photoCount = ( $(window).width() > 800 ) ? 14 : 6;
+	var codepenWidth = 1000;
+	var photoCount = ( $(window).width() > mobileWidth ) ? 14 : 6;
 	
 	
 	$(function() {
@@ -14,7 +15,6 @@
 		
 		function revealBody() {
 			
-			console.log('reveal');
 			$('.simey-is-doing').randomSimey();
 			$('.body').removeClass('hide');
 						
@@ -23,12 +23,8 @@
 		function hashy() {
 			
 			var h = window.location.hash.replace('#','');
-			if( h === "cv" || h === "resume" ) {
-				
-				$('.simey-is-doing').randomSimey(true);
-				viewResume();
-				
-			} else {
+			
+			if( h === "" ) {
 				
 				$('.body').addClass('hide');
 		
@@ -46,9 +42,44 @@
 				
 				viewContent();
 				
+			} else {
+				
+				if( h === "cv" || h === "resume" ) {
+				
+					$('.simey-is-doing').randomSimey(true);
+					viewResume();
+					searchy();
+				
+				} else {
+					
+					viewContent();
+					// Assign the HTML, Body as a variable...
+					var $viewport = $('html, body');
+					// Some event to trigger the scroll animation...
+					// using timeout , may try to change to a deferred promise
+					setTimeout( function() {
+						$viewport.animate({ scrollTop: $("#"+h).position().top }, 1700, "easeOutQuint" );
+					},1000);
+					
+				}
+					
 			}
 			
 		};
+		
+		function searchy() {
+		
+			var s = window.location.search.replace('?who=',"").replace('+',' ');
+			if( s !== "" ) {
+				
+				var $wrapper = $('<div class="simey-container"/>');
+				var $text = $('<h3>Congratulations, '+s+'!!.. Looks like Simey has chosen to share his CV with you! Please enjoy!</h3>');
+				
+				$wrapper.append( $text ).prependTo( $('.body') );	
+				
+			}
+				
+		}
 		
 		
 		$(window).on('hashchange', function() {
@@ -74,15 +105,32 @@
 	
 	
 	function viewResume() {
-		$('.body').empty().load('projects/resume.html');	
+		
+		var resume = $.get('projects/resume.html');
+		resume.done( function( response ) {
+			
+			$('.body')
+				.find('#about, #flickr, #github, #codepen')
+				.hide()
+				.end()
+				.append( response );
+					
+		});
+		
 	}
 		
 	function viewContent() {
+		
 		$('.body')
-			.empty()
-			.load('projects/content.html', function() {
-				setUpWaypoints();
-			});	
+			.find('#cv, #statement')
+			.remove()
+			.end()
+			.find('#about, #flickr, #github, #codepen')
+			.filter(':hidden')
+			.show();
+		
+		setUpWaypoints();
+			
 	}
 		
 	$.fn.randomSimey = function( cv ) {
@@ -135,7 +183,7 @@
 		
 		$('.flickr-wrapper').waypoint({
 			
-			offset: 300,
+			offset: 0,
 			triggerOnce: true,
 			
 			handler: function(direction) {
@@ -143,6 +191,20 @@
 			}
 			
 		});	
+
+
+		$('.simey-about').waypoint({
+
+			offset: 0,
+			triggerOnce: true,
+
+			handler: function(direction) {
+
+				$('#penlist').getPens("simeydotme", { minHearts: 10 });
+
+			}
+
+		});
 	
 	}
 	

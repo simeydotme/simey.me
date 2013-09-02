@@ -95,7 +95,16 @@
 		-webkit-font-smoothing: antialiased;
 	}
 	
-	.icon-facebook, .icon-codepen, .icon-twitter, .icon-phone, .icon-github, .icon-flickr, .icon-instagram, .icon-envelope {
+	.icon-facebook, 
+	.icon-codepen, 
+	.icon-twitter, 
+	.icon-phone, 
+	.icon-github, 
+	.icon-flickr, 
+	.icon-instagram, 
+	.icon-envelope,
+	.icon-eye, 
+	.icon-heart {
 		font-family: 'simey-social';
 		speak: none;
 		font-style: normal;
@@ -128,6 +137,12 @@
 	}
 	.icon-envelope:before {
 		content: "\e007";
+	}	
+	.icon-eye:before {
+		content: "\e008";
+	}	
+	.icon-heart:before {
+		content: "\e009";
 	}
 	
 		
@@ -324,17 +339,69 @@
 	.simey-codepen h3 	{ font-family: 'Roboto', Helvetica, Arial; }
 	
 	.simey-codepen h2		{ font-size: 3em; line-height: 1; }
-	.simey-codepen h3		{ font-size: 2em; font-weight: 400; line-height: 1;  }
+	.simey-codepen h3		{ font-size: 1.5em; font-weight: 400; line-height: 1; margin: 0;  }
 
 	.simey-codepen a { color: rgba(255,255,255,0.9); }
 
 	.simey-codepen .code-pen {
 	
-		width: 47%; display: inline-block; margin: 20px 1%; vertical-align: top;
-		font-size: 0.9em;
-		
+		width: 47%; display: inline-block; 
+		margin: 20px 1%; vertical-align: top; font-size: 0.9em;
+
+		opacity: 0.4;
+
+		-webkit-transition: opacity 0.3s ease;
+		-moz-transition: opacity 0.3s ease;
+		-ms-transition: opacity 0.3s ease;
+		-o-transition: opacity 0.3s ease;
+		transition: opacity 0.3s ease;	
+
 	}
-	
+	.simey-codepen .code-pen:hover { opacity: 1; }
+
+
+	.simey-codepen .code-pen .frame-wrapper {
+		width: 100%; height: 290px; position: relative;
+	}
+
+	.simey-codepen .code-pen iframe { 
+		display: block; border: 1px solid white; 
+		width: 100%; height: 100%; z-index: 1;
+	}
+	.simey-codepen .code-pen .over-link {
+		width: 100%; height: 100%; position: absolute;
+		top: 0; left: 0; z-index: 10; text-indent: -9999em; overflow: hidden;
+	}
+
+	.simey-codepen .code-pen span.icon {
+		position: relative;
+		display: inline-block;
+		width: 3em;
+		height: 2em;
+		line-height: 2em; margin-left: 1.5em;
+
+	}
+
+	.simey-codepen .code-pen .icons { margin-bottom: 0.5em; padding-bottom: 0.5em; border-bottom: 1px dotted rgba(255,255,255,0.5); }
+	.simey-codepen .code-pen .small-link { font-size: 0.8em; font-weight: 100; }
+
+	.simey-codepen .code-pen .icon-heart:before,
+	.simey-codepen .code-pen .icon-eye:before {
+		color: #61A3CF;
+		font-size: 1em;
+		position: absolute;
+		width: 1em;
+		height: 1em;
+		line-height: 1em;
+		left: -1.5em;
+		top: 50%;
+		margin-top: -0.5em;
+	}
+
+	.simey-codepen .code-pen .icon-heart:before { color: #CF61C6; }
+	.simey-codepen .code-pen .icon-eye:before { margin-top: -0.4em; }
+
+	.simey-codepen .codepen-loader { display: block; width: 100%; height: 200px; background-position: center; }
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////// secret ////////////////////////////////////////////////////////////////////////////////
@@ -388,12 +455,13 @@
 	@media screen and ( max-width: 1000px ) {
 		
 		body,html { background: #e85661; }
-		.simey-container { width: 600px; }
-		
-		
+		.simey-container { width: 600px; }		
 		
 		.github-project .browser {border-radius: 6px 6px 0 0; }
 		.github-project .browser-bar { min-height: 50px; }
+
+		.simey-codepen .code-pen iframe { display: none; }
+
 	}
 
 	@media screen and ( max-width: 800px ) {
