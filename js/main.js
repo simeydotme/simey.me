@@ -276,6 +276,7 @@
 					
 			// variable used for timer.
 			var t;
+			var paragon = false;
 			
 			// for every letter in the header,
 			// start the "reveal" animation when clicked.
@@ -296,7 +297,10 @@
 					
 					
 					$.removeCookie('visited', { path: '/' });
-					e.preventDefault();
+					if( !paragon ) {
+						e.preventDefault();
+						paragon = true;			
+					}
 				
 				});
 				
