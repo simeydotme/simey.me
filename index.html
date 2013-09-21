@@ -34,8 +34,8 @@
        =======================================================     /\  /\
          https://github.com/TimPietrusky/codepen-awesomepi        /__\/__\
          http://api.flickr.com/
-
 	-->
+	
     <body>
 		
 		<header class="simey-header">
@@ -113,21 +113,22 @@
 						<figure class="flickr-camera-full"><figcaption>It has a 18-55mm VR Nikkor lens.</figcaption></figure>
 					</div>
 					
-					<section class="flickr-feed animated" id="flickr-feed">
-						<div class="flickr-feed-inner" id="flickr-feed-inner"></div>
+					<i class="flickr-preloader spinner"></i>
+
+
+					<section class="flickr-feed">
+					<script id="flickr-feed" type="text/flickr-template">
+
+						<a href="{{url}}" target="_blank" title="view this on flickr" class="flickr-image-wrapper" data-id="{{id}}">
+							<i class="flickr-image" style="background-image: url({{image}});"></i>
+						</a>
+
+					</script>
 					</section>
 					
-					<i class="flickr-preloader spinner"></i>
 					
-					<div class="flickr-overlay">
-						<a href="#" class="flickr-close">&times;</a>
-						<a href="http://www.flickr.com/photos/95986769@N07/sets/72157634483069405/#view-holder" class="flickr-open">view on flickr</a>
-						<span class="flickr-overlay-image"></span>
-					</div>
-					
-					<div class="flickr-mask"></div>
-					
-				<div class="simey-container">
+					<div style="clear:both;"></div>
+				</div>
 			</section>
 			
 			
@@ -159,12 +160,10 @@
 								<a href="projects/gdatepicker/" class="browser-link"></a>
 							</div>
 							
-							<p>A datepicker inspired by the one found on Google hotels. It so far
-							supports single-date picking and mouse-wheel scrolling, plus using the Date.js
-							library allows fancy date-input.</p>
-							
-							<p>Built on the jQuery UI Widget Factory</p>
-						
+							<p>A datepicker inspired by the one (previously) found on Google hotels. It supports
+							picking a range of dates, internationalization, some keyboard control, a sleek ui,
+							mouse-scrolling (via plugin)</p>
+
 						</div>
 					</div>
 			
@@ -220,7 +219,7 @@
 
 						</div>
 
-					</script>					
+					</script>
 					
 					
 				</div>

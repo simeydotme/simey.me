@@ -2,7 +2,7 @@
 	
 	var mobileWidth = 800;
 	var codepenWidth = 1000;
-	var photoCount = ( $(window).width() > mobileWidth ) ? 14 : 6;
+	var photoCount = ( $(window).width() > mobileWidth ) ? 15 : 6;
 	
 	
 	$(function() {
@@ -13,34 +13,15 @@
 		
 		// ================================================================ //
 		
-		function revealBody() {
-			
-			$('.simey-is-doing').randomSimey();
-			$('.body').removeClass('hide');
-						
-		};
-		
+
 		function hashy() {
 			
 			var h = window.location.hash.replace('#','');
 			
 			if( h === "" ) {
-				
-				$('.body').addClass('hide');
-		
-				if( $.cookie('visited') === undefined ) {
-					
-					setTimeout( function() {
-						revealBody();	
-					}, 3000 );
-					
-				} else {
-					
-					revealBody();
-					
-				}
-				
+								
 				viewContent();
+				$('.simey-is-doing').randomSimey();
 				
 			} else {
 				
@@ -53,13 +34,6 @@
 				} else {
 					
 					viewContent();
-					// Assign the HTML, Body as a variable...
-					var $viewport = $('html, body');
-					// Some event to trigger the scroll animation...
-					// using timeout , may try to change to a deferred promise
-					setTimeout( function() {
-						$viewport.animate({ scrollTop: $("#"+h).position().top }, 1700, "easeOutQuint" );
-					},1000);
 					
 				}
 					
@@ -80,7 +54,6 @@
 			}
 				
 		}
-		
 		
 		$(window).on('hashchange', function() {
 			hashy();
@@ -183,7 +156,7 @@
 		
 		$('.flickr-wrapper').waypoint({
 			
-			offset: 0,
+			offset: 500,
 			triggerOnce: true,
 			
 			handler: function(direction) {
@@ -193,15 +166,15 @@
 		});	
 
 
-		$('.simey-about').waypoint({
+		$('.github-wrapper').waypoint({
 
-			offset: 0,
+			offset: 500,
 			triggerOnce: true,
 
 			handler: function(direction) {
 
 				$('.codepen-loader').fadeIn();
-				$('#penlist').getPens("simeydotme", { minHearts: 10, maxPens: 8 });
+				$('#penlist').getPens("simeydotme", { minHearts: 0, maxPens: 8, orderBy: null });
 
 			}
 
@@ -218,10 +191,7 @@
 			
 		
 		if( Modernizr.cssanimations ) {
-		
-			// start the animation for entering the site, 
-			// and then allow for "hover" effect after the "e" has finished animating.
-			
+					
 			scrolled = false;
 			
 			var $simeyHeader = $('.simey-header');
@@ -315,20 +285,15 @@
 	function loadFlickr( imageCount ) {
 		
 		// store some variables used for pulling in flickr.
-		var positionTimer;
 		var imageCount = imageCount || 12;
 
 		var myapikey = 		"dd8e97ef9c1283583dcaf92b9ba80170";
 		var photoset = 		"72157634483069405";
 		var myset = 		"http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photosets.getPhotos&api_key="+myapikey+"&photoset_id="+photoset;
 		
-		var $feed = 		$('.flickr-feed');
-		var $inner = 		$('.flickr-feed-inner');
-		var $overlay = 		$('.flickr-overlay').hide();
-		var $mask = 		$('.flickr-mask').hide();
 		var $spinner = 		$('.flickr-preloader').hide();
-		var $close = 		$('.flickr-close');
-		
+		var $template = 	$('#flickr-feed');
+		var cache = [];
 		
 		
 		$spinner.fadeIn();
@@ -336,84 +301,72 @@
 		$.getJSON( myset , function(set) {
 			
 			var photos = set.photoset.photo.reverse().slice(0, imageCount);
+			var allPhotos = set.photoset.photo;
 			
 			$.each( photos, function(k,v) {
 			
 				 var getimage = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key="+myapikey+"&photo_id="+v.id;
 				 
-				 //var getsizes = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getSizes&api_key="+myapikey+"&photo_id="+v.id;
-				 //$.getJSON( getsizes , function( result ) {
-				 //console.log( result );
-				 //});
-				 
 				 $.getJSON( getimage , function(result) {
 					
-					var ismall = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_q.jpg';
-					var ilarge = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_z.jpg';
-					var ihuge = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
+					var ibgi = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_n.jpg';
+					var ilnk = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
 					
-					var $iwrapper = $('<div class="image-wrapper" />');
-					var $ilink = $('<a href="'+ihuge+'"/>');
-					var $iimg = $('<img src="'+ ismall +'"/>');
-					
-					$iwrapper.append( $ilink.append( $iimg ) );
-				 	$inner.append( $iwrapper );
-					
-					$iimg.on('load', function() {
-						$iwrapper.addClass('animated flipInX');
-						setTimeout( function() {
-							$iimg.addClass('fade')
-						}, 1000 );
-					});
-					
-					// I do not want the lightbox to happen on mobile.
-					
-					if( $(window).width() > mobileWidth ) {
-						
-								$ilink.on('click', function(e) {
-									
-									$overlay.hide();
-									$spinner.fadeIn();
-															
-									var $overlayimg = 
-										$('<img src="'+ ilarge +'"/>')
-										.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" })
-										.appendTo( $overlay.find('.flickr-overlay-image').empty() )
-										.load( function(e) {
-											
-											var $this = $(this);
-											
-											clearTimeout( positionTimer );
-											positionTimer = setTimeout( function() {
-												
-												$this.css({ left: "", top: "", display: "block", position: "" });
-												$overlay.css({ left: "-9999px", top: "-9999px", display: "block", position: "absolute" });
-												$overlay.css({ "margin-left": "-"+($this.width()*0.5 +30)+"px", "margin-top": "-"+($this.height()*0.5 +30)+"px" });
-												$overlay.css({ left: "", top: "", display: "", position: "" }).fadeIn();
-												$mask.fadeTo( 300, 0.6 );
-												$spinner.fadeOut();
-												
-											}, 1500 );
-											
-										});
-									
-									e.preventDefault();
-								
-								});
-						
-					}
+					var temp = 
+						$template
+							.text()
+							.replace("{{url}}", ilnk )
+							.replace("{{image}}", ibgi )
+							.replace("{{id}}", result.photo.id );
+
+					$template.before( temp );					
 
 				});
 			
 			});
+
+			function replaceRandomImage() {
+				
+				var isnew = false;
+				$('.flickr-image-wrapper').removeClass("flip");
+
+				while( !isnew ) {
+
+					var rand = Math.floor(Math.random()*allPhotos.length);
+					var id = allPhotos[rand]["id"];
+					var ibgi = 'http://farm'+allPhotos[rand].farm+'.staticflickr.com/'+allPhotos[rand].server+'/'+allPhotos[rand].id+'_'+allPhotos[rand].secret+'_n.jpg';
+					var ilnk = 'http://farm'+allPhotos[rand].farm+'.staticflickr.com/'+allPhotos[rand].server+'/'+allPhotos[rand].id+'_'+allPhotos[rand].secret+'_b.jpg';
+
+					if( $('.flickr-image-wrapper[data-id='+id+']').length < 1) {
+						isnew = true;
+					}
+
+					if( isnew ) {
+
+						var randItem = Math.floor(Math.random()*$('.flickr-image-wrapper').length);
+						
+						$('.flickr-image-wrapper')
+							.eq(randItem)
+							.attr("data-id",id)
+							.attr("href",ilnk)
+							.addClass("animated short flip")
+							.find(".flickr-image")
+								.css("background-image","url("+ibgi+")");
+
+					}
+
+				}
+
+			}
+
+
+			var interval = 4000;
+			setInterval( function() {
+				replaceRandomImage();
+			}, interval );
 			
 			$spinner.fadeOut();
 		
-		});
-				
-		$close.add( $mask ).on( 'click' , function(e) {
-			$overlay.add( $mask ).fadeOut(); 
-			e.preventDefault();
 		});
 		
 	};

@@ -13,13 +13,21 @@
 }
 	
 .animated.short {
-	-webkit-animation-duration:0.4s;
-	-moz-animation-duration:0.4s;
-	-ms-animation-duration:0.4s;
-	-o-animation-duration:0.4s;
-	animation-duration:0.4s;
+  -webkit-animation-duration:0.4s;
+  -moz-animation-duration:0.4s;
+  -ms-animation-duration:0.4s;
+  -o-animation-duration:0.4s;
+  animation-duration:0.4s;
 }
-	
+  
+.animated.long {
+  -webkit-animation-duration:2s;
+  -moz-animation-duration:2s;
+  -ms-animation-duration:2s;
+  -o-animation-duration:2s;
+  animation-duration:2s;
+}
+  
 .animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes flash {
 	0%, 50%, 100% {opacity: 1;}	25%, 75% {opacity: 0;}
 }
