@@ -345,8 +345,9 @@
 
 	.simey-codepen .code-pen {
 	
-		width: 47%; display: inline-block; 
-		margin: 20px 1%; vertical-align: top; font-size: 0.9em;
+		width: 23%; display: inline-block; 
+		margin: 20px 1% 20px 0; vertical-align: top; 
+		font-size: 0.65em; color: #ddd; font-weight: 300;
 
 		opacity: 0.4;
 
@@ -379,7 +380,7 @@
 	}
 
 	.simey-codepen .code-pen span.icon {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 		position: relative;
 		display: inline-block;
 		width: 3em;
@@ -459,9 +460,14 @@
 		.simey-container { width: 800px; }
 		
 		
-		
 		.github-project .browser {border-radius: 10px 10px 0 0; }
 		.github-project .browser-bar { min-height: 65px; }
+
+
+		.simey-codepen .code-pen {
+			width: 31%; marign-right: 1%;
+		}
+
 	}
 
 	@media screen and ( max-width: 1000px ) {
@@ -472,7 +478,12 @@
 		.github-project .browser {border-radius: 6px 6px 0 0; }
 		.github-project .browser-bar { min-height: 50px; }
 
-		.simey-codepen .code-pen iframe { display: none; }
+		.simey-codepen .code-pen {
+			width: 48%; marign-right: 1%;
+			font-size: 0.8em;
+		}
+
+		.simey-codepen .code-pen h3 { min-height: 2.2em; }
 
 	}
 
@@ -534,8 +545,9 @@
 		.github-project .browser-bar { display: none; }
 		
 		
-		.simey-codepen .code-pen { width: 100%; margin: 50px auto 0; }
+		.simey-codepen .code-pen { width: 100%; margin: 50px auto 0; font-size: 1em; }
 		.simey-codepen .code-pen img { margin: 10px 0; }
+		.simey-codepen .code-pen h3 { min-height: auto; }
 		
 		
 	}

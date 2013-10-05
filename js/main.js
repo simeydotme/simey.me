@@ -3,7 +3,7 @@
 	var mobileWidth = 800;
 	var codepenWidth = 1000;
 	var photoCount = ( $(window).width() > mobileWidth ) ? 15 : 6;
-	
+	var penCount = ( $(window).width() > codepenWidth ) ? 12 : 5;
 	
 	$(function() {
 		
@@ -174,7 +174,7 @@
 			handler: function(direction) {
 
 				$('.codepen-loader').fadeIn();
-				$('#penlist').getPens("simeydotme", { minHearts: 0, maxPens: 8, orderBy: null });
+				$('#penlist').getPens("simeydotme", { minHearts: 0, maxPens: penCount, orderBy: null });
 
 			}
 

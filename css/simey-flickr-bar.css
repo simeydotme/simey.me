@@ -49,17 +49,7 @@
 		animation: all 0.3s ease 0.1s;
 	
 	}
-	
-	.flickr-camera {
 		
-		-webkit-animation: cameraBG 6s steps(1) infinite;
-		-moz-animation: cameraBG 6s steps(1) infinite;
-		-ms-animation: cameraBG 6s steps(1) infinite;
-		-o-animation: cameraBG 6s steps(1) infinite;
-		animation: cameraBG 6s steps(1) infinite;		
-		
-	}
-	
 	.flickr-camera-full {
 	
 		background: url('../img/dslr-full.png') no-repeat 0 0;

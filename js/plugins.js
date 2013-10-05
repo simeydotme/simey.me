@@ -91,15 +91,6 @@ $.fn.getPens = function( username , options ) {
                             temp = temp.replace( handlebars[bar] , thisPen[stripbar] );
                         }
 
-                        // if the window is small, we dont want
-                        // to load the iframe, as it is probably
-                        // a mobile device and will be slowed
-                        // by loading many pens!
-
-                        if( $(window).width() < codepenWidth ) {
-                            temp = temp.replace( temp.match(/<iframe.*?<\/iframe>/gi) , "");
-                        }
-
                         // shove this motherlicker on to the webpage!!
                         $this.before( temp );
                         limit++;
@@ -148,30 +139,37 @@ $.fn.getPens = function( username , options ) {
 
                 // get strings of the page of pens to compare
                 var prev = JSON.stringify(previousPens);
-                var current = JSON.stringify(content.pens);
+                var current;
+
+                if( content !== null ) {
+                    current = JSON.stringify(content.pens);
+                } else {
+                    current = prev;
+                }
 
                 // if the content returned is not empty,
                 // and the current page of pens pen is not 
                 // the same as the last page of pens
+                if( current !== prev ) {
 
-                if( content !== null && ( current !== prev ) ) {
+                    for( pen in content.pens ) {
+                        allPens.push( content.pens[pen] );
+                    }
 
-                        for( pen in content.pens ) {
-                            allPens.push( content.pens[pen] );
-                        }
-
-                        previousPens = content.pens;
-                        page++;
-                        getAPage( page );                
+                    previousPens = content.pens;
+                    page++;
+                    getAPage( page );                
 
                 // if there was no data, we reject the deferred
                 // and curse Tim Pietrusky for changing his API :P (haha)
-                } else if( content === null ) {
-                    def.reject( data );
+                // } else if( content === null ) {
+                //     def.reject( data );
                 // otherwise we resolve it! yay!
                 } else {
                     def.resolve( allPens );
                 }
+
+
 
 
             });
