@@ -208,6 +208,8 @@
 	}
 	
 	.contact li:hover { background: transparent; }
+	.contact li a:active,
+	.contact li a:focus,
 	.contact li:hover a { color: #FFE2E4; }
 	
 	.contact li,
@@ -319,7 +321,7 @@
 	.github-project .browser-page { padding: 10px; }
 	.github-project .browser-page img { width: 100%; }
 	
-	.github-project .browser-link { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+	.github-project .browser-link { position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-indent: -9999em; }
 	
 	
 

@@ -191,9 +191,7 @@
 			
 		
 		if( Modernizr.cssanimations ) {
-					
-			scrolled = false;
-			
+								
 			var $simeyHeader = $('.simey-header');
 			$simeyHeader.find('[class^=letter-]').css('opacity',0);
 			
@@ -206,26 +204,6 @@
 						// make sure the letters don't fade out after animation
 						$simeyHeader.find('[class^=letter-]').css('opacity',1);
 						$simeyHeader.removeClass('enter');
-						
-						if( !scrolled ) {
-							
-							// Assign the HTML, Body as a variable...
-							var $viewport = $('html, body');
-							
-							// Some event to trigger the scroll animation...
-							$viewport.animate({ scrollTop: $(window).height() }, 1700, "easeOutQuint" );
-							
-							// Stop the animation if the user scrolls. Defaults on .stop() should be fine
-							$viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
-								if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
-									 // This identifies the scroll as a user action, stops the animation, then unbinds the event straight after (optional)
-									 $viewport.stop().unbind('scroll mousedown DOMMouseScroll mousewheel keyup'); 
-								}
-							});
-							
-							scrolled = true;
-							
-						}
 												
 					});
 						
@@ -311,13 +289,14 @@
 					
 					var ibgi = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_n.jpg';
 					var ilnk = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
-					
+					console.log(result.photo.title)
 					var temp = 
 						$template
 							.text()
 							.replace("{{url}}", ilnk )
 							.replace("{{image}}", ibgi )
-							.replace("{{id}}", result.photo.id );
+							.replace("{{id}}", result.photo.id )
+							.replace("{{title}}", result.photo.title._content );
 
 					$template.before( temp );					
 

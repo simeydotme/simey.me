@@ -9,7 +9,7 @@
         
 		<title>Simey.me - Simon Goellner - Frontend Web Developer</title>
        
-	    <meta name="description" content="Personal website for Simon Goellner, Creative Frontend Developer, showing off some work in html, css and jQuery.">
+	    <meta name="description" content="Personal website for Simon Goellner, Creative Frontend Developer, showing off some work in html, css, javascript and jQuery.">
         <meta name="viewport" content="width=device-width">
 		
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Averia+Sans+Libre:300,700,300italic,700italic|Roboto:400,300,700,900,100,500">
@@ -57,20 +57,20 @@
 			
 			<nav class="visuallyhidden">
 				<ul>
-				 	<li><a href="projects/gdatepicker" title="a datepicker widget">gDatepicker</a></li> 
-				 	<li><a href="projects/jquery-ui-slider-pips" title="jquery ui slider plugin">jQueryUI Slider Pips</a></li> 
+				 	<li><a href="projects/gdatepicker" title="a jQuery date picking widget">gDatepicker</a></li> 
+				 	<li><a href="projects/jquery-ui-slider-pips" title="an addon for the jQuery UI Slider widget">jQueryUI Slider Pips</a></li> 
 				</ul>
 			</nav>
 			
 			<ul class="contact">
-				<li class="email">		<a class="icon-envelope" 	title="simey.me@gmail.com" href="mailto:simey.me@gmail.com"><span>email</span></a></li>
-				<li class="twitter">	<a class="icon-twitter" 	title="Read my Tweets" href="http://twitter.com/simeydotme"><span>twitter</span></a></li>
-				<li class="facebook">	<a class="icon-facebook" 	title="Poke me on Facebook" href="http://facebook.com/simey.me"><span>twitter</span></a></li>
-				<li class="instagram">	<a class="icon-instagram" 	title="See some of my Instagrams" href="http://instagram.com/simeydotme"><span>instagram</span></a></li>
-				<li class="flickr">		<a class="icon-flickr" 		title="See my Flickr collections" href="http://www.flickr.com/photos/95986769@N07/"><span>flickr</span></a></li>
-				<li class="codepen">	<a class="icon-codepen" 	title="View my Pens on Codepen" href="http://codepen.io/simeydotme/"><span>codepen</span></a></li>
-				<li class="github">		<a class="icon-github" 		title="Check my Github Repos" href="http://github.com/simeydotme"><span>github</span></a></li>
-				<li class="phone">		<a class="icon-phone" 		title="+447528068030" href="skype:+4407528068030"><span>skype</span></a></li>
+				<li class="email">		<a class="icon-envelope" 	title="simey.me@gmail.com" href="mailto:simey.me@gmail.com"><span>email me: simey.me@gmail.com</span></a></li>
+				<li class="twitter">	<a class="icon-twitter" 	title="Read my Tweets" href="http://twitter.com/simeydotme"><span>Read my Tweets</span></a></li>
+				<li class="facebook">	<a class="icon-facebook" 	title="Poke me on Facebook" href="http://facebook.com/simey.me"><span>Poke me on Facebook</span></a></li>
+				<li class="instagram">	<a class="icon-instagram" 	title="See some of my Instagrams" href="http://instagram.com/simeydotme"><span>See my Instagrams</span></a></li>
+				<li class="flickr">		<a class="icon-flickr" 		title="See my Flickr collections" href="http://www.flickr.com/photos/95986769@N07/"><span>Check out my Flickr</span></a></li>
+				<li class="codepen">	<a class="icon-codepen" 	title="View my Pens on Codepen" href="http://codepen.io/simeydotme/"><span>View my Codepens</span></a></li>
+				<li class="github">		<a class="icon-github" 		title="Check my Github Repos" href="http://github.com/simeydotme"><span>Fork my Github Repos</span></a></li>
+				<li class="phone">		<a class="icon-phone" 		title="+447528068030" href="skype:+4407528068030"><span>Skype me</span></a></li>
 			</ul>
 			
 		</header>
@@ -117,9 +117,10 @@
 
 
 					<section class="flickr-feed">
+					<noscript>A collection of my flickr photos (loaded via AJAX)</noscript>
 					<script id="flickr-feed" type="text/flickr-template">
 
-						<a href="{{url}}" target="_blank" title="view this on flickr" class="flickr-image-wrapper" data-id="{{id}}">
+						<a href="{{url}}" target="_blank" title="View '{{title}}' on flickr" class="flickr-image-wrapper" data-id="{{id}}">
 							<i class="flickr-image" style="background-image: url({{image}});"></i>
 						</a>
 
@@ -143,10 +144,28 @@
 						<a href="http://github.com/simeydotme" title="Check my Github Repos"><strong class="most">Github</strong></a>
 					</h2>
 					
-					<p class="no-margin-t">Occasionally I'll have something interesting to code up and share.</p>
+					<p class="no-margin-t">Occasionally I'll have something interesting to code up and share on GitHub.</p>
 					
 					<hr>
 					
+					<div class="github-project">
+						<div class="github-project-inner">
+							
+							<h3><a href="projects/gdatepicker/">jQuery Unorphanize</a></h3>
+							
+							<div class="browser safari">
+								<span class="browser-bar"></span>
+								<div class="browser-page">
+									<img src="projects/img/unorphanize.png" alt="screenshot of unorphanize plugin repo">
+								</div>
+								<a href="https://github.com/simeydotme/jQuery-Unorphanize#jquery-unorphanize" class="browser-link">View the unorphanize plugin documentation</a>
+							</div>
+							
+							<p>A small jQuery method for preventing orphans in text (unhindered by HTML).</p>
+
+						</div>
+					</div>
+								
 					<div class="github-project">
 						<div class="github-project-inner">
 							
@@ -155,9 +174,9 @@
 							<div class="browser firefox">
 								<span class="browser-bar"></span>
 								<div class="browser-page">
-									<img src="projects/img/gdatepicker.jpg" alt="screenshot of gdatepicker plugin">
+									<img src="projects/img/gdatepicker.png" alt="screenshot of gDatepicker plugin being used">
 								</div>
-								<a href="projects/gdatepicker/" class="browser-link"></a>
+								<a href="projects/gdatepicker/" class="browser-link">View the gdatepicker plugin documentation</a>
 							</div>
 							
 							<p>A datepicker inspired by the one (previously) found on Google hotels. It supports
@@ -175,12 +194,12 @@
 							<div class="browser">
 								<span class="browser-bar"></span>
 								<div class="browser-page">
-									<img src="projects/img/jquery-ui-slider-pips.jpg" alt="screenshot of jquery ui slider pips plugin">
+									<img src="projects/img/slider-pips.png" alt="screenshot of jquery ui slider pips plugin being used">
 								</div>
-								<a href="projects/jquery-ui-slider-pips/" class="browser-link"></a>
+								<a href="projects/jquery-ui-slider-pips/" class="browser-link">View the jquery slider plugin documentation</a>
 							</div>
 							
-							<p class="no-margin">A plugin to extend the jQuery UI Slider control. This plugin adds "pips" to the
+							<p id="jquery-slider-description">A plugin to extend the jQuery UI Slider control. This plugin adds "pips" to the
 							slider for visual aid, as well as "labels" which the developer can customize.</p>
 						
 						</div>
@@ -203,7 +222,7 @@
 					virtual, and so I use Codepen to bring these badboys to life!</p>
 					
 					<i class="codepen-loader spinner"></i>
-
+					<noscript>A collection of my Codepens (loaded via AJAX)</noscript>
 					<script id="penlist" type="text/codepen-template">
 
 						<div class="code-pen">
@@ -211,7 +230,7 @@
 							<h3><a href="{{url.pen}}" target="_blank" title="view it on codepen">{{title}}</a></h3>
 							<div class="icons"><span class="icon icon-heart">{{hearts}}</span> <span class="icon icon-eye">{{views}}</span></div>
 							<div class="frame-wrapper">
-								<img src="{{url.pen}}/image/large.png">
+								<img src="{{url.pen}}/image/large.png" alt="image of: {{title}} , {{description}}">
 								<a href="{{url.pen}}" class="over-link" target="_blank" title="view it on codepen">view this on codepen</a>
 							</div>
 							<a href="{{url.pen}}" class="small-link" target="_blank" title="view it on codepen">view this on codepen</a>

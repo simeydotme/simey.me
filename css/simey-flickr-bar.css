@@ -27,7 +27,8 @@
 
 	.flickr-wrapper h2 { font-size: 3em; font-family: 'Roboto', Helvetica, Arial; }	
 	.flickr-wrapper .strap { font-weight: 300; width: 50%; }
-	.flickr-wrapper a { color: rgba(0,0,0,0.8); }
+	.flickr-wrapper h2 a { color: #222; }
+	.flickr-wrapper p a { color: #0067AC; }
 	
 	.flickr-preloader { 
 		width: 32px; height: 32px;
