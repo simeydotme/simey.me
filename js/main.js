@@ -112,7 +112,7 @@
 			"eats pizza (without mushrooms)",
 			"builds websites",
 			"writes jQuery plugins",
-			"improves the internet",
+			"tries to improve the internet",
 			"climbs mountains",
 			"plays on the internet",
 			"is the hand of the king",
@@ -123,7 +123,8 @@
 			"makes a mean French Toast",
 			"takes photographs",
 			"messes with photoshop",
-			"drinks as much bubble tea as possible"
+			"drinks as much bubble tea as possible",
+			"spam heals in battlegrounds"
 		];
 		
 		return $(this).each( function( key, element ) {
