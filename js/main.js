@@ -290,7 +290,6 @@
 					
 					var ibgi = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_n.jpg';
 					var ilnk = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
-					console.log(result.photo.title)
 					var temp = 
 						$template
 							.text()
