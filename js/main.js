@@ -328,7 +328,7 @@
 							.eq(randItem)
 							.attr("data-id",id)
 							.attr("href",ilnk)
-							.addClass("animated short flip")
+							.addClass("animated long flip")
 							.find(".flickr-image")
 								.css("background-image","url("+ibgi+")");
 
