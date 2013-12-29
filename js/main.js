@@ -11,58 +11,44 @@
 		
 		
 		
-		// ================================================================ //
+	// ================================================================ //
 		
+		// when the page loads, check the window.location.hash and
+		// route the user to the correct part of the site.
 
 		function hashy() {
 			
 			var h = window.location.hash.replace('#','');
 			
-			if( h === "" ) {
+			if( h === "" || ( h !== "cv" && h !== "resume" )) {
 								
-				viewContent();
 				$('.simey-is-doing').randomSimey();
+				viewContent();
 				
 			} else {
-				
-				if( h === "cv" || h === "resume" ) {
-				
-					$('.simey-is-doing').randomSimey(true);
-					viewResume();
-					searchy();
-				
-				} else {
-					
-					viewContent();
-					
-				}
-					
+								
+				$('.simey-is-doing').randomSimey(true);
+				viewResume();
+
 			}
 			
 		};
 		
-		function searchy() {
-		
-			var s = window.location.search.replace('?who=',"").replace('+',' ');
-			if( s !== "" ) {
-				
-				var $wrapper = $('<div class="simey-container"/>');
-				var $text = $('<h3>Congratulations, '+s+'!!.. Looks like Simey has chosen to share his CV with you! Please enjoy!</h3>');
-				
-				$wrapper.append( $text ).prependTo( $('.body') );	
-				
-			}
-				
-		}
-		
+		// trigger teh hashy function if hash changes.
+
 		$(window).on('hashchange', function() {
 			hashy();
 		});
 		
+		// when we click on teh simey slogan tagline,
+		// refresh it with a new one.
+
 		$('.simey-is-doing').on('click' , function() {
 			$('.simey-is-doing').randomSimey();
 		});
 
+		// load the hashy function and also animate
+		// the header SIMEY.
 		
 		hashy();
 		headerAnimation();
@@ -75,7 +61,9 @@
 	
 	
 	
-	
+	// load the resume in via ajax,
+	// I do this because I would prefer it not to be
+	// indexable on my home-page.
 	
 	function viewResume() {
 		
@@ -91,7 +79,14 @@
 		});
 		
 	}
-		
+
+
+
+
+
+	// need to remove the CV if it exists
+	// from teh DOM, and show the actual page.
+
 	function viewContent() {
 		
 		$('.body')
@@ -105,6 +100,14 @@
 		setUpWaypoints();
 			
 	}
+
+
+
+
+
+
+	// a small jquery helper function plugin to
+	// show a random title.
 		
 	$.fn.randomSimey = function( cv ) {
 		
@@ -128,31 +131,57 @@
 		];
 		
 		return $(this).each( function( key, element ) {
-		
-			var index = Math.floor( Math.random() * simeys.length );
 			
-			if( window.lastSimey === index ) {
-				if( window.lastSimey >= simeys.length ) {
-					index = 0;
-				} else {
-					index++;
+			if( cv ) { 
+
+				text = "Simon Goellner"; 
+
+			} else {
+
+				var index = Math.floor( Math.random() * simeys.length );
+				
+				if( window.lastSimey === index ) {
+					if( window.lastSimey >= simeys.length ) {
+						index = 0;
+					} else {
+						index++;
+					}
 				}
+				
+				var text = simeys[ index ];
+				window.lastSimey = index;
+
 			}
-			
-			var text = simeys[ index ];
-			if( cv ) { text = "Simon Goellner"; }
-			
-			$(element).removeClass( "flipInX" ).addClass( "animated short fadeOutDown" );
-			
-			setTimeout( function() { $(element).html( text ); }, 500 );
-			setTimeout( function() { $(element).show().removeClass( "fadeOutDown short" ).addClass( "flipInX" ); }, 500 );
-			
-			window.lastSimey = index;
+
+			$(element)
+				.removeClass( "flipInX" )
+				.addClass( "animated short fadeOutDown" );
+				
+			setTimeout( function() { 
+				$(element).html( text ); 
+			}, 500 );
+
+			setTimeout( function() { 
+				$(element)
+					.show()
+					.removeClass( "fadeOutDown short" )
+					.addClass( "flipInX" ); 
+			}, 500 );
 			
 		});
 	
 	};
 	
+
+
+
+
+
+	// waypoints (using waypoint plugin) for loading
+	// flickr photos and codepen projects lazily.
+	// no need to downlaod loads of data if user doesnt
+	// ever look at it.
+
 	function setUpWaypoints() {
 		
 		$('.flickr-wrapper').waypoint({
@@ -183,6 +212,10 @@
 	
 	}
 	
+
+
+	// Animate the "SIMEY" 
+
 	function headerAnimation() {
 		
 		// make the header the height of the window
@@ -255,11 +288,18 @@
 				
 		} else {
 		
-			$('.simey-header [class^=letter-]').css('opacity',1).hide().fadeIn();
+			$('.simey-header [class^=letter-]')
+				.css('opacity',1)
+				.hide()
+				.fadeIn();
 			
 		}
 		
 	};
+
+
+
+
 	
 	function loadFlickr( imageCount ) {
 		
