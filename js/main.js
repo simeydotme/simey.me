@@ -1,71 +1,94 @@
 	
-	
-	var mobileWidth = 800;
-	var codepenWidth = 1000;
-	var photoCount = ( $(window).width() > mobileWidth ) ? 15 : 6;
-	var penCount = ( $(window).width() > codepenWidth ) ? 12 : 5;
-	
+
+
+	var APP = {};
+
+	// figure out how many items we would like for the AJAX
+	// requests based on window size.
+
+	APP.mobileWidth = 800;
+	APP.codepenWidth = 1000;
+	APP.photoCount = ( $(window).width() > APP.mobileWidth ) ? 15 : 6;
+	APP.penCount = ( $(window).width() > APP.codepenWidth ) ? 12 : 5;
+			
+	APP.$simeyIsDoing = $(".simey-is-doing");
+	APP.$simeyHeader = $(".simey-header");
+	APP.$simeyLetters = APP.$simeyHeader.find('[class^=letter-]');
+	APP.$spinner = $('.spinner').hide();
+		
+// ================================================================ //
+
 	$(function() {
 		
-		
-		
-		
-		
-	// ================================================================ //
-		
-		// when the page loads, check the window.location.hash and
-		// route the user to the correct part of the site.
-
-		function hashy() {
-			
-			var h = window.location.hash.replace('#','');
-			
-			if( h === "" || ( h !== "cv" && h !== "resume" )) {
-								
-				$('.simey-is-doing').randomSimey();
-				viewContent();
-				
-			} else {
-								
-				$('.simey-is-doing').randomSimey(true);
-				viewResume();
-
-			}
-			
-		};
-		
-		// trigger teh hashy function if hash changes.
+		// trigger teh route function if hash changes.
 
 		$(window).on('hashchange', function() {
-			hashy();
+			APP.route();
 		});
 		
 		// when we click on teh simey slogan tagline,
 		// refresh it with a new one.
 
-		$('.simey-is-doing').on('click' , function() {
-			$('.simey-is-doing').randomSimey();
+		APP.$simeyIsDoing.on('click' , function() {
+			APP.$simeyIsDoing.randomSimey();
 		});
 
-		// load the hashy function and also animate
-		// the header SIMEY.
+		// show spidder on ajax start.
+
+		$(document).ajaxStart( function() {
+
+			APP.$spinner.fadeIn();
+
+		});
+
+		// hide spidder on ajax stop.
+
+		$(document).ajaxStop( function() {
+
+			APP.$spinner.fadeOut();
+
+		});
+
+		// trigger routing.
+		// animate the header "SIMEY".
 		
-		hashy();
-		headerAnimation();
+		APP.route();
+		APP.headerAnimation();
 		
 		
 	});
+		
+// ================================================================ //
 	
-	
-	
-	
-	
-	
+	// route the user to the correct area,
+	// and show the relevant title text.
+
+	APP.route = function() {
+		
+		var h = window.location.hash.replace('#','');
+		
+		if( h === "" || ( h !== "cv" && h !== "resume" )) {
+							
+			APP.$simeyIsDoing.randomSimey();
+			APP.viewContent();
+			
+		} else {
+							
+			APP.$simeyIsDoing.randomSimey(true);
+			APP.viewResume();
+
+		}
+		
+	};
+
+// ================================================================ //
+
 	// load the resume in via ajax,
 	// I do this because I would prefer it not to be
 	// indexable on my home-page.
+	// also saves on initial load... albeit marginally.
 	
-	function viewResume() {
+	APP.viewResume = function() {
 		
 		var resume = $.get('projects/resume.html');
 		resume.done( function( response ) {
@@ -78,16 +101,12 @@
 					
 		});
 		
-	}
-
-
-
-
+	};
 
 	// need to remove the CV if it exists
 	// from teh DOM, and show the actual page.
 
-	function viewContent() {
+	APP.viewContent = function() {
 		
 		$('.body')
 			.find('#cv, #statement')
@@ -97,92 +116,18 @@
 			.filter(':hidden')
 			.show();
 		
-		setUpWaypoints();
+		APP.setUpWaypoints();
 			
 	}
 
-
-
-
-
-
-	// a small jquery helper function plugin to
-	// show a random title.
-		
-	$.fn.randomSimey = function( cv ) {
-		
-		var simeys = [
-			"eats pizza (without mushrooms)",
-			"builds websites",
-			"writes jQuery plugins",
-			"tries to improve the internet",
-			"climbs mountains",
-			"plays on the internet",
-			"is the hand of the king",
-			"sik gong siu siu gwong dung wa",
-			"was born in Canada",
-			"&hearts;'s animals",
-			"has flipped a dodgem",
-			"makes a mean French Toast",
-			"takes photographs",
-			"messes with photoshop",
-			"drinks as much bubble tea as possible",
-			"spam heals in battlegrounds"
-		];
-		
-		return $(this).each( function( key, element ) {
-			
-			if( cv ) { 
-
-				text = "Simon Goellner"; 
-
-			} else {
-
-				var index = Math.floor( Math.random() * simeys.length );
-				
-				if( window.lastSimey === index ) {
-					if( window.lastSimey >= simeys.length ) {
-						index = 0;
-					} else {
-						index++;
-					}
-				}
-				
-				var text = simeys[ index ];
-				window.lastSimey = index;
-
-			}
-
-			$(element)
-				.removeClass( "flipInX" )
-				.addClass( "animated short fadeOutDown" );
-				
-			setTimeout( function() { 
-				$(element).html( text ); 
-			}, 500 );
-
-			setTimeout( function() { 
-				$(element)
-					.show()
-					.removeClass( "fadeOutDown short" )
-					.addClass( "flipInX" ); 
-			}, 500 );
-			
-		});
-	
-	};
-	
-
-
-
-
+// ================================================================ //
 
 	// waypoints (using waypoint plugin) for loading
 	// flickr photos and codepen projects lazily.
 	// no need to downlaod loads of data if user doesnt
 	// ever look at it.
 
-	function setUpWaypoints() {
+	APP.setUpWaypoints = function() {
 		
 		$('.flickr-wrapper').waypoint({
 			
@@ -190,7 +135,9 @@
 			triggerOnce: true,
 			
 			handler: function(direction) {
-				loadFlickr( photoCount );
+
+				APP.loadFlickr( APP.photoCount );
+
 			}
 			
 		});	
@@ -198,93 +145,126 @@
 
 		$('.github-wrapper').waypoint({
 
-			offset: 500,
+			offset: -500,
 			triggerOnce: true,
 
 			handler: function(direction) {
 
-				$('.codepen-loader').fadeIn();
-				$('#penlist').getPens("simeydotme", { minHearts: 0, maxPens: penCount, orderBy: null });
+				$('#penlist').getPens("simeydotme", { 
+					minHearts: 0, 
+					maxPens: APP.penCount, 
+					orderBy: null 
+				});
 
 			}
 
 		});
 	
 	}
-	
 
+// ================================================================ //
 
 	// Animate the "SIMEY" 
 
-	function headerAnimation() {
+	APP.headerAnimation = function() {
 		
-		// make the header the height of the window
-		$('.simey-header')
-			.height( $(window).height() );
-				
-			
+		// make the header area the height 
+		// of the window.
+
+		APP.$simeyHeader.height( $(window).height() );
+
+		// if we have css animation capability...			
 		
 		if( Modernizr.cssanimations ) {
-								
-			var $simeyHeader = $('.simey-header');
-			$simeyHeader.find('[class^=letter-]').css('opacity',0);
 			
-			if( $.cookie('visited') === undefined && window.location.hash === "" ) {
+			// store the header element,
+			// and set the letters to opacity: 0;
+
+			APP.$simeyLetters.css('opacity',0);
 			
-				$simeyHeader
+			// if this is the first visit, we want a
+			// fancy animation...
+
+			if( $.cookie('visited') === undefined && 
+				window.location.hash === "" ) {
+				
+				// add the animation class, and wait for the animation end
+				// to remove the animation class and set the letters to
+				// opaque. kind of a workaround for some animation bug.
+
+				APP.$simeyHeader
 					.addClass('enter')
 					.on('webkitAnimationEnd oanimationend msAnimationEnd animationend', '.letter-i', function(e) {
 						
 						// make sure the letters don't fade out after animation
-						$simeyHeader.find('[class^=letter-]').css('opacity',1);
-						$simeyHeader.removeClass('enter');
+						APP.$simeyLetters
+							.css('opacity',1);
+
+						APP.$simeyHeader
+							.removeClass('enter');
 												
 					});
-						
+			
+			// if not first visit, we just fade the title in.
+			// no need for lame animations on every refresh.
+
 			} else {
 				
-				$simeyHeader.find('[class^=letter-]').css('opacity',1).hide().fadeIn(2000);
+				APP.$simeyLetters
+					.css('opacity',1)
+					.hide()
+					.fadeIn(2000);
 				
 			}
 			
-			
 			// resets cookie after 10 minutes
+			// using hte cookie jquery plugin.
+
 			var expires = new Date();
 			expires.setMinutes(expires.getMinutes() + 10);
 			$.cookie('visited', 'true', { expires: expires, path: '/' });
 
 			
-			
 					
 			// variable used for timer.
-			var t;
-			var paragon = false;
+
+			var t, paragon = false;
 			
 			// for every letter in the header,
 			// start the "reveal" animation when clicked.
-			$simeyHeader
-				.find('[class^=letter-]')
-				.on('click', function(e) { 
-					
-					if( !$simeyHeader.hasClass('enter') ) {
-						
-						$simeyHeader.addClass( 'hover' ); 
-						
-						clearTimeout(t);
-						t = window.setTimeout( function() {
-							$simeyHeader.removeClass( 'hover' );
-						}, 700 ); 
-						
-					}
-					
-					
-					$.removeCookie('visited', { path: '/' });
-					if( !paragon ) {
-						e.preventDefault();
-						paragon = true;			
-					}
+
+			APP.$simeyLetters.on('click', function(e) { 
 				
-				});
+				// if the header doesnt have class "enter"
+
+				if( !APP.$simeyHeader.hasClass('enter') ) {
+					
+					// add the class "hover" which is a CSS Animation.
+
+					APP.$simeyHeader.addClass( 'hover' ); 
+					
+					// and then remove it.
+
+					clearTimeout(t);
+					t = window.setTimeout( function() {
+						APP.$simeyHeader.removeClass( 'hover' );
+					}, 700 ); 
+					
+				}
+				
+				// remove the cookie because we want to see the
+				// animation again when page loads.
+
+				$.removeCookie('visited', { path: '/' });
+
+				// only prevent the default action the first time.
+
+				if( !paragon ) {
+					e.preventDefault();
+					paragon = true;			
+				}
+			
+			});
 				
 		} else {
 		
@@ -301,7 +281,7 @@
 
 
 	
-	function loadFlickr( imageCount ) {
+	APP.loadFlickr = function( imageCount ) {
 		
 		// store some variables used for pulling in flickr.
 		var imageCount = imageCount || 12;
@@ -309,14 +289,12 @@
 		var myapikey = 		"dd8e97ef9c1283583dcaf92b9ba80170";
 		var photoset = 		"72157634483069405";
 		var myset = 		"http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photosets.getPhotos&api_key="+myapikey+"&photoset_id="+photoset;
-		
-		var $spinner = 		$('.flickr-preloader').hide();
+				
 		var $template = 	$('#flickr-feed');
 		var cache = [];
 		
-		
-		$spinner.fadeIn();
-		
+		$(document).trigger("ajaxStart");
+
 		$.getJSON( myset , function(set) {
 			
 			var photos = set.photoset.photo.reverse().slice(0, imageCount);
@@ -338,7 +316,9 @@
 							.replace("{{id}}", result.photo.id )
 							.replace("{{title}}", result.photo.title._content );
 
-					$template.before( temp );					
+					$template.before( temp );
+
+					$(document).trigger("ajaxStop");				
 
 				});
 			
@@ -384,7 +364,6 @@
 				replaceRandomImage();
 			}, interval );
 			
-			$spinner.fadeOut();
 		
 		});
 		

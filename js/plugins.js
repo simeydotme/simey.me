@@ -7,6 +7,7 @@
 
 $.fn.getPens = function( username , options ) {
 
+
     var defaults = {
 
         reverse: false, // show in reverse order
@@ -26,10 +27,11 @@ $.fn.getPens = function( username , options ) {
     // then we merge it with the defaults
     options = $.extend( defaults , options );
 
+    $(document).trigger("ajaxStart");
+
 
     return $(this).each( function() {
 
-        $.extend()
 
         // some semi-global variables we need.
         var $this = $(this);
@@ -39,7 +41,6 @@ $.fn.getPens = function( username , options ) {
 
         // we will use a Deffered to append the pens.
         var def = new $.Deferred();
-
 
 
         // when the Deferred is done ...
@@ -95,20 +96,23 @@ $.fn.getPens = function( username , options ) {
                         $this.before( temp );
                         limit++;
 
-                    }
-                    
+                    }                    
 
                 }
 
             }
 
-            $('.codepen-loader').fadeOut( function() { $(this).remove(); });
-
         });
 
         def.fail( function( data ) {
 
-            console.log("Damn, the pens content was empty... do you have any Pens?")
+            $this.before("; _ ; <br>Hmmm, looks like the API is down right now. <br>Maybe you can go to <a href=\"http://codepen.io\">codepen.io</a> and check out my pens there.");
+
+        });
+
+        def.always( function() {
+
+            $(document).trigger("ajaxStop");
 
         });
 
@@ -119,9 +123,13 @@ $.fn.getPens = function( username , options ) {
         // once we've stopped getting good data (ie: an error, or the same page twice)
         // we resolve our deferred!
 
-        var page = 1, allPens = [], previousPens, json;
+        var page = 1;
 
         function getAPage( p ) {
+             
+            var allPens = [], 
+                previousPens, 
+                json;
 
             // firstly, we store the ajax request.
 
@@ -142,9 +150,21 @@ $.fn.getPens = function( username , options ) {
                 var current;
 
                 if( content !== null ) {
+
                     current = JSON.stringify(content.pens);
+
                 } else {
-                    current = prev;
+
+                    if( page === 1 ) {
+
+                        def.reject( data );
+
+                    } else {
+
+                        current = prev;
+
+                    }
+
                 }
 
                 // if the content returned is not empty,
@@ -166,7 +186,9 @@ $.fn.getPens = function( username , options ) {
                 //     def.reject( data );
                 // otherwise we resolve it! yay!
                 } else {
+
                     def.resolve( allPens );
+
                 }
 
 
@@ -176,7 +198,7 @@ $.fn.getPens = function( username , options ) {
 
             json.fail( function( data ) {
 
-                console.log("Damn, the ajax request failed :/")
+                console.log("Damn, the ajax request failed :/");
 
             });
 

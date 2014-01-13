@@ -30,11 +30,6 @@
 	.flickr-wrapper h2 a { color: #222; }
 	.flickr-wrapper p a { color: #0067AC; }
 	
-	.flickr-preloader { 
-		width: 32px; height: 32px;
-		position: fixed; left: 50%; top: 50%; margin-left: -16px; margin-top: -16px; display: none;
-	}
-	
 	
 	.flickr-camera,
 	.flickr-camera-full {
