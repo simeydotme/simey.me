@@ -8,8 +8,10 @@
 
 	APP.mobileWidth = 800;
 	APP.codepenWidth = 1000;
-	APP.photoCount = ( $(window).width() > APP.mobileWidth ) ? 15 : 6;
-	APP.penCount = ( $(window).width() > APP.codepenWidth ) ? 12 : 5;
+	APP.isDesktop = $(window).width() > APP.mobileWidth;
+
+	APP.photoCount = ( APP.isDesktop ) ? 15 : 6;
+	APP.penCount = ( APP.isDesktop ) ? 12 : 4;
 			
 	APP.$simeyIsDoing = $(".simey-is-doing");
 	APP.$simeyHeader = $(".simey-header");
@@ -150,10 +152,24 @@
 
 			handler: function(direction) {
 
-				$('#penlist').getPens("simeydotme", { 
-					minHearts: 0, 
-					maxPens: APP.penCount, 
-					orderBy: null 
+				// $('#penlist').getPens("simeydotme", { 
+				// 	minHearts: 0, 
+				// 	maxPens: APP.penCount, 
+				// 	orderBy: null 
+				// });
+
+				$("#penlist").codepens("simeydotme", {
+
+					minHearts: 0 ,
+					minComments: 0 ,
+					minViews: 0 ,
+
+					orderBy: "hearts" ,
+					reverse: true ,
+
+					maxPens: APP.penCount,
+					template: $("#penTemplate").text()
+
 				});
 
 			}

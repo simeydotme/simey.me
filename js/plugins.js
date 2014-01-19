@@ -3,211 +3,235 @@
 
 
 
-// chainable jquery method for getting pens and appending them.
-
-$.fn.getPens = function( username , options ) {
 
 
-    var defaults = {
 
-        reverse: false, // show in reverse order
-        type: "public",
-        minHearts: 5, // show only pens with > 4 hearths
-        minViews: 1000, // show only pens with > 999 views.
-        maxPens: 4,
-        orderBy: "hearts" // (or views or comments or null)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$.fn.codepens = function( username , options ) {
+
+
+
+
+
+
+  if( typeof(options) !== "object" ) { 
+    options = {}; 
+  }
+
+  var defaults = {
+
+    type: "public", // "public", "forked", "loved"
+
+    reverse: true, // show highest count first?
+    minHearts: 5, // only show pens with minimum 5 hearts
+    minViews: 10, // only show pens with minimum 10 views
+    minComments: 0, // only show pens with minimum 0 comments
+
+    maxPens: 10, // only show 10 pens total
+    orderBy: null, // "views", "hearts", "comments", null
+    pageLimit: 2,   // how many codepen pages to include.
+                    // currently codepen has 9 pens per page
+                    // these pages are ordered by last activity
+                    // limiting to <5 will increase load time
+
+    template: "" +
+      "<a href=\"{{url.pen}}\" target=\"_blank\" " +
+      "title=\"view {{title}} on codepen\">{{title}}</a><br> " +
+      "Hearts: {{hearts}} - Views: {{views}}<br> " +
+      "{{description}}"
+
+  };
+
+  options = $.extend( defaults , options );
+
+
+
+
+
+
+
+
+  return this.each( function() {
+
+    var allpens = [];
+    var $this = $(this);
+
+
+
+
+
+
+    // render() function takes one single pen
+    // object (data.content.pens[x]) and renders it
+    // by replacing the handlebars in the template.
+
+    var render = function( pen ) {
+
+      var html = options.template;
+
+      // two regex to match normal handlebars templates, 
+      // and also "url" templates.
+
+      var handlebars = html.match(/\{\{.*?\}\}/gi);
+      var handlebarsURL = html.match(/\{\{url\..*?\}\}/gi);
+
+      // replace the urls first as we have to perform irreversible
+      // damage to the {{}} in the next two for loops
+
+      for( bar in handlebarsURL ) {
+          var stripbar = handlebarsURL[bar].replace("{{","").replace("}}","").replace("url.","");
+          if( typeof( pen["url"][stripbar] ) === "undefined" ) { pen["url"][stripbar] = ""; }
+          html = html.replace( handlebarsURL[bar] , pen["url"][stripbar] );
+      }
+
+      // don't return "undefineds" for non-defined nodes.
+
+      for( bar in handlebars ) {
+          var stripbar = handlebars[bar].replace("{{","").replace("}}","");
+          if( typeof( pen[stripbar] ) === "undefined" ) { pen[stripbar] = ""; }
+          html = html.replace( handlebars[bar] , pen[stripbar] );
+      }
+
+      return html;
 
     };
 
-    // if the options wern't an object, we make them an object!
-    if( typeof(options) !== "object" ) { 
-        options = {}; 
-    }
-
-    // then we merge it with the defaults
-    options = $.extend( defaults , options );
-
-    $(document).trigger("ajaxStart");
 
 
-    return $(this).each( function() {
 
 
-        // some semi-global variables we need.
-        var $this = $(this);
-        var template = $this.text();
-        var limit = 0;
 
 
-        // we will use a Deffered to append the pens.
-        var def = new $.Deferred();
 
 
-        // when the Deferred is done ...
-        // (this appends the pens via an arg (array))
-        def.done( function( pens ) {
-            
-            // sort hte array if we wish!
-            if( options.orderBy !== null ) {
-                pens.sort(function(a, b) { return a[options.orderBy] - b[options.orderBy]; });
-                pens.reverse();
-            }
-           
-            // who wants a reversed set of pens!!?? 
-            if( options.reverse ) {
-                pens.reverse();
-            }
+    // method for rendering all the pens once collected.
+    // this will order, sort and filter by the supplied
+    // options.
 
-            // for each pen given to us by the argument (array)
-            for( pen in pens ) {
+    var renderAll = function() {
 
-                if( limit < options.maxPens ) {
+      $(document).trigger("ajaxStop");
 
-                    // couple of needed vars for the curent array item
-                    // and for the template
-                    var thisPen = pens[pen];
-                    var temp = template;
+      var penCount = 0;
 
-                    // if this pen has more hearts or more views than
-                    // supplied, then we want to show this badboy
-                    if( thisPen.hearts >= options.minHearts || 
-                        thisPen.views >= options.minViews ) {
-                        
-                        var handlebars = template.match(/\{\{.*?\}\}/gi);
-                        var handlebarsURL = template.match(/\{\{url\..*?\}\}/gi);
+      // sort hte array if we wish!
+      if( options.orderBy !== null ) {
 
-                        // replace the urls first as we have to perform a irreversible
-                        // damage to the {{}} in the next two for loops
+          allpens.sort(function(a, b) { return a[options.orderBy] - b[options.orderBy]; });
 
-                        for( bar in handlebarsURL ) {
-                            var stripbar = handlebarsURL[bar].replace("{{","").replace("}}","").replace("url.","");
-                            temp = temp.replace( handlebarsURL[bar] , thisPen["url"][stripbar] );
-                        }
+      }
+     
+      // who wants a reversed set of pens!!?? 
 
-                        // if the element is null, dont show null!!!!! meh.
+      if( options.reverse ) {
 
-                        for( bar in handlebars ) {
-                            var stripbar = handlebars[bar].replace("{{","").replace("}}","");
-                            if( thisPen[stripbar] === null ) { thisPen[stripbar] = ""; }
-                            temp = temp.replace( handlebars[bar] , thisPen[stripbar] );
-                        }
+          allpens.reverse();
 
-                        // shove this motherlicker on to the webpage!!
-                        $this.before( temp );
-                        limit++;
+      }
 
-                    }                    
 
-                }
+      for( pen in allpens ) {
 
-            }
+        if( allpens[pen].hearts >= options.minHearts &&
+            allpens[pen].views >= options.minViews &&
+            allpens[pen].comments >= options.minComments &&
+            pen < options.maxPens ) {
 
+              $this.append( render(allpens[pen]) );
+              penCount++;
+
+
+        }
+
+
+      };
+
+    };
+
+
+
+
+
+
+
+    var getPens = function( page ) {
+
+      page = page || 1;
+
+      $(document).trigger("ajaxStart");
+
+      var request = 
+        $.ajax({
+          dataType: "jsonp", jsonp: "jsonp",
+          url: "http://codepen-awesomepi.timpietrusky.com/"+ username +"/"+options.type+"/"+page
         });
 
-        def.fail( function( data ) {
+      request.done( function(data) {
 
-            $this.before("; _ ; <br>Hmmm, looks like the API is down right now. <br>Maybe you can go to <a href=\"http://codepen.io\">codepen.io</a> and check out my pens there.");
+        if( data.content !== null ) {
 
-        });
+          // add the pens to a larger scoped collection
 
-        def.always( function() {
+          for( pen in data.content.pens ) {
+            allpens.push( data.content.pens[pen] );
+          };
 
-            $(document).trigger("ajaxStop");
+          // if we are allowed more pages, then
+          // keep on going! els render the pens.
 
-        });
+          if( page < options.pageLimit ) {
 
+            page++;
+            getPens( page );
 
-        // this function is a self-recursing (booya!?) deferred JSON
-        // call, because Tim's API doesn't return the number of pages.
-        // so we loop through them until we don't get fresh, useful data back!
-        // once we've stopped getting good data (ie: an error, or the same page twice)
-        // we resolve our deferred!
+          } else {
 
-        var page = 1;
+            renderAll();
 
-        function getAPage( p ) {
-             
-            var allPens = [], 
-                previousPens, 
-                json;
+          }
 
-            // firstly, we store the ajax request.
+        } else {
 
-            json = $.ajax({
-                url: "http://codepen-awesomepi.timpietrusky.com/"+username+"/"+options.type+"/"+p,
-                dataType: 'jsonp',
-                jsonp: 'jsonp'
-            });
+          renderAll();
 
-            // and when the ajax request is resolved/done
+        }
 
-            json.done( function( data ) {
+      });
 
-                var content = data.content;
+      request.fail( function() {
 
-                // get strings of the page of pens to compare
-                var prev = JSON.stringify(previousPens);
-                var current;
+      });
 
-                if( content !== null ) {
+      request.always( function() {
 
-                    current = JSON.stringify(content.pens);
+      });
 
-                } else {
-
-                    if( page === 1 ) {
-
-                        def.reject( data );
-
-                    } else {
-
-                        current = prev;
-
-                    }
-
-                }
-
-                // if the content returned is not empty,
-                // and the current page of pens pen is not 
-                // the same as the last page of pens
-                if( current !== prev ) {
-
-                    for( pen in content.pens ) {
-                        allPens.push( content.pens[pen] );
-                    }
-
-                    previousPens = content.pens;
-                    page++;
-                    getAPage( page );                
-
-                // if there was no data, we reject the deferred
-                // and curse Tim Pietrusky for changing his API :P (haha)
-                // } else if( content === null ) {
-                //     def.reject( data );
-                // otherwise we resolve it! yay!
-                } else {
-
-                    def.resolve( allPens );
-
-                }
+    };
 
 
 
 
-            });
-
-            json.fail( function( data ) {
-
-                console.log("Damn, the ajax request failed :/");
-
-            });
-
-         }
+    getPens();
 
 
-        getAPage( page );
-
-    });
+  });
 
 
 }
+
+
+
+

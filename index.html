@@ -211,12 +211,16 @@
 					<p>I often have little sparks of inspiration and want to turn them into something
 					virtual, and so I use Codepen to bring these badboys to life!</p>
 					
+					<div id="penlist">
+
+					</div>
+
 					<noscript>A collection of my Codepens (loaded via AJAX)</noscript>
-					<script id="penlist" type="text/codepen-template">
+					<script id="penTemplate" type="text/codepen-template">
 
 						<div class="code-pen">
 
-							<h3><a href="{{url.pen}}" target="_blank" title="view {{title}} on codepe">{{title}}</a></h3>
+							<h3><a href="{{url.pen}}" target="_blank" title="view {{title}} on codepen">{{title}}</a></h3>
 							<div class="icons"><span class="icon icon-heart">{{hearts}}</span> <span class="icon icon-eye">{{views}}</span></div>
 							<div class="frame-wrapper">
 								<img src="{{url.pen}}/image/small.png" alt="image of: {{title}} , {{description}}">
