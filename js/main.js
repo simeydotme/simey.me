@@ -187,7 +187,8 @@
 		// make the header area the height 
 		// of the window.
 
-		APP.$simeyHeader.height( $(window).height() );
+        var winheight = ( $(window).height() > 800 ) ? 800 : $(window).height();
+		APP.$simeyHeader.height( winheight );
 
 		// if we have css animation capability...			
 		
@@ -321,9 +322,10 @@
 				 var getimage = "http://api.flickr.com/services/rest/?format=json&jsoncallback=?&method=flickr.photos.getInfo&api_key="+myapikey+"&photo_id="+v.id;
 				 
 				 $.getJSON( getimage , function(result) {
-					
+
+
 					var ibgi = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_n.jpg';
-					var ilnk = 'http://farm'+result.photo.farm+'.staticflickr.com/'+result.photo.server+'/'+result.photo.id+'_'+result.photo.secret+'_b.jpg';
+					var ilnk = result.photo.urls.url[0]._content;
 					var temp = 
 						$template
 							.text()

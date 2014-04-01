@@ -14,23 +14,10 @@
 
 	body, html { 
 	
-		color: #fff;
-		color: rgba(255,255,255,0.9); 
-		
+		color: #333;
 		font-size: 1.2em; 
 		min-height: 1000px;
-	
-		background: #e85661;
-		background: rgb(232,86,97);
-		background: -moz-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%, rgba(206,72,74,1) 100%); 
-		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(54%,rgba(232,86,97,1)), color-stop(100%,rgba(206,72,74,1)));
-		background: -webkit-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); 
-		background: -o-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); 
-		background: -ms-radial-gradient(center, ellipse cover,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 100%); 
-		background: radial-gradient(ellipse at center,  rgba(232,86,97,1) 54%,rgba(206,72,74,1) 130%); 
-		
-		background-repeat: no-repeat;
-		background-size: 100% 130%;
+		background: #eee;
 		
 		font-family: 'Roboto', Helvetica, Arial; 
 		font-weight: 100;
@@ -45,9 +32,20 @@
 		
 	}
 	
-	h1,h2,h3,h4,h5 { font-family: 'Averia Sans Libre', Helvetica, Arial; font-weight: 100; }
+	h1,h2,h3,h4,h5 { 
+
+        font-family: 'Averia Sans Libre', Helvetica, Arial; 
+        font-weight: 100; 
+
+    }
 	
-	a { text-decoration: none; color: #FFEAEE; font-weight: 400; }
+	a { 
+
+        text-decoration: none; 
+        color: #FFEAEE; 
+        font-weight: 400; 
+
+    }
 	
 	strong 			{ font-weight: 400; }
 	strong.more 	{ font-weight: 600; }
@@ -56,17 +54,21 @@
 	.no-margin-b	{ margin-bottom: 0; }
 	.no-margin-t	{ margin-top: 0; }
 	
-	
 	ul.stacky {
+
 		list-style: square inside;
 		margin: 0; padding: 0;
+
 	}
+
 	ul.stacky li {
+
 		width: 48%; display: inline-block;
 		border-bottom: 1px dotted rgba(0,0,0,0.2);
 		border-left: 1px dotted rgba(0,0,0,0.2);
 		text-indent: 10px; margin-top: 8px;
 		padding: 4px 0; margin-left: 4px;
+
 	}
 	
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,6 +76,7 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 	@font-face {
+
 		font-family: 'simey-social';
 		src:url('../font/simey-social.eot');
 		src:url('../font/simey-social.eot?#iefix') format('embedded-opentype'),
@@ -82,9 +85,11 @@
 			url('../font/simey-social.svg#simey-social') format('svg');
 		font-weight: normal;
 		font-style: normal;
+
 	}
 	
 	[data-icon]:before {
+
 		font-family: 'simey-social';
 		content: attr(data-icon);
 		speak: none;
@@ -93,6 +98,7 @@
 		text-transform: none;
 		line-height: 1;
 		-webkit-font-smoothing: antialiased;
+
 	}
 	
 	.icon-facebook, 
@@ -105,6 +111,7 @@
 	.icon-envelope,
 	.icon-eye, 
 	.icon-heart {
+
 		font-family: 'simey-social';
 		speak: none;
 		font-style: normal;
@@ -113,7 +120,9 @@
 		text-transform: none;
 		line-height: 1;
 		-webkit-font-smoothing: antialiased;
+
 	}
+
 	.icon-facebook:before {
 		content: "\e000";
 	}
@@ -152,36 +161,118 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
-	.simey-container { margin: auto; width: 1100px; padding: 0; position: relative; }
+	.simey-container { 
+
+        margin: auto; 
+        width: 1100px; 
+        padding: 0; 
+        position: relative; 
+
+    }
 			
 	.spinner { 
+
 		width: 32px; height: 32px;
 		position: fixed; 
 		left: 50%; top: 50%; 
 		margin-left: -16px; 
 		margin-top: -16px; 
 		display: none;
+
 	}
+    
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Nav ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    nav {
+
+        color: rgba(255,255,255,0.8);
+        text-align: center;
+    }
+
+    nav ul {
+
+        margin: 0.5em 0 0;
+        padding: 0;
+
+    }
+
+    nav li {
+
+        display: inline-block;
+        margin: 0 1em;
+
+    }
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Header ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 	
-	/*////////////////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////// Header ////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	.simey-header { 
+
+        color: white;
+        background: #54b8bc;
+
+        min-height: 600px; 
+        position: relative; 
+        text-align: center;
+
+        overflow: hidden;
+
+    }
+
+	.simey-header h1 { 
+
+        margin: 0; 
+
+    }
+
+	.simey-header [class^=letter-] {
+
+        text-indent: -999em; 
+        height: 280px; 
+        position: absolute; 
+        background-repeat: no-repeat; 
+        left: 50%; 
+        bottom: 36%; 
+        opacity: 1; 
+
+    }
 	
+	.simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; z-index: 5; }
+	.simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; z-index: 4; }
+	.simey-header .letter-m { width: 232px; background-image: url('../img/m.png'); margin-left: -151px; z-index: 3; }
+	.simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px;   z-index: 2;}
+	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px;  z-index: 1;}
 	
-	.simey-header { min-height: 620px; position: relative; text-align: center; }
-	.simey-header h1 { margin: 0; }
-	
-	.simey-header [class^=letter-] { text-indent: -999em; height: 280px; position: absolute; background-repeat: no-repeat; left: 50%; bottom: 36%; opacity: 1; }
-	
-	.simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; }
-	.simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; }
-	.simey-header .letter-m { width: 232px; background-image: url('../img/m.png'); margin-left: -151px; }
-	.simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px; }
-	.simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px; }
-	
-	.horizon-mask { position: absolute; bottom: 36%; width: 100%; height: 190px; margin-bottom: -50px; background: url('../img/horizon.png') no-repeat top center; }
-	.simey-is-doing { position: absolute; top: 64%; margin-top: -90px; width: 100%; font-weight: 200; font-size: 2.2em; letter-spacing: -2px; display: none; cursor: pointer; }
+	.horizon-mask { 
+
+        position: absolute; 
+        bottom: 36%; 
+        width: 100%; 
+        height: 190px; 
+        margin-bottom: -50px; 
+        background: url('../img/horizon.png') no-repeat top center; ;
+    }
+
+	.simey-is-doing { 
+
+        position: absolute; 
+        top: 64%; 
+        margin-top: -90px; 
+        width: 100%; 
+        font-weight: 200; 
+        font-size: 2.2em; 
+        letter-spacing: -2px; 
+        display: none; 
+        cursor: pointer;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        z-index: 6
+
+    }
 	
 	
 	
@@ -189,23 +280,56 @@
 	//////////////////// Contact ////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
-	.contact { list-style: none; padding: 0; margin: 0; position: absolute; top: 0em; width: 100%; height: 4em; }
-	.contact li span { position: absolute; left: -999em; top: -999em; }
-	.contact li a { color: #e85661; display: block; width: 100%; height: 100%; line-height: 1.5em; }
+	.contact { 
 
-	.contact li { 
-		display: inline-block; font-size: 1.45em; width: 1.5em; height: 1.5em; 
-		border-radius: 100%; margin: 1em 0 0; background: #CF3F4A;
+        list-style: none;
+        padding: 3em 0 0;
+        margin: 0;
+        position: absolute;
+        bottom: -2em;
+        width: 100%;
+        height: 5em;
+
+    }
+
+	.contact li span { 
+
+        position: absolute; 
+        left: -999em; 
+        top: -999em; 
+
+    }
+
+	.contact li a { 
+
+        color: rgba(255,255,255,0.5);
+        display: block; 
+        width: 100%; 
+        height: 100%; 
+        line-height: 1.5em; 
+
+    }
+
+	.contact li {
+
+		display: inline-block; 
+        font-size: 1.45em; 
+        width: 1.5em; 
+        height: 1.5em; 
+		border-radius: 100%; 
+        margin: 0; 
+        background: rgba(255,255,255,0.3);
 		
-		-webkit-transform: translate(0,-1.25em) scale(0.8);
-		-moz-transform: translate(0,-1.25em) scale(0.8);
-		-ms-transform: translate(0,-1.25em) scale(0.8);
-		-o-transform: translate(0,-1.25em) scale(0.8);
-		transform: translate(0,-1.25em) scale(0.8);
+		-webkit-transform: translate(0,1.25em) scale(0.8);
+		-moz-transform: translate(0,1.25em) scale(0.8);
+		-ms-transform: translate(0,1.25em) scale(0.8);
+		-o-transform: translate(0,1.25em) scale(0.8);
+		transform: translate(0,1.25em) scale(0.8);
 	}
 
 	.contact:hover li {
-		margin: 1em .15em 0; 
+
+		margin: 0 .2em 0; 
 		
 		-webkit-transform: scale(1) translate(0,0);  
 		-moz-transform: scale(1) translate(0,0);  
@@ -218,7 +342,7 @@
 	.contact li:hover { background: transparent; }
 	.contact li a:active,
 	.contact li a:focus,
-	.contact li:hover a { color: #FFE2E4; }
+	.contact li:hover a { color: #302C3A; }
 	
 	.contact li,
 	.contact li a {
@@ -265,10 +389,16 @@
 	
 
 	.simey-about { 
-		margin: auto; padding: 40px 0 80px; width: auto; 
-		background: #302C3A; color: white; color: rgba(255,255,255,0.95);
-		border-width: 20px 0; border-style: solid; 
-		border-color: rgba(232, 86, 97, 0.47) white rgba(255, 255, 255,0.47); 
+		margin: auto; 
+        padding: 40px 0 80px; 
+        width: auto; 
+		background: #302C3A; 
+        color: white; 
+        color: rgba(255,255,255,0.95);
+
+		border-width: 15px 0; 
+        border-style: solid; 
+		border-color: #52798B white rgba(255, 255, 255,0.47); 
 	}
 	
 	.simey-about-inner 	{}
@@ -287,8 +417,10 @@
 	
 	.github-wrapper { 
 		
-		position: relative; padding: 100px 0;
+		position: relative; 
+        padding: 100px 0;
 		
+        color: white;
 		background-color: #2883B6;
 		background-image: url('../img/grid.png');
 		
@@ -459,44 +591,101 @@
 
 	@media screen and ( max-width: 1300px ) {
 		
-		body,html { font-size: 1.15em; }
-		.simey-container { width: 800px; }
+		body,html { 
+
+            font-size: 1.15em; 
+
+        }
+
+		.simey-container { 
+
+            width: 800px; 
+
+        }
 		
-		
-		.github-project .browser {border-radius: 10px 10px 0 0; }
-		.github-project .browser-bar { min-height: 65px; }
+		.github-project .browser {
+
+            border-radius: 10px 10px 0 0; 
+
+        }
+
+		.github-project .browser-bar { 
+
+            min-height: 65px; 
+
+        }
 
 
 		.simey-codepen .code-pen {
-			width: 31%; marign-right: 1%;
+
+			width: 31%; 
+            margin-right: 1%;
+
 		}
 
 	}
 
+
+
 	@media screen and ( max-width: 1000px ) {
+
+		.simey-container { 
+
+            width: 600px; 
+
+        }		
 		
-		body,html { background: #e85661; }
-		.simey-container { width: 600px; }		
-		
-		.github-project .browser {border-radius: 6px 6px 0 0; }
-		.github-project .browser-bar { min-height: 50px; }
+		.github-project .browser {
+
+            border-radius: 6px 6px 0 0; 
+
+        }
+
+		.github-project .browser-bar { 
+
+            min-height: 50px; 
+
+        }
 
 		.simey-codepen .code-pen {
-			width: 48%; marign-right: 1%;
+
+			width: 48%;
 			font-size: 0.8em;
+
 		}
 
-		.simey-codepen .code-pen h3 { min-height: 2.2em; }
+		.simey-codepen .code-pen h3 { 
+
+            min-height: 2.2em; 
+
+        }
 
 	}
 
 	@media screen and ( max-width: 800px ) {
 		
-		body,html { font-size: 1.02em; }
-		.simey-container { width: 560px; }
+		body,html { 
+
+            font-size: 1.02em; 
+
+        }
+
+
+		.simey-container { 
+
+            width: 560px; 
+
+        }
 		
-		.contact { top: 1em; }
+		.contact { 
+
+            bottom: 1em; 
+
+        }
+
+
 		.contact li { 
+
 			margin: 0.5em .15em 0; 
 			
 			-webkit-transform: scale(1) translate(0);  
@@ -504,8 +693,11 @@
 			-ms-transform: scale(1) translate(0);  
 			-o-transform: scale(1) translate(0);  
 			transform: scale(1) translate(0);  
+
 		}
+
 		.contact:hover li {	
+
 			margin: 0.5em .15em 0; 
 					
 			-webkit-transform: scale(1) translate(0);  
@@ -513,21 +705,48 @@
 			-ms-transform: scale(1) translate(0);  
 			-o-transform: scale(1) translate(0);  
 			transform: scale(1) translate(0);  
+
 		 }
 		
 	}
 
 	@media screen and ( max-width: 600px ) {
 	
-		.simey-container { width: auto; padding: 20px; }
+		.simey-container { 
+
+            width: auto; 
+            padding: 20px; 
+
+        }
 		
 		ul.stacky li {
-			width: 100%; margin: 0 0 10px;
+
+			width: 100%; 
+            margin: 0 0 10px;
+
 		}
 
+        .simey-header {
 
-		.simey-header [class^=letter-] { height: 140px; bottom: 40%; background-size: 100%; }
-		.horizon-mask { bottom: 40%; margin-bottom: -116px; background-size: 800px auto; }
+            min-height: 0;
+
+        }
+
+		.simey-header [class^=letter-] { 
+
+            height: 140px; 
+            bottom: 40%; 
+            background-size: 100%;
+
+        }
+
+		.horizon-mask { 
+
+            bottom: 40%; 
+            margin-bottom: -116px; 
+            background-size: 800px auto; 
+
+        }
 
 		.simey-header .letter-s { width: 90px; background-image: url('../img/s.png'); margin-left: -162px; }
 		.simey-header .letter-i { width: 62px; background-image: url('../img/i.png'); margin-left: -104px; }
@@ -535,27 +754,109 @@
 		.simey-header .letter-e { width: 103px; background-image: url('../img/e.png'); margin-left: 5px; }
 		.simey-header .letter-y { width: 106px; background-image: url('../img/y.png'); margin-left: 70px; }
 		
-		.simey-is-doing { bottom: auto; margin: auto; top: 60%; margin-top: -27px; font-size: 2em; line-height: 1; }
+		.simey-is-doing { 
 
-		.contact { width: 220px; position: static; margin: auto; }
-		.contact li { margin: 0.4em .15em 0; }
+            bottom: auto; 
+            margin: auto; 
+            top: 60%; 
+            margin-top: -27px; 
+            font-size: 2em; 
+            line-height: 1; 
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+
+        }
+
+		.contact { 
+
+            width: 220px;
+            left: 50%;
+            margin-left: -110px;
+            bottom: 3em;
+
+        }
+
+		
+
+		
+		.github-project { 
+
+            display: block; 
+            width: auto; 
+            position: relative; 
+            margin: 0 0 30px; 
+
+        }
+
+		.github-project-inner { 
+            padding: 0; 
+        }
+
+		.github-project .browser { 
+            border-radius: 5px; 
+        }
+
+		.github-project .browser-bar { 
+            display: none; 
+        }
 		
 		
-		
-		.github-project { display: block; width: auto; position: relative; margin: 0 0 30px; }
-		.github-project-inner { padding: 0; }
-		.github-project .browser { border-radius: 5px; }
-		.github-project .browser-bar { display: none; }
-		
-		
-		.simey-codepen .code-pen { width: 100%; margin: 50px auto 0; font-size: 1em; }
-		.simey-codepen .code-pen img { margin: 10px 0; }
-		.simey-codepen .code-pen h3 { min-height: auto; }
+		.simey-codepen .code-pen { 
+            width: 100%; 
+            margin: 50px auto 0; 
+            font-size: 1em; 
+        }
+
+		.simey-codepen .code-pen img { 
+            margin: 10px 0; 
+        }
+
+		.simey-codepen .code-pen h3 { 
+            min-height: auto; 
+        }
 		
 		
 	}
 
+    @media screen and ( min-width: 600px ) {
 
+        .simey-header {
+
+            background-image: url("../img/header-bg.png");
+
+            -webkit-animation: bgscroll 80s linear infinite;
+            -moz-animation: bgscroll 80s linear infinite;
+            -ms-animation: bgscroll 80s linear infinite;
+            -o-animation: bgscroll 80s linear infinite;
+            animation: bgscroll 80s linear infinite;
+
+        }
+
+        @-webkit-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-moz-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-ms-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-o-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+    }
 
 
 
