@@ -54,6 +54,7 @@
 	}
 
 	.cameras:hover .flickr-camera {
+
 		-webkit-animation:none;
 		-moz-animation:none;
 		-ms-animation:none;
@@ -61,6 +62,7 @@
 		animation:none;
 		
 		opacity: 0;
+
 	}
 	
 	.cameras:hover .flickr-camera-full {
@@ -122,9 +124,7 @@
 	@media screen and ( max-width: 1000px ) {
 		
 		.flickr-camera {
-			
-			top: 10px; right: -70px;
-			
+						
 			-webkit-animation: none;
 			-mox-animation: none;
 			-ms-animation: none;

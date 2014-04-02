@@ -19,7 +19,7 @@
 		min-height: 1000px;
 		background: #eee;
 		
-		font-family: 'Roboto', Helvetica, Arial; 
+		font-family: 'Lato', Helvetica, Arial; 
 		font-weight: 100;
 		
 		overflow-x: hidden;
@@ -302,7 +302,7 @@
 
 	.contact li a { 
 
-        color: rgba(255,255,255,0.5);
+        color: rgba(255,255,255,0.7);
         display: block; 
         width: 100%; 
         height: 100%; 
@@ -314,32 +314,26 @@
 
 		display: inline-block; 
         font-size: 1.45em; 
-        width: 1.5em; 
+        width: 2em; 
         height: 1.5em; 
-		border-radius: 100%; 
+		border-radius: 4px; 
         margin: 0; 
         background: rgba(255,255,255,0.3);
 		
-		-webkit-transform: translate(0,1.25em) scale(0.8);
-		-moz-transform: translate(0,1.25em) scale(0.8);
-		-ms-transform: translate(0,1.25em) scale(0.8);
-		-o-transform: translate(0,1.25em) scale(0.8);
-		transform: translate(0,1.25em) scale(0.8);
 	}
 
 	.contact:hover li {
 
 		margin: 0 .2em 0; 
-		
-		-webkit-transform: scale(1) translate(0,0);  
-		-moz-transform: scale(1) translate(0,0);  
-		-ms-transform: scale(1) translate(0,0);  
-		-o-transform: scale(1) translate(0,0);  
-		transform: scale(1) translate(0,0);  
-	
+			
 	}
 	
-	.contact li:hover { background: transparent; }
+	.contact li:hover { 
+
+        background: transparent; 
+
+    }
+
 	.contact li a:active,
 	.contact li a:focus,
 	.contact li:hover a { color: #302C3A; }
@@ -389,22 +383,28 @@
 	
 
 	.simey-about { 
-		margin: auto; 
+
+		margin: auto;
         padding: 40px 0 80px; 
         width: auto; 
-		background: #302C3A; 
+
+		background: #302C3A;
         color: white; 
         color: rgba(255,255,255,0.95);
+        font-weight: 300;
 
 		border-width: 15px 0; 
         border-style: solid; 
 		border-color: #52798B white rgba(255, 255, 255,0.47); 
+
 	}
+
+    .simey-about strong { font-weight: 800; }
 	
 	.simey-about-inner 	{}
 	
 	.simey-about h2,
-	.simey-about h3 	{ font-family: 'Roboto', Helvetica, Arial; }
+	.simey-about h3 	{ font-family: 'Lato', Helvetica, Arial; }
 	
 	.simey-about h2		{ font-size: 3em; line-height: 1; }
 	.simey-about h3		{ font-size: 2em; font-weight: 400; line-height: 1;  }
@@ -423,6 +423,8 @@
         color: white;
 		background-color: #2883B6;
 		background-image: url('../img/grid.png');
+
+        font-weight: 300;
 		
 		background-image: url('../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
 		background-image: url('../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
@@ -438,30 +440,106 @@
 		
 	}
 	
-	.github-wrapper h2 { font-size: 3em; }	
-	.github-wrapper hr { border-top: 2px dashed rgba(255,255,255,0.7); }
-	.github-wrapper a { color: rgba(255,255,255,0.9); }
+	.github-wrapper h2 { 
 
-	.github-project { display: inline-block; width: 50%; position: relative; vertical-align: top; margin-left: -5px; }
-	.github-project-inner { padding: 10px; }
-	.github-project h3 { font-size: 1.2em; }	
-	.github-project p { font-size: 0.8em; }
+        font-size: 3em; 
+
+    }
+
+	.github-wrapper hr { 
+
+        border-top: 2px dashed rgba(255,255,255,0.7); 
+
+    }
+
+	.github-wrapper a { 
+
+        color: rgba(255,255,255,0.9); 
+
+    }
+
+	.github-project { 
+
+        display: inline-block; 
+        width: 46%; 
+        position: relative; 
+        vertical-align: top; 
+        margin-left: 2%; 
+
+    }
+
+	.github-project-inner { 
+
+        padding: 10px; 
+
+    }
+
+	.github-project h3 { 
+
+        font-size: 1.2em; 
+
+    }	
+
+	.github-project p { 
+
+        font-size: 0.8em; 
+
+    }
 	
 	.github-project .browser {
-		 width: 100%; position: relative;
-		 border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.3); 
-		 border-radius: 13px 13px 0 0; box-shadow: 0 0 10px 4px rgba(0,0,0,0.1);
+
+		 width: 100%; 
+         position: relative;
+		 border: 1px solid rgba(255,255,255,0.7); 
+         background: rgba(255,255,255,0.3); 
+		 border-radius: 13px 13px 0 0; 
+         box-shadow: 0 0 10px 4px rgba(0,0,0,0.1);
+
 	}
+
 	.github-project .browser-bar {
-		background: url('../img/chrome.png') no-repeat 0 0; background-size: 100%; 
-		display: block; min-height: 90px;
+
+		background: url('../img/chrome.png') no-repeat 0 0; 
+        background-size: 100%; 
+		display: block; 
+        min-height: 90px;
+
 	}
-	.github-project .firefox .browser-bar { background: url('../img/firefox.png') no-repeat 0 0; background-size: 100%; }
-	.github-project .safari .browser-bar { background: url('../img/safari.png') no-repeat 0 0; background-size: 100%; }
-	.github-project .browser-page { padding: 10px; }
-	.github-project .browser-page img { width: 100%; }
+
+	.github-project .firefox .browser-bar { 
+
+        background-image: url('../img/firefox.png');
+
+    }
+
+	.github-project .safari .browser-bar { 
+
+        background-image: url('../img/safari.png');
+
+    }
+
+	.github-project .browser-page { 
+
+        padding: 10px; 
+
+    }
+
+	.github-project .browser-page img { 
+
+        width: 100%; 
+
+    }
 	
-	.github-project .browser-link { position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-indent: -9999em; }
+	.github-project .browser-link { 
+
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        top: 0; 
+        left: 0; 
+        text-indent: -9999em; 
+
+    }
 	
 	
 
@@ -478,7 +556,7 @@
 	}
 
 	.simey-codepen h2,
-	.simey-codepen h3 	{ font-family: 'Roboto', Helvetica, Arial; }
+	.simey-codepen h3 	{ font-family: 'Lato', Helvetica, Arial; }
 	
 	.simey-codepen h2	{ font-size: 3em; line-height: 1; }
 	.simey-codepen h3	{ font-size: 1.5em; font-weight: 400; line-height: 1; margin: 0; min-height: 2em; }
@@ -522,7 +600,7 @@
 	}
 
 	.simey-codepen .code-pen span.icon {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
 		position: relative;
 		display: inline-block;
 		width: 3em;
@@ -570,7 +648,7 @@
 	.secret-wrapper h2,
 	.secret-wrapper h3 { 
 		font-size: 3em; 
-		font-family: 'Roboto', Helvetica, Arial; 
+		font-family: 'Lato', Helvetica, Arial; 
 		font-weight: 900;
 	}	
 	
