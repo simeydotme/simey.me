@@ -125,7 +125,7 @@ header {
     color: #fff;
     color: rgba(255,255,255,0.9); 
     
-    padding: 10% 7em;
+    padding: 6em 10% 9em;
     text-align: center;
 
     background: #54B8BC;
@@ -183,14 +183,14 @@ header #socialbreak {
     color: white;
 
     background-color: #2883B6;
-    background-image: url('../img/grid.png');
+    background-image: url('http://simey.me/img/grid.png');
     
-    background-image: url('../img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
-    background-image: url('../img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
-    background-image: url('../img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Chrome10+,Safari5.1+ */
-    background-image: url('../img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Opera 12+ */
-    background-image: url('../img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* IE10+ */
-    background-image: url('../img/grid.png'), radial-gradient(ellipse at center,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* W3C */
+    background-image: url('http://simey.me/img/grid.png'), -moz-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%, rgba(8,70,136,1) 100%); /* FF3.6+ */
+    background-image: url('http://simey.me/img/grid.png'), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(40,131,182,1)), color-stop(100%,rgba(8,70,136,1))); /* Chrome,Safari4+ */
+    background-image: url('http://simey.me/img/grid.png'), -webkit-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Chrome10+,Safari5.1+ */
+    background-image: url('http://simey.me/img/grid.png'), -o-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* Opera 12+ */
+    background-image: url('http://simey.me/img/grid.png'), -ms-radial-gradient(center, ellipse cover,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* IE10+ */
+    background-image: url('http://simey.me/img/grid.png'), radial-gradient(ellipse at center,  rgba(40,131,182,1) 0%,rgba(8,70,136,1) 100%); /* W3C */
     
     background-repeat: repeat;
     background-repeat: repeat, no-repeat;
