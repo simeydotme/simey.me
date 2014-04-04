@@ -24,8 +24,10 @@
 		
 		// trigger teh route function if hash changes.
 
-		$(window).on('hashchange', function() {
+		$(window).on('hashchange', function(e) {
+
 			APP.route();
+
 		});
 		
 		// when we click on teh simey slogan tagline,
@@ -38,23 +40,28 @@
 		// show spidder on ajax start.
 
 		$(document).ajaxStart( function() {
-
 			APP.$spinner.fadeIn();
-
 		});
 
 		// hide spidder on ajax stop.
 
 		$(document).ajaxStop( function() {
-
 			APP.$spinner.fadeOut();
-
 		});
+
+        APP.$simeyHeader
+            .find("nav a")
+            .on("click", function(e) {
+
+                ga('send', 'event', 'navbar', 'click', $(this).attr("href") );
+
+            });
 
 		// trigger routing.
 		// animate the header "SIMEY".
 		
 		APP.route();
+        APP.setUpWaypoints();
 		APP.headerAnimation();
 		
 		
@@ -92,7 +99,7 @@
 	
 	APP.viewResume = function() {
 		
-		var resume = $.get('projects/resume.html');
+		var resume = $.get('resume.html');
 		resume.done( function( response ) {
 			
 			$('.body')
@@ -111,15 +118,19 @@
 	APP.viewContent = function() {
 		
 		$('.body')
-			.find('#cv, #statement')
+			.find('#resume, #statement')
 			.remove()
-			.end()
-			.find('#about, #flickr, #github, #codepen')
-			.filter(':hidden')
-			.show();
-		
-		APP.setUpWaypoints();
-			
+            .end()
+            .find('#about, #flickr, #github, #codepen')
+			.slideDown( 200, function() {
+
+                var hash = $(window.location.hash);
+                if( hash.length > 0 ) {
+                    $(window).scrollTop( hash.offset().top );
+                }
+
+            });
+
 	}
 
 // ================================================================ //
