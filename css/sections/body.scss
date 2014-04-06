@@ -1,0 +1,706 @@
+    
+
+    body, html { 
+    
+        color: #333;
+        font-size: 1.2em; 
+        min-height: 1000px;
+        background: #eee;
+        
+        font-family: 'Lato', Helvetica, Arial; 
+        font-weight: 100;
+        
+        overflow-x: hidden;
+        
+        -webkit-transition: font-size 0.3s ease;
+        -moz-transition: font-size 0.3s ease;
+        -ms-transition: font-size 0.3s ease;
+        -o-transition: font-size 0.3s ease;
+        transition: font-size 0.3s ease;
+        
+    }
+    
+    h1,h2,h3,h4,h5 { 
+
+        font-family: 'Averia Sans Libre', Helvetica, Arial; 
+        font-weight: 100; 
+
+    }
+    
+    a { 
+
+        text-decoration: none; 
+        color: #fff; 
+        color: rgba(255,255,255,0.9); 
+        font-weight: 400; 
+
+    }
+    
+    strong          { font-weight: 400; }
+    strong.more     { font-weight: 600; }
+    strong.most     { font-weight: 800; }
+    
+    .no-margin-b    { margin-bottom: 0; }
+    .no-margin-t    { margin-top: 0; }
+    
+    ul.stacky {
+
+        list-style: square inside;
+        margin: 0; padding: 0;
+
+    }
+
+    ul.stacky li {
+
+        width: 48%; display: inline-block;
+        border-bottom: 1px dotted rgba(0,0,0,0.2);
+        border-left: 1px dotted rgba(0,0,0,0.2);
+        text-indent: 10px; margin-top: 8px;
+        padding: 4px 0; margin-left: 4px;
+
+    }
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Social Font ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    @font-face {
+
+        font-family: 'simey-social';
+        src:url('../font/simey-social.eot');
+        src:url('../font/simey-social.eot?#iefix') format('embedded-opentype'),
+            url('../font/simey-social.woff') format('woff'),
+            url('../font/simey-social.ttf') format('truetype'),
+            url('../font/simey-social.svg#simey-social') format('svg');
+        font-weight: normal;
+        font-style: normal;
+
+    }
+    
+    [data-icon]:before {
+
+        font-family: 'simey-social';
+        content: attr(data-icon);
+        speak: none;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+
+    }
+    
+    .icon-facebook, 
+    .icon-codepen, 
+    .icon-twitter, 
+    .icon-phone, 
+    .icon-github, 
+    .icon-flickr, 
+    .icon-instagram, 
+    .icon-envelope,
+    .icon-eye, 
+    .icon-heart {
+
+        font-family: 'simey-social';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+
+    }
+
+    .icon-facebook:before {
+        content: "\e000";
+    }
+    .icon-codepen:before {
+        content: "\e001";
+    }
+    .icon-twitter:before {
+        content: "\e002";
+    }
+    .icon-phone:before {
+        content: "\e003";
+    }
+    .icon-github:before {
+        content: "\e004";
+    }
+    .icon-flickr:before {
+        content: "\e005";
+    }
+    .icon-instagram:before {
+        content: "\e006";
+    }
+    .icon-envelope:before {
+        content: "\e007";
+    }   
+    .icon-eye:before {
+        content: "\e008";
+    }   
+    .icon-heart:before {
+        content: "\e009";
+    }
+    
+        
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Container ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+    .simey-container { 
+
+        margin: auto; 
+        width: 1100px; 
+        padding: 0; 
+        position: relative; 
+
+    }
+            
+    .spinner { 
+
+        width: 32px; height: 32px;
+        position: fixed; 
+        left: 50%; top: 50%; 
+        margin-left: -16px; 
+        margin-top: -16px; 
+        display: none;
+
+    }
+    
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Nav ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    nav {
+
+        color: rgba(255,255,255,0.8);
+        text-align: center;
+    }
+
+    nav ul {
+
+        margin: 0.5em 0 0;
+        padding: 0;
+
+    }
+
+    nav li {
+
+        display: inline-block;
+        margin: 0 1em;
+
+    }
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Header ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    
+    .simey-header { 
+
+        color: white;
+        background: #54b8bc;
+
+        min-height: 600px; 
+        position: relative; 
+        text-align: center;
+
+        overflow: hidden;
+
+    }
+
+    .simey-header h1 { 
+
+        margin: 0;
+        font-family: 'Lato', Helvetica, Arial;
+        font-size: 3em;
+
+    }
+
+    .simey-header [class^=letter-] {
+
+        text-indent: -999em; 
+        height: 280px; 
+        position: absolute; 
+        background-repeat: no-repeat; 
+        left: 50%; 
+        bottom: 36%; 
+        opacity: 1; 
+
+    }
+    
+    .simey-header .letter-s { width: 180px; background-image: url('../img/s.png'); margin-left: -325px; z-index: 5; }
+    .simey-header .letter-i { width: 124px; background-image: url('../img/i.png'); margin-left: -208px; z-index: 4; }
+    .simey-header .letter-m { width: 232px; background-image: url('../img/m.png'); margin-left: -151px; z-index: 3; }
+    .simey-header .letter-e { width: 206px; background-image: url('../img/e.png'); margin-left: 10px;   z-index: 2;}
+    .simey-header .letter-y { width: 212px; background-image: url('../img/y.png'); margin-left: 140px;  z-index: 1;}
+    
+    .horizon-mask { 
+
+        position: absolute; 
+        bottom: 36%; 
+        width: 100%; 
+        height: 190px; 
+        margin-bottom: -50px; 
+        background: url('../img/horizon.png') no-repeat top center; ;
+    }
+
+    .simey-is-doing { 
+
+        position: absolute; 
+        top: 64%; 
+        margin-top: -90px; 
+        width: 100%; 
+        font-weight: 200; 
+        font-size: 2.2em; 
+        letter-spacing: -2px; 
+        display: none; 
+        cursor: pointer;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        z-index: 6
+
+    }
+    
+    
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Error ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    .simey-header.error {
+
+        min-height: 1000px;
+        position: relative;
+
+    }
+
+    .simey-header.error h1 {
+
+        position: absolute;
+        left: 0;
+        top: 50%;
+        text-align: center;
+        width: 100%;
+        height: 1em;
+        margin: -0.5em 0 0;
+        padding: 0;
+        font-size: 10em;
+        line-height: 1;
+
+    }
+
+    .simey-header.error h1 a {
+
+        font-weight: 200;
+        position: relative;
+        z-index: 100;
+        line-height: 1;
+
+    }
+
+    .simey-header.error small {
+
+        position: absolute;
+        font-family: "Comic Sans ms", "comic sans", "comic-sans";
+
+        width: 500px;
+        margin-left: -250px;
+        text-align: center;
+
+        font-size: 1em;
+        z-index: 1;
+
+    }
+
+    .simey-header.error small:nth-of-type(1) {
+        top: 20%; left: 40%;
+    }
+    .simey-header.error small:nth-of-type(2) {
+        top: 25%; left: 80%;
+    }
+    .simey-header.error small:nth-of-type(3) {
+        top: 35%; left: 30%;
+    }
+    .simey-header.error small:nth-of-type(4) {
+        top: 65%; left: 70%;
+    }
+    .simey-header.error small:nth-of-type(5) {
+        top: 70%; left: 30%;
+    }
+
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// Contact ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    .contact { 
+
+        list-style: none;
+        padding: 3em 0 0;
+        margin: 0;
+        position: absolute;
+        bottom: -2em;
+        width: 100%;
+        height: 5em;
+
+    }
+
+    .contact li span { 
+
+        position: absolute; 
+        left: -999em; 
+        top: -999em; 
+
+    }
+
+    .contact li a { 
+
+        color: rgba(255,255,255,0.7);
+        display: block; 
+        width: 100%; 
+        height: 100%; 
+        line-height: 1.5em; 
+
+    }
+
+    .contact li {
+
+        display: inline-block; 
+        font-size: 1.45em; 
+        width: 2em; 
+        height: 1.5em; 
+        border-radius: 4px; 
+        margin: 0; 
+        background: rgba(255,255,255,0.3);
+        
+    }
+
+    .contact:hover li {
+
+        margin: 0 .2em 0; 
+            
+    }
+    
+    .contact li:hover { 
+
+        background: transparent; 
+
+    }
+
+    .contact li a:active,
+    .contact li a:focus,
+    .contact li:hover a { color: #302C3A; }
+    
+    .contact li,
+    .contact li a {
+    
+        -webkit-transition: all 0.2s ease;
+           -moz-transition: all 0.2s ease; 
+            -ms-transition: all 0.2s ease; 
+             -o-transition: all 0.2s ease; 
+                transition: all 0.2s ease;
+        
+    }
+    
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// body ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    .body {
+        -webkit-transition: all 1s ease;
+           -moz-transition: all 1s ease; 
+            -ms-transition: all 1s ease; 
+             -o-transition: all 1s ease; 
+                transition: all 1s ease;
+    }
+    
+    .body.hide { 
+        opacity: 0; overflow: hidden; height:0;
+        -webkit-transform: translateY(-300px);
+        -webkit-transition: none;
+        -moz-transform: translateY(-300px);
+        -moz-transition: none;
+        -ms-transform: translateY(-300px);
+        -ms-transition: none;
+        -o-transform: translateY(-300px);
+        -o-transition: none;
+        transform: translateY(-300px);
+        transition: none;
+    }
+
+
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// about ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+
+    .simey-about { 
+
+        margin: auto;
+        padding: 40px 0 80px; 
+        width: auto; 
+
+        background: #302C3A;
+        color: white; 
+        color: rgba(255,255,255,0.95);
+        font-weight: 300;
+
+        border-width: 15px 0; 
+        border-style: solid; 
+        border-color: #52798B white rgba(255, 255, 255,0.47); 
+
+    }
+
+    .simey-about p strong { font-weight: 800; }
+        
+    .simey-about h2,
+    .simey-about h3     { font-family: 'Lato', Helvetica, Arial; }
+    
+    .simey-about h2     { font-size: 3em; line-height: 1; }
+    .simey-about h3     { font-size: 2em; font-weight: 400; line-height: 1;  }
+    
+    
+    
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// secret ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+    .secret-wrapper {
+        
+        position: relative; 
+        padding: 100px 0;
+        background: #eee;
+        color: #302C3A;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-weight: 300;
+    }
+    
+
+    .secret-wrapper h2,
+    .secret-wrapper h3 { 
+        font-size: 3em; 
+        font-family: 'Lato', Helvetica, Arial; 
+        font-weight: 900;
+    }   
+    
+    .secret-wrapper h3 { 
+        font-size: 1.7em; 
+        font-weight: 300; 
+        text-transform: uppercase;
+        line-height: 1;
+    }   
+    
+    .secret-wrapper a { color: #3498db; }
+    
+
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////// media queries ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    
+
+    @media screen and ( max-width: 1300px ) {
+        
+        body,html { 
+
+            font-size: 1.15em; 
+
+        }
+
+        .simey-container { 
+
+            width: 800px; 
+
+        }
+        
+    }
+
+
+
+    @media screen and ( max-width: 1000px ) {
+
+        .simey-container { 
+
+            width: 600px; 
+
+        }       
+        
+
+    }
+
+    @media screen and ( max-width: 800px ) {
+        
+        body,html { 
+
+            font-size: 1.02em; 
+
+        }
+
+
+        .simey-container { 
+
+            width: 560px; 
+
+        }
+        
+        .contact { 
+
+            bottom: 1em; 
+
+        }
+
+
+        .contact li { 
+
+            margin: 0.5em .15em 0; 
+            
+            -webkit-transform: scale(1) translate(0);  
+            -moz-transform: scale(1) translate(0);  
+            -ms-transform: scale(1) translate(0);  
+            -o-transform: scale(1) translate(0);  
+            transform: scale(1) translate(0);  
+
+        }
+
+        .contact:hover li { 
+
+            margin: 0.5em .15em 0; 
+                    
+            -webkit-transform: scale(1) translate(0);  
+            -moz-transform: scale(1) translate(0);  
+            -ms-transform: scale(1) translate(0);  
+            -o-transform: scale(1) translate(0);  
+            transform: scale(1) translate(0);  
+
+         }
+        
+    }
+
+    @media screen and ( max-width: 600px ) {
+    
+        .simey-container { 
+
+            width: auto; 
+            padding: 20px; 
+
+        }
+        
+        ul.stacky li {
+
+            width: 100%; 
+            margin: 0 0 10px;
+
+        }
+
+        .simey-header {
+
+            min-height: 0;
+
+        }
+
+        .simey-header [class^=letter-] { 
+
+            height: 140px; 
+            bottom: 40%; 
+            background-size: 100%;
+
+        }
+
+        .horizon-mask { 
+
+            bottom: 40%; 
+            margin-bottom: -116px; 
+            background-size: 800px auto; 
+
+        }
+
+        .simey-header .letter-s { width: 90px; background-image: url('../img/s.png'); margin-left: -162px; }
+        .simey-header .letter-i { width: 62px; background-image: url('../img/i.png'); margin-left: -104px; }
+        .simey-header .letter-m { width: 116px; background-image: url('../img/m.png'); margin-left: -74px; }
+        .simey-header .letter-e { width: 103px; background-image: url('../img/e.png'); margin-left: 5px; }
+        .simey-header .letter-y { width: 106px; background-image: url('../img/y.png'); margin-left: 70px; }
+        
+        .simey-is-doing { 
+
+            bottom: auto; 
+            margin: auto; 
+            top: 60%; 
+            margin-top: -27px; 
+            font-size: 2em; 
+            line-height: 1; 
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+
+        }
+
+        .contact { 
+
+            width: 220px;
+            left: 50%;
+            margin-left: -110px;
+            bottom: 3em;
+
+        }
+
+        
+        
+    }
+
+    @media screen and ( min-width: 600px ) {
+
+        .simey-header {
+
+            background-image: url("../img/header-bg.png");
+
+            -webkit-animation: bgscroll 80s linear infinite;
+            -moz-animation: bgscroll 80s linear infinite;
+            -ms-animation: bgscroll 80s linear infinite;
+            -o-animation: bgscroll 80s linear infinite;
+            animation: bgscroll 80s linear infinite;
+
+        }
+
+        .simey-header.error {
+
+
+            -webkit-animation: none;
+            -moz-animation: none;
+            -ms-animation: none;
+            -o-animation: none;
+            animation: none;
+
+            background-position: -4698px 0;
+            background-size: auto 100%;
+
+        }
+
+        @-webkit-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-moz-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-ms-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @-o-keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+        @keyframes bgscroll {
+            0% { background-position: -1000px; }
+            100% { background-position: -6120px; }
+        }
+
+    }
