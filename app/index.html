@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Simey.me | Simon Goellner | FE / UX Developer</title>
+        <meta name="description" content="Personal website for Simon Goellner, Creative Frontend / UX Developer, showing off some work in html, css, javascript and jQuery.">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic|Source+Code+Pro:400,700|Signika:700,600,400" rel="stylesheet">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link href="../bower_components/google-code-prettify/styles/desert.css" rel="stylesheet">
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+
+    </head>
+    <body>
+
+
+
+
+        <header id="header">
+
+            <h1 class="header-simey">simey</h1>
+            <h2 class="header-dev">FE <span>/</span> UX Developer</h2>
+
+            <nav>
+                <ul>
+                    <li><a href="#_me">_me</a></li>
+                    <li><a href="#_github">_git</a></li>
+                    <li><a href="#">_pen</a></li>
+                    <li><a href="#">_jpg</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+
+
+
+
+        <section id="_me">
+
+            <h3 class="section-header">I'm a <strong>creative</strong> frontend developer</h3>
+            <h4 class="section-header-sub indent">with a passion for UX and details</h4>
+
+            <p>This bizzle is my <strong>hobby</strong>, <strong>passion</strong> and 
+            <strong>livelihood</strong>; I put as much thought into my work before I even touch a 
+            keyboard as I do while writing code.</p>
+
+            <p>I enjoy thinking about problems and solutions in a <strong>creative</strong> and 
+            <strong>analytical</strong> manner and the cooler they are, the better!</p>
+
+        </section>
+
+
+
+
+
+
+        <section id="_github">
+
+            <h3 class="section-header">Github</h3>
+            <h4 class="section-header-sub">I maintain a collection of repositories</h4>
+
+            <div class="github-project project">
+
+                <div class="sublime-window">
+
+                    <header class="sublime-title"></header>
+
+                    <ul class="sublime-tabs">
+                        <li class="active"><a href="#sublime-pips" data-type="javascript">jquery pips</a></li>
+                        <li><a href="#sublime-other" data-type="css">adfsfs</a></li>
+                    </ul>
+
+                    <pre id="sublime-pips" class="prettyprint lang-js linenums">
+// we need the amount of pips to create.
+var pips = ( slider.options.max - slider.options.min ) / slider.options.step;
+ 
+// for every stop in the slider; we create a pip.
+for( var i=0; i&lt;=pips; i++ ) {
+
+    // create the label name, it's either the item in the array, or a number.
+    var label;
+
+    if(options.labels) {
+        label = options.labels[i];
+    } else {
+        label = slider.options.min + ( slider.options.step * i );
+    }
+
+    if( typeof(label) === "undefined" ) { 
+        label = ""; 
+    }
+    
+    // hold a span element for the pip
+    var pipHtml = 
+        "&lt;span class=\"ui-slider-pip ui-slider-pip-"+i+"\"&gt;"+
+            "&lt;span class=\"ui-slider-line\"&gt;&lt;/span&gt;"+
+                    </pre>
+
+
+                    <pre id="sublime-other" class="prettyprint lang-css linenums">
+body { color: red; }
+                    </pre>
+
+                    <footer class="sublime-footer"></footer>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/google-code-prettify/src/prettify.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-15937605-6', 'simey.me');
+            ga('send', 'pageview');
+
+        </script>
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
