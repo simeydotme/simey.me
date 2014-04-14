@@ -18,12 +18,20 @@
 
 .sublime-window {
 
-    width: 617px;
-    height: 463px;
+    min-height: 500px;
+    min-width: 600px;
     position: relative;
+    padding: 0 10px;
+    overflow: hidden;
 
-    background-image: url(../images/sublime/sublime.png);
-    background-repeat: no-repeat;
+    background-color: #303030;
+    background-image: 
+        url(../images/sublime/sublime-bg-icons.png), 
+        url(../images/sublime/sublime-bg-expand.png), 
+        url(../images/sublime/sublime-bg-top.png),
+        url(../images/sublime/sublime-bg-bottom.png);
+    background-repeat: no-repeat, no-repeat, repeat-x, repeat-x;
+    background-position: top left, top right, top center, bottom center;
 
     border-radius: 4px;
     box-shadow: 0 10px 50px rgba(0,0,0,0.6);
@@ -60,7 +68,7 @@
             position: relative;
             display: inline-block;
             height: 29px;
-            line-height: 29px;
+            line-height: 23px;
             margin-left: 20px;
             margin-right: 0px;
 
@@ -103,6 +111,14 @@
 
             }
 
+            a {
+
+                font-size: 12px;
+                color: #ddd;
+                line-height: 20px;
+
+            }
+
         }
 
     }
@@ -110,11 +126,12 @@
     pre {
 
         height: 364px;
-        width: 96%;
-        margin: 0 2%;
+        width: 100%;
+        padding: 0 20px 0 0;
         position: absolute;
         top: 66px;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
 
     }
 
@@ -122,9 +139,10 @@
 
         color: #ccc;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 1px;
+        right: 20px;
         width: 150px;
+        text-align: right;
 
     }
 

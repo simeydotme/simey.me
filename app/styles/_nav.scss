@@ -1,0 +1,59 @@
+// navigation
+
+$color: #302030;
+
+.nav {
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+
+    font-family: "Source Code Pro", Consolas, "Courier New", monospace;
+    font-size: 1em;
+    font-weight: 400;
+
+    background: linear-gradient( to top , rgba(255,255,255,0.7) , rgba(255,255,255,0.5) );
+    box-shadow: inset 0 -1px 1px rgba(255,255,255,1), inset 0 -3px 3px rgba(255,255,255,0.7), 0 0 20px rgba(0,0,0,0.2);
+    z-index: 40;
+
+    &__list {
+
+        list-style: none;
+        text-align: right;
+
+        margin: 0;
+        padding: 0.6em 1.6em;
+
+    }
+
+    &__item {
+
+        display: inline-block;
+        padding: 0.5em 1em 0.5em;
+        border-radius: 3px;
+
+        &--active {
+
+            background: $color;
+
+        }
+
+    }
+
+    &__link {
+
+        color: $color;
+
+    }
+
+    &__underscore {
+
+        color: $red;
+
+    }
+
+    &__item--active .nav__link,
+    &__item .nav__link:hover { color: white; }
+    
+}

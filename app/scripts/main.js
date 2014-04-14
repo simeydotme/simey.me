@@ -22,17 +22,24 @@ var app = {
         $(window).on({
 
             "resize.header": function() {
-                $("#header").height( $(window).height() );
-                $("body").css("padding-bottom", $(window).height()/2 );
+
+                var h = $(window).height();
+
+                $(".header").height( h );
+                $("section").css("min-height", h * 0.75 );
+                $("body").css("padding-bottom", h * 0.5 );
+
             }
 
-        }).trigger("resize");
+        }).trigger("resize.header");
 
 
-        $(".header-simey, .header-dev").on({
+        $(".header__dev").on({
 
             "click.header": function() {
-                $(".header-simey i, .header-dev").toggleClass("shift");
+
+                $(".header__dev").toggleClass("header__dev--open");
+
             }
 
         });
@@ -41,23 +48,11 @@ var app = {
 
     simeyHeader: function() {
 
-        var $h1 = $("h1");
-        var text = $h1.text();
-        var letters = text.length;
+        setTimeout( function() {
 
-        $h1.empty();
+            $(".header__dev").removeClass("header__dev--open");
 
-        for(var i = 0; i < letters; i++) {
-
-            var $letter =
-                $("<i>")
-                    .text( text[i] )
-                    .addClass( "letter-" + text[i] + " shift" )
-                    .css( "z-index", letters - i );
-            
-            $h1.append( $letter );
-
-        }
+        },1000);
 
     },
 
@@ -78,11 +73,15 @@ var app = {
 
         function showPre() {
 
-            var id = $links.closest("li").filter(".active").children("a").attr("href");
+            var $link = $links.closest("li").filter(".active").children("a");
+            var id = $link.attr("href");
 
             $(".sublime-window pre").fadeOut( 200, function() {
                 $(id).fadeIn(200);
             });
+
+            $(".sublime-title").text( $link.text() );
+            $(".sublime-footer").text( $link.data("type") );
 
         }
             
