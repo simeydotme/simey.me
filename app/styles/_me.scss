@@ -1,13 +1,29 @@
 // about me
 
 
-#_me {
+.about {
 
     p {
 
         font-weight: 300;
         font-size: 1.5em;
         max-width: 800px;
+
+    }
+
+    &__heading {
+
+        strong {
+
+            text-shadow: 0 0 5px rgba(255,255,255,0.2), 0 0 15px rgba(255,255,255,0.2);
+
+        }
+
+    } 
+
+    &__subheading {
+
+        text-indent: 1em;
 
     }
 

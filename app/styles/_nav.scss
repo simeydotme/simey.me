@@ -55,5 +55,8 @@ $color: #302030;
 
     &__item--active .nav__link,
     &__item .nav__link:hover { color: white; }
+
+    &__item--active .nav__link .nav__underscore,
+    &__item .nav__link:hover .nav__underscore { color: $skyBlue; }
     
 }
