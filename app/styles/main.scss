@@ -1,23 +1,32 @@
 // bower:scss
 // endbower
 
+$bodyColor: #23222e;
+
 $red: #A82336;
 $skyBlue: #2aa1ec;
 
 
 
-// breakpoints
-$bp1: 900px;
-$bp2: 700px;
-$bp3: 600px;
+
+$serif: "Merriweather", serif;
+$sans: "Lato", "Helvetica", "Segoe", sans-serif;
+$code: "Source Code Pro", "Consolas", monospace;
+
+
 
 @import "fonts";
 @import "headings";
+@import "prettyprint";
+
 @import "header";
 @import "nav";
+@import "dev";
+
 @import "content";
-@import "prettyprint";
 
 
 @import "me";
 @import "github";
+
+@import "animations";

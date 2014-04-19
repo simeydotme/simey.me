@@ -8,7 +8,9 @@ body {
     background-position: bottom center;
     background-attachment: fixed;
 
-    color: #23222e;
+    transition: background-image 1s ease;
+
+    color: $bodyColor;
 
     padding: 0 0 200px;
     margin: 0;
@@ -16,16 +18,27 @@ body {
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-size: 0.9em;
 
-    @media screen and ( max-width: $bp1 ) {
+    @media screen and ( max-width: 900px ) {
         font-size: 0.8em;
     }
 
-    @media screen and ( max-width: $bp2 ) {
+    @media screen and ( max-width: 700px ) {
         font-size: 0.7em;
     }
 
-    @media screen and ( min-width: $bp3 ) {
-        background-image: url(../images/header/bg-dark.png);
+    @media screen and ( min-width: 600px ) {
+
+        &.dark {
+            background-image: url(../images/header/bg-dark.jpg);
+        }
+
+        &.light {
+            background-image: url(../images/header/bg-light.jpg);
+        }
+
+        &.green {
+            background-image: url(../images/header/bg-green.jpg);
+        }
     }
 
 }
@@ -40,6 +53,20 @@ a {
 section {
 
     padding: 100px;
+    min-height: 400px;
+    transition: padding 0.4s ease;
+
+    @media screen and (max-width: 800px) {
+
+        padding: 80px 50px;
+
+    }
+
+    @media screen and (max-width: 540px) {
+
+        padding: 50px 20px;
+
+    }
 
 }
 

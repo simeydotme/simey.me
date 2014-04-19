@@ -12,10 +12,19 @@ $color: #302030;
     font-family: "Source Code Pro", Consolas, "Courier New", monospace;
     font-size: 1em;
     font-weight: 400;
-
-    background: linear-gradient( to top , rgba(255,255,255,0.7) , rgba(255,255,255,0.5) );
-    box-shadow: inset 0 -1px 1px rgba(255,255,255,1), inset 0 -3px 3px rgba(255,255,255,0.7), 0 0 20px rgba(0,0,0,0.2);
     z-index: 40;
+
+    background: 
+        linear-gradient( 
+            to top , 
+            rgba(255,255,255,0.7), 
+            rgba(255,255,255,0.5) 
+        );
+
+    box-shadow: 
+        inset 0 -1px 1px rgba(255,255,255,1), 
+        inset 0 -3px 3px rgba(255,255,255,0.7), 
+        0 0 20px rgba(0,0,0,0.2);
 
     &__list {
 
@@ -30,20 +39,20 @@ $color: #302030;
     &__item {
 
         display: inline-block;
-        padding: 0.5em 1em 0.5em;
-        border-radius: 3px;
-
-        &--active {
-
-            background: $color;
-
-        }
 
     }
 
     &__link {
 
         color: $color;
+        display: inline-block;
+        padding: 0.5em 1em 0.5em;
+
+        border: 1px solid transparent;
+        border-radius: 3px;
+        outline: none;
+
+        transition: border .6s ease, background 1s ease, color 22ms ease, height 3300ms ease;
 
     }
 
@@ -53,10 +62,25 @@ $color: #302030;
 
     }
 
-    &__item--active .nav__link,
-    &__item .nav__link:hover { color: white; }
+    &__item.active .nav__link {
 
-    &__item--active .nav__link .nav__underscore,
-    &__item .nav__link:hover .nav__underscore { color: $skyBlue; }
+        color: white;
+        background: $color;
+
+    }
+
+    &__item .nav__link:focus,
+    &__item .nav__link:hover {
+
+        border-color: rgba(0,0,0,0.5);
+
+    }
+
+    &__item.active .nav__link .nav__underscore,
+    &__item .nav__link:hover .nav__underscore { 
+
+        color: $skyBlue; 
+
+    }
     
 }

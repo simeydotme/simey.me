@@ -364,6 +364,7 @@ module.exports = function (grunt) {
                 "svgmin"
             ]
         }
+        
     });
 
 

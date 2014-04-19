@@ -1,13 +1,14 @@
 // header
 
-$headerHeight: 90px;
-$angle: 22deg;
-$gap: 10px;
-$clip: 15px;
+    $headerHeight: 90px;
+    $angle: 22deg;
+    $gap: 10px;
+    $clip: 15px;
 
 
 .header {
 
+    min-height: 500px;
     position: relative;
     padding: 0 50px;
     user-select: none;
@@ -16,183 +17,13 @@ $clip: 15px;
 
     &__simey {
 
-        margin: 0.1em 0 0;
+        margin: 0.3em 0 0;
+        font-family: $serif;
+        text-transform: uppercase;
+        font-weight: 900;
 
     }
 
-    &__dev {
-
-        font-family: Lato, Arial, sans-serif;
-        text-shadow: 0 1px 1px rgba(42,43,61,0.5);
-
-        font-size: 86px;
-        height: $headerHeight;
-        line-height: $headerHeight;
-        font-weight: 300;
-
-        position: absolute;
-        top: 50%;
-        left: 120px;
-        margin: -($headerHeight/2) 0 0;
-
-        transition: all 0.6s ease-out;
-        transition-delay: 0.5s;
-
-        z-index: 2;
-
-        @media screen and ( max-width: 1000px ) {
-            transform: scale(0.9);
-        }
-
-        @media screen and ( max-width: 850px ) {
-            transform: scale(0.65);
-        }
-
-        @media screen and ( max-width: 700px ) {
-            transform: scale(0.5);
-        }
-
-    }
-
-
-
-
-    .dev__slash {
-
-        color: $red;
-        font-weight: 300;
-        
-        position: absolute;
-        top: -$gap/2;
-        left: $headerHeight - $gap*2;
-        margin-left: $gap/2;
-
-        transform: scale(1.6);
-        z-index: 5;
-
-    }
-
-    .dev__fe,
-    .dev__ux {
-
-        top: 50%;
-        margin-top: -$headerHeight;
-        position: absolute;
-
-        width: $headerHeight*2;
-        height: $headerHeight*2;
-        overflow: hidden;
-        transform: rotateZ($angle);
-
-        i {
-
-            font-style: normal;
-
-            top: 0;
-            left: 0;
-            position: absolute;
-
-            width: $headerHeight*2;
-            height: $headerHeight*2;
-            line-height: $headerHeight*2;
-            transform: rotateZ(-$angle);
-
-        }
-
-    }
-
-    .dev__fe {
-
-        text-align: right; 
-        direction: rtl;
-        margin-left: -$headerHeight - $gap + 1px;
-
-        i {
-
-            text-indent: -$clip;
-
-        }
-
-    }
-
-    .dev__ux {
-
-        margin-left: $headerHeight + $gap;
-
-        i { 
-
-            text-indent: -$clip;
-
-        }
-
-    }
-
-    .dev__developer {
-
-        font-weight: 300;
-
-        position: absolute;
-        top: 0;
-        left: $headerHeight*2.5;
-
-    }
-
-    .dev__fe,
-    .dev__ux,
-    .dev__fe i,
-    .dev__ux i,
-    .dev__developer,
-    .dev__slash {
-
-        transition: all 0.6s cubic-bezier(0.555, -0.375, 0.000, 1.615);
-
-    }
-
-}
-
-
-
-
-
-.header__dev--open {
-
-    .dev__fe,
-    .dev__ux {
-
-        i {
-
-            text-indent: $clip;
-
-        }
-
-    }
-
-    .dev__developer {
-
-        transform: translateX( $clip*2 );
-        opacity: 0.2;
-
-    }
-
-    .dev__slash {
-
-        transform: scale(1.6) rotateZ( -$angle );
-
-    }
-
-}
-
-.header__dev--slow {
-
-    .dev__fe,
-    .dev__ux,
-    .dev__fe i,
-    .dev__ux i,
-    .dev__developer,
-    .dev__slash {
-
-        transition: all 1.2s cubic-bezier(0.555, -0.375, 0.000, 1.615);
-
-    }
+    
 
 }
