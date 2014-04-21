@@ -17,14 +17,19 @@ $color: #302030;
     background: 
         linear-gradient( 
             to top , 
-            rgba(255,255,255,0.7), 
-            rgba(255,255,255,0.5) 
+            rgba(255,255,255,0.8), 
+            rgba(255,255,255,0.6) 
         );
 
     box-shadow: 
         inset 0 -1px 1px rgba(255,255,255,1), 
         inset 0 -3px 3px rgba(255,255,255,0.7), 
         0 0 20px rgba(0,0,0,0.2);
+
+
+
+
+
 
     &__list {
 
@@ -42,11 +47,16 @@ $color: #302030;
 
     }
 
-    &__link {
+    &__link,
+    &__link:visited,
+    &__link:hover {
 
         color: $color;
         display: inline-block;
         padding: 0.5em 1em 0.5em;
+
+        text-decoration: none;
+        text-shadow: none;
 
         border: 1px solid transparent;
         border-radius: 3px;
@@ -79,7 +89,7 @@ $color: #302030;
     &__item.active .nav__link .nav__underscore,
     &__item .nav__link:hover .nav__underscore { 
 
-        color: $skyBlue; 
+        color: $preBlue; 
 
     }
     
