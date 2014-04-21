@@ -29,7 +29,7 @@
     min-width: 200px;
     max-width: 1000px;
     position: relative;
-    padding: 0 10px;
+    padding: 0;
     overflow: hidden;
 
     background-color: #303030;
@@ -44,6 +44,71 @@
     border-radius: 4px;
     box-shadow: 0 10px 50px rgba(0,0,0,0.6);
     text-shadow: none;
+
+    &--fullscreen {
+
+        position: fixed;
+
+        left: 2em;
+        right: 2em;
+        top: 2em;
+        bottom: 2em;
+        margin: 0;
+
+        width: auto;
+        height: auto;
+
+        max-width: none;
+        min-width: none;
+        max-height: none;
+        min-height: none;
+
+        z-index: 50;
+        transition: all 0.6s ease;
+
+        .sublime-project {
+
+            position: absolute;
+            width: auto;
+            height: auto;
+            left: 0;
+            right: 0;
+            top: 60px;
+            bottom: 25px;
+
+            overflow: auto;
+
+        }
+
+    }
+
+    &__button {
+
+        text-indent: -9999em;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        position: absolute;
+        width: 24px;
+        height: 22px;
+        border-radius: 10px;
+        top: 0;
+        left: 2px;
+
+        &--full {
+
+            left: auto;
+            right: 0;
+        }
+
+        &--maxi {
+
+            left: 42px;
+
+        }
+
+    }
 
     &__title,
     &__footer {
@@ -80,8 +145,11 @@
 
 .sublime-tabs {
 
-    padding-left: 4px;
-    margin: 6px 0 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background: url(../images/sublime/sublime-tabs-bg.png);    
+    overflow: hidden;
 
     &__tab {
 
@@ -89,8 +157,7 @@
         display: inline-block;
         height: 29px;
         line-height: 23px;
-        margin-left: 20px;
-        margin-right: 0px;
+        margin: 6px 0 0 20px;
 
         z-index: 1;
 
@@ -136,7 +203,7 @@
             }            
 
             &:after {
-                
+
                 background: url(../images/sublime/sublime-tab-r.png);
 
             }
@@ -146,31 +213,106 @@
     }
 
 
-    &__link {
+    &__link,
+    &__link:visited {
 
         font-size: 12px;
         color: #ddd;
 
         display: inline-block;
+        position: relative;
         line-height: 20px;
+
+        &:hover {
+
+            color: white;
+
+        }
 
     }
 
 }
 
+.sublime-tabs__tab {
+
+    &--soon {
+
+        opacity: 0.8;
+
+        .sublime-tabs__link {
+
+            padding-right: 1.2em;
+            color: #999;
+
+            &:after {
+
+                content: "\25cf";
+
+                height: 1em;
+                line-height: 1em;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                margin-top: -0.5em;
+
+            }
+
+        }
+
+        @media screen and ( max-width: 500px ) {
+
+            display: none;
+
+        }
+
+    }
+
+}
+
+
+
 .sublime-project {
 
     font-family: $code;
-    padding: 10px 20px;
+    padding: 15px 10px 25px;
 
     display: none;
 
     &__title {
 
-        font-size: 1.8em;
-        font-weight: 100;
-        margin: 0.1em 0 0.5em 0.1em;
-        color: #87CEEB;
+        font-size: 1.3em;
+        font-weight: 900;
+        margin: 0 0 0 40px;
+        color: #eee;
+
+    }
+
+    &__break {
+
+        background: transparent;
+        border: none;
+
+        //position: absolute;
+        left: 2em;
+        right: 2em;
+        margin-top: -1em;
+        height: 5px;
+
+        background-image: url(../images/sublime/divider.png);
+        background-repeat: repeat-x;
+
+    }
+
+    &__code {
+
+        background: transparent!important;
+        padding: 0.5em 0 2em 0em;
+
+        &--indent {
+
+            padding: 0.5em 0 2em 1.8em;
+
+        }
 
     }
 

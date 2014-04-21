@@ -4,7 +4,12 @@
 $bodyColor: #23222e;
 
 $red: #A82336;
-$skyBlue: #2aa1ec;
+
+$preBlue: #2aa1ec;
+$preYellow: #f0e68c;
+$prePink: #ffa0a0;
+$preGreen: #98fb98;
+$preWhite: #eee;
 
 
 
@@ -28,5 +33,6 @@ $code: "Source Code Pro", "Consolas", monospace;
 
 @import "me";
 @import "github";
+@import "flickr";
 
 @import "animations";

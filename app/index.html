@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Simey.me | Simon Goellner | FE / UX Developer</title>
+        <title>simey.me | Simon Goellner | FE / UX Developer</title>
         <meta name="description" content="Personal website for Simon Goellner, Creative Frontend / UX Developer, showing off some work in html, css, javascript and jQuery.">
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="favicon.ico">
@@ -45,7 +45,7 @@
                     <li class="nav__item"><a class="nav__link" href="#_me"><em class="nav__underscore">_</em>me</a></li>
                     <li class="nav__item"><a class="nav__link" href="#_github"><em class="nav__underscore">_</em>git</a></li>
                     <li class="nav__item"><a class="nav__link" href="#"><em class="nav__underscore">_</em>pen</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#"><em class="nav__underscore">_</em>jpg</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#_flickr"><em class="nav__underscore">_</em>jpg</a></li>
                 </ul>
             </nav>
 
@@ -85,7 +85,10 @@
 
             <div class="sublime">
 
-                <header class="sublime__title">Sublime Text</header>
+                <header class="sublime__title">Sublimey Text</header>
+                <button class="sublime__button sublime__button--full js-sublime-maximise" tabindex="-1">go fullscreen</button>
+                <button class="sublime__button sublime__button--maxi js-sublime-toggle" tabindex="-1">maximise</button>
+                <button class="sublime__button sublime__button--exit js-sublime-minimise" tabindex="-1">exit</button>
 
                 <ul class="sublime-tabs">
                     <li class="sublime-tabs__tab">
@@ -93,6 +96,9 @@
                     </li>
                     <li class="sublime-tabs__tab">
                         <a href="#_github/unorphanize" class="sublime-tabs__link" data-type="js" data-project="unorphanize">unorphanize</a>
+                    </li>
+                    <li class="sublime-tabs__tab sublime-tabs__tab--soon">
+                        <a href="#_github/datepicker" class="sublime-tabs__link" data-type="js, css" data-project="datepicker">datepicker</a>
                     </li>
                     <li class="sublime-tabs__tab">
                         <a href="#_github/sparkles" class="sublime-tabs__link" data-type="js, canvas" data-project="sparkles">canvas sparkles</a>
@@ -103,21 +109,31 @@
 
                 <div class="sublime-project" data-project-name="pips">
                     
-                    <h4 class="sublime-project__title">UI Slider Pips</h4>
+                    <h4 class="sublime-project__title">ui Slider Pips</h4>
 
-                    <pre class="sublime-project__code prettyprint lang-js">
+                    <pre class="sublime-project__code prettyprint lang-js linenums">
 /*
- * a small plugin to extend the <a href="#">jQuery UI Slider</a> widget, it
- * adds little "pips" or "markers" on the slider, and 
- * also it can add "floating" labels.
+* a small plugin to extend the <a class="pink" href="https://github.com/simeydotme/jQuery-ui-Slider-Pips">jQuery UI Slider</a> widget, it
+* adds little "pips" or "markers" on the slider, and 
+* also it can add "floating" labels.
+<a href="https://github.com/simeydotme/jQuery-ui-Slider-Pips"><img src="https://camo.githubusercontent.com/fbdfd85346aff672d9c0b58e57218bd6fa86a49d/687474703a2f2f66696c65732e73696d65792e6d652f706970732e6a7067" alt="image of the slider pips plugin"></a>
+* plugin is purely visual, but many cool things can be achieved
+* with it, check out the <a class="pink" href="http://simeydotme.github.io/jQuery-ui-Slider-Pips/">demos and docs</a>.
+*/</pre>
 
- * plugin is purely visual, but many cool things can be achieved
- * with it, check out the <a href="#">demos and docs</a>.
+<hr class="sublime-project__break">
 
- * download it from github
- * clone the repository
- * install via bower
-                    </pre>
+<h4 class="sublime-project__title">How to get it</h4>
+<pre class="sublime-project__code sublime-project__code--indent prettyprint lang-js">
+// download it from github 
+   <a class="pink" href="https://github.com/simeydotme/jQuery-ui-Slider-Pips/tree/master/dist" class="typ">https://github.com/simeydotme/jQuery-ui-Slider-Pips/tree/master/dist</a>
+
+// clone the repository
+   $ <span class="green copy-to-clipboard">git clone https://github.com/simeydotme/jQuery-ui-Slider-Pips.git</span>
+
+// install via bower
+   $ <span class="green copy-to-clipboard">bower install jquery-ui-slider-pips</span>
+</pre>
 
                 </div>
 
@@ -127,9 +143,45 @@
 
                     <h4 class="sublime-project__title">Unorphanize</h4>
 
-                    <pre id="sublime-pips" class="sublime-project__code prettyprint lang-js linenums">
+                    <pre class="sublime-project__code prettyprint lang-js linenums">
+/*
+* unorphanize allows us to remove widows/orphans <em>(i like to say "kill")</em>
+* from any DOM elements by running this simple jquery method.
+*
+* it might not be as fast as other methods, but that's because
+* it is way more robust, no worrying about edge-case problems! :)
+* <a class="pink" href="https://github.com/simeydotme/jquery-unorphanize">documentation on github</a>.
+*
+* (I'm using on on headings for this website!)
+*/</pre>
 
-                    </pre>
+<hr class="sublime-project__break">
+
+<h4 class="sublime-project__title">How to get it</h4>
+<pre class="sublime-project__code sublime-project__code--indent prettyprint lang-js">
+
+// download it from github 
+   <a class="pink" href="https://github.com/simeydotme/jquery-unorphanize" class="typ">https://github.com/simeydotme/jquery-unorphanize</a>
+
+// clone the repository
+   $ <span class="green copy-to-clipboard">git clone https://github.com/simeydotme/jquery-unorphanize.git</span>
+
+// install via bower
+   $ <span class="green copy-to-clipboard">bower install jquery-unorphanize</span>
+</pre>
+
+                </div>
+
+
+
+                <div class="sublime-project" data-project-name="datepicker">
+
+                    <h4 class="sublime-project__title">gDatepicker</h4>
+
+                    <pre id="sublime-pips" class="sublime-project__code prettyprint lang-js linenums">
+/*
+* Coming Soon
+*/</pre>
 
                 </div>
 
@@ -137,16 +189,36 @@
 
                 <div class="sublime-project" data-project-name="sparkles">
 
-                    <h4 class="sublime-project__title">Canvas Sparkles</h4>
+                    <h4 class="sublime-project__title">Sparkles</h4>
 
-                    <pre id="sublime-pips" class="sublime-project__code prettyprint lang-js linenums">
+                    <pre class="sublime-project__code prettyprint lang-js linenums">
+/*
+* For a fun experiement I created the "canvas sparkles" plugin
+* at CodePen.io. This plugin allows us to overlay a canvas on
+* to any element in the page, giving it a sparkley effect on hover.
+<a href="https://github.com/simeydotme/jQuery-canvas-sparkles"><img src="http://files.simey.me/sparkles.JPG" alt="image of the canvas sparkles plugin"></a>
+* The plugin has many options to change how the sparkles appear
+* including a "rainbow" option!
+*
+* Warning; old computers and &lt; IE9 cannot handle the sparkles!
+*/</pre>
 
-                    </pre>
+<hr class="sublime-project__break">
+
+<h4 class="sublime-project__title">How to get it</h4>
+<pre class="sublime-project__code sublime-project__code--indent prettyprint lang-js">
+
+// download it from github 
+   <a class="pink" href="https://github.com/simeydotme/jQuery-canvas-sparkles" class="typ">https://github.com/simeydotme/jQuery-canvas-sparkles</a>
+
+// clone the repository
+   $ <span class="green copy-to-clipboard">git clone https://github.com/simeydotme/jQuery-canvas-sparkles.git</span>
+
+// install via bower
+   coming soon
+</pre>
 
                 </div>
-
-
-
 
                 <footer class="sublime__footer">HTML</footer>
 
@@ -157,6 +229,32 @@
 
 
         </section>
+
+
+
+
+
+        <section id="_flickr" class="js-nav-waypoint js-flickr-waypoint">
+
+            <h2 class="section-header">Flickr</h2>
+            <h3 class="section-header-sub kill-orphans">A collection of Photos I've taken</h3>
+
+            <div class="photo-box">
+
+            <script id="flickrTemplate" type="text/template">
+                <div class="photo-box__frame">
+                    <a class="photo-box__link" href="{{url}}">
+                        <img class="photo-box__photo" src="{{src}}" alt="{{alt}}" title="{{title}}">
+                    </a>
+                </div>
+            </script>
+
+            </div>
+
+            <p><a href="#">See more photos I've taken at Flickr</a>; I only store my best there.</p>
+
+        </section>
+
 
 
 
@@ -190,6 +288,10 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/jquery.plugins.js"></script>
+        <script src="scripts/app.helpers.js"></script>
+        <script src="scripts/app.waypoints.js"></script>
+        <script src="scripts/app.github.js"></script>
+        <script src="scripts/app.flickr.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
     </body>

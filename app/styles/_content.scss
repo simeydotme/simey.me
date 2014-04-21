@@ -43,12 +43,38 @@ body {
 
 }
 
+
+
+
 a {
 
+    color: #165894;
     text-decoration: none;
-    color: #0084ff;
+
+    &:visited {
+
+        color: #2A1694;
+
+    }
 
 }
+
+p a {
+
+    text-decoration: underline;
+
+    &:hover {
+
+        color: white;
+        text-shadow: 0 1px 1px #165894;
+        text-decoration: none;
+
+    }
+
+}
+
+
+
 
 section {
 
@@ -67,17 +93,5 @@ section {
         padding: 50px 20px;
 
     }
-
-}
-
-pre, code {
-
-    font-family: "Source Code Pro", "Consolas", "Courier New", monospace;
-
-}
-
-pre { 
-
-    font-size: 12px; 
 
 }

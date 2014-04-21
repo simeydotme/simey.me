@@ -1,6 +1,12 @@
+pre, code {
 
-pre.prettyprint {
+    font-family: "Source Code Pro", "Consolas", "Courier New", monospace;
 
+}
+
+pre { 
+
+    font-size: 12px;
     background: #303030;
 
 }
@@ -18,4 +24,21 @@ li.L8 {
 
 }
 
-pre a * { color: #ffa0a0!important; }
+pre .yellow * { color: $preYellow!important; }
+pre .white * { color: $preWhite!important; }
+pre .green * { color: $preGreen!important; }
+pre .blue * { color: $preBlue!important; }
+pre .pink * { color: $prePink!important; }
+
+pre img {
+
+    vertical-align: top;
+    margin: 1.5em 0;
+    border-radius: 3px;
+
+}
+
+pre .copy-to-clipboard {
+
+
+}
