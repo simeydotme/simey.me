@@ -92,6 +92,8 @@ app.flickr = {
             var $html = app.flickr.generateTemplate( data.photo );
             $html.appendTo( app.flickr.$photobox );
 
+            app.flickr.showPhoto( $html );
+
         });
 
     },
@@ -101,6 +103,16 @@ app.flickr = {
         for( var i = 0; i < this.imageCount; i++ ) {
             this.renderPhoto( this.getPhoto( i ));
         }
+
+    },
+
+    showPhoto: function( $photo ) {
+
+        setTimeout( function() {
+
+            $photo.addClass("show");
+
+        },200);
 
     }
 

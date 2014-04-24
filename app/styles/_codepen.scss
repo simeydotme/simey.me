@@ -1,0 +1,164 @@
+
+
+#codepen {
+
+    background: #222;
+    color: #eee;
+
+    .section-header {
+
+        font-family: $sans;
+        font-weight: 700;
+        letter-spacing: -2px;
+
+    }
+
+    .section-header-sub {
+
+        font-size: 1.8em;
+
+    }
+
+}
+
+
+
+
+.codepen-list {
+
+    width: 100%;
+    display: table;
+    padding: 0;
+    margin: 0;
+
+    a {
+
+        text-shadow: none;
+        color: $preBlue;
+
+        &:visited {
+
+            color: #A361E0;
+
+        }
+
+    }
+
+    &__item {
+
+        display: table-row;
+        border-radius: 4px;
+
+        &:nth-of-type(even) {
+
+            background: #303030;
+
+        }
+
+    }
+
+    &__title,
+    &__statistic,
+    &__date {
+
+        display: table-cell;
+        padding: 0.4em 1em 0.5em;
+        font-size: 0.9em;
+        font-weight: 300;
+
+        transition: all 0.4s ease;
+
+    }
+
+    &__title {
+
+    }
+
+    &__statistic {
+
+        min-width: 4.2em;
+
+    }
+
+    &__icon {
+
+        position: relative;
+        top: 2px;
+
+        font-family: "Simeycons";
+        font-style: normal;
+        font-size: 1.3em;
+        text-transform: uppercase;
+
+        &--heart {
+            color: $prePink;
+        }
+
+        &--eye {
+            color: $preBlue;
+        }
+
+        &--bubble {
+            color: $preGreen;
+        }
+
+    }
+
+
+
+    @media screen and (max-width: 1050px) {
+
+        &__title,
+        &__statistic,
+        &__date {
+
+            font-size: 0.8em;
+            padding: 0.4em 0.8em 0.5em;
+
+        }
+
+    }
+
+    @media screen and (max-width: 800px) {
+        
+        &__item {
+
+            display: block;
+            padding: 0.5em 1em;
+
+        }        
+
+        &__title,
+        &__statistic,
+        &__date {
+
+            padding: 0;
+
+        }
+
+        &__statistic {
+
+            min-width: 25%;
+            display: inline-block;
+
+        }
+
+        &__date,
+        &__title {
+
+            display: block;
+            margin: 0.3em 0 0.2em;
+
+        }
+
+        &__title {
+
+            font-size: 1em;
+
+        }
+
+
+    }
+
+
+}

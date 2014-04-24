@@ -39,6 +39,7 @@ app.setup = {
 
     unorphanize: function() {
         $(".kill-orphans").unorphanize();
+        $(".blog-link").unorphanize(4);
     },
 
     clipboard: function() {
@@ -69,14 +70,13 @@ app.window = function() {
             var h = $(window).height();
 
             $(".header").height( h );
-            $("section").css("min-height", h * 0.75 );
             $("body").css("padding-bottom", h * 0.5 );
 
         },
 
         "hashchange": function() {
 
-            if( new RegExp("#_github\/").test( window.location.hash ) ) {
+            if( new RegExp("#github\/").test( window.location.hash ) ) {
 
                 $(window).trigger("sublimetab", window.location.hash );
 
@@ -90,8 +90,8 @@ app.window = function() {
         .trigger("resize.sections")
         .trigger("hashchange");
 
-    if( new RegExp("#_github\/").test( window.location.hash ) ) {
-        $(window).scrollTop( $("#_github").offset().top + 20 );
+    if( new RegExp("#github\/").test( window.location.hash ) ) {
+        $(window).scrollTop( $("#github").offset().top + 20 );
     }
 
 };

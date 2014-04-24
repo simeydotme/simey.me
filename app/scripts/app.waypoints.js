@@ -38,11 +38,26 @@ app.waypoints = function() {
 
     $(".js-flickr-waypoint").waypoint({
 
-        offset: 100,
+        offset: 400,
         triggerOnce: true,
         handler: function() {
             
             app.flickr.init();
+            console.log("flickr waypoint");
+
+        }
+
+    });
+
+
+    $(".js-codepen-waypoint").waypoint({
+
+        offset: 600,
+        triggerOnce: true,
+        handler: function() {
+            
+            app.codepen.init();
+            console.log("codepen waypoint");
 
         }
 
