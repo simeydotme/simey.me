@@ -9,25 +9,25 @@ app.helpers = {
 
 
 
-    getTransitionSpeed: function( $el , returnArray ) {
+    getTransitionSpeed: function($el, returnArray) {
 
         var speed = $el.css("transition-duration").split(","),
             speedLength = speed.length;
 
-        for( var i = 0; i < speedLength; i++) {
+        for (var i = 0; i < speedLength; i++) {
 
             var multiplier = 1000;
 
             speed[i] =
                 speed[i]
-                    .replace(" ","")
-                    .replace("s","");
+                .replace(" ", "")
+                .replace("s", "");
 
-            speed[i] = parseFloat( speed[i] ) * multiplier;
+            speed[i] = parseFloat(speed[i]) * multiplier;
 
         }
 
-        if( returnArray ) {
+        if (returnArray) {
             return speed;
         } else {
             return Math.max.apply(Math, speed);
@@ -37,38 +37,53 @@ app.helpers = {
 
 
 
+    checkCacheTTL: function( cacheKey , TTL ) {
 
-    smoothScroll: function( event, hash , noHashUpdate ) {
+        var currentDate = new Date().getTime(),
+            cacheDate,
+            dateDifference,
+            createTTL = false;
 
-        event.preventDefault();
+        if ( localStorage.getItem(cacheKey) !== null ) {
 
-        var to = 0,
-            $doc = $(document),
-            $window = $(window),
-            $nav = $("nav"),
-            $el = $(hash);
+            cacheDate = new Date( localStorage.getItem(cacheKey) ).getTime();
+            dateDifference = ( currentDate - cacheDate ) /1000/60/60;
 
-        if( $el.exists() ) {
+            if ( dateDifference > TTL ) {
 
-            if ($el.offset().top > ($doc.height() - $window.height())) {
-                to = $doc.height() - $window.height();
-            } else {
-                to = $el.offset().top - $nav.outerHeight();
+                app.helpers.removeLocaleStorage( cacheKey );
+                createTTL = true;
+
             }
 
-            if( to <= $window.scrollTop() ) {
-                to -= 10;
-            } else {
-                to += 10;
-            }
+        } else {
+
+            createTTL = true;
 
         }
-        
-        $("html,body")
-            .stop()
-            .animate({ scrollTop: to }, 300, function() {
-                if(!noHashUpdate) {
-                    window.location.hash = hash;
+
+        if( createTTL ) {
+
+            this.setCacheTTL( cacheKey );
+
+        }
+
+    },
+
+    setCacheTTL: function( cacheKey ) {
+
+        localStorage.setItem( cacheKey , new Date() );
+
+    },
+
+    removeLocaleStorage: function(startsWith) {
+
+        var myLength = startsWith.length;
+
+        Object.keys(localStorage)
+            .forEach(function(key) {
+                if (key.substring(0, myLength) === startsWith) {
+                    localStorage.removeItem(key);
                 }
             });
 

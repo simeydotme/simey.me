@@ -34,11 +34,11 @@
     a {
 
         text-shadow: none;
-        color: $preBlue;
+        color: #77BEEB;
 
         &:visited {
 
-            color: #A361E0;
+            color: #CCA2F3;
 
         }
 
@@ -49,9 +49,18 @@
         display: table-row;
         border-radius: 4px;
 
+        transition: all 0.4s ease-out; 
+
         &:nth-of-type(even) {
 
             background: #303030;
+
+        }
+
+        &.hidden {
+
+            transform: translateY(2em);
+            opacity: 0;
 
         }
 
@@ -71,6 +80,8 @@
     }
 
     &__title {
+
+        position: relative;
 
     }
 

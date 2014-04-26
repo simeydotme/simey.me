@@ -11,11 +11,20 @@ app.waypoints = function() {
 
     $(".js-nav-waypoint").waypoint({
 
-        offset: function() {
-            return $(".nav__list").outerHeight();
-        },
-        handler: function() {
-            $(".nav__link").filter("[href=#" +this.id+ "]").trigger("activate");
+        offset: "50",
+        handler: function(dir) {
+            if ( dir === "down" ) {
+                $(".nav__link").filter("[href=#" +this.id+ "]").trigger("activate");
+            }
+        }
+        
+    }).waypoint({
+
+        offset: "-50",
+        handler: function(dir) {
+            if ( dir === "up" ) {
+                $(".nav__link").filter("[href=#" +this.id+ "]").trigger("activate");
+            }
         }
         
     });
@@ -43,7 +52,6 @@ app.waypoints = function() {
         handler: function() {
             
             app.flickr.init();
-            console.log("flickr waypoint");
 
         }
 
@@ -57,7 +65,6 @@ app.waypoints = function() {
         handler: function() {
             
             app.codepen.init();
-            console.log("codepen waypoint");
 
         }
 

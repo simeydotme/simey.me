@@ -10,8 +10,22 @@ app.codepen = {
 
     pens: [
 
-        "qiInH", // sublime text editor
-        "Dtxdu" // google maps static
+        "http://codepen.io/simeydotme/pen/xpuLs", // Zelda Loading Hearts
+        "http://codepen.io/simeydotme/pen/Dtxdu", // Fagoogly Woogley Maps
+        "http://codepen.io/simeydotme/pen/vKtbC", // Pretty Accessible Radios
+        "http://codepen.io/simeydotme/pen/JmKDi", // CSS Sexy Tabs
+        "http://codepen.io/simeydotme/pen/lthIG", // Checkbox form replacement
+        "http://codepen.io/simeydotme/pen/Gzfuh", // Futuristic Neon Saving
+        "http://codepen.io/simeydotme/pen/gkpjn", // Neon Glowy Loaders
+        "http://codepen.io/simeydotme/pen/wBlvk", // HTML5 Video Player
+        "http://codepen.io/simeydotme/pen/uijad", // Pokeball Loaders
+        "http://codepen.io/simeydotme/pen/elHok", // Sonic + Tails
+        "http://codepen.io/simeydotme/pen/mqjyh", // Reposnive Tabs
+        "http://codepen.io/simeydotme/pen/CFcke", // Chinese Character Strokes
+        "http://codepen.io/simeydotme/pen/JnFGr", // Responsive Side Menu
+        "http://codepen.io/simeydotme/pen/uoBqE", // Particools Canvas
+        "http://codepen.io/simeydotme/pen/hoixz", // CSS Cubes (less mixin)
+        "http://codepen.io/simeydotme/pen/teqLr", // 3d HTC phone animation
 
     ],
 
@@ -23,14 +37,19 @@ app.codepen = {
         this.template = $("#codepenTemplate").text();
         this.$codepenList = $(".codepen-list");
 
+        app.helpers.checkCacheTTL( "codepen" , 48 );
         this.getPens(1);
 
     },
 
     getPens: function( penPage ) {
 
-        var request = $.ajax({ dataType: "jsonp", jsonp: "jsonp",
+        var request = $.memoizedAjax({
 
+            dataType: "jsonp",
+            jsonp: "jsonp",
+            localStorage: true,
+            cacheKey: "codepen",
             url: "http://codepen-awesomepi.timpietrusky.com/"+this.username+"/public/"+penPage
 
         });
@@ -66,16 +85,31 @@ app.codepen = {
 
         var i = 0,
             len = 0,
-            pen;
+            pen,
+            hash;
 
-        for (i = 0, len = this.penCache.length; i < len; i++) {
+        // look throught our cached pens and create
+        // a "lookup" for each one, basically creating an
+        // object of each pen, with the "hash" as the objects
+        // property, and the pen array as the value
+        
+        for( i = 0, len = this.penCache.length; i < len; i++ ) {
+
             this.penLookup[this.penCache[i].hash] = this.penCache[i];
+
         }
 
-        for (i = 0, len = this.pens.length; i < len; i++ ) {
+        // and then look through the lookup for objects that match
+        // our array of hashs. 
 
-            pen = this.penLookup[ this.pens[ i ] ];
-            this.renderPen( pen );
+        for( i = 0, len = this.pens.length; i < len; i++ ) {
+
+            hash = this.pens[i].slice( this.pens[i].lastIndexOf("/")+1 , this.pens[i].length );
+            pen = this.penLookup[ hash ];
+
+            if( typeof(pen) !== "undefined" ) {
+                this.renderPen( pen , i );
+            }
 
         }
 
@@ -86,7 +120,8 @@ app.codepen = {
         var html =
             this.template
                 .replace("{{title}}", pen.title )
-                .replace("{{url}}", pen.url.details )
+                .replace("{{url.details}}", pen.url.details )
+                .replace("{{url.pen}}", pen.url.pen )
                 .replace("{{hearts}}", pen.hearts )
                 .replace("{{views}}", pen.views )
                 .replace("{{comments}}", pen.comments );
@@ -95,13 +130,21 @@ app.codepen = {
 
     },
 
-    renderPen: function( pen ) {
+    renderPen: function( pen , listNumber ) {
 
-        var $pen = this.generateTemplate(pen);
-        $pen.appendTo( this.$codepenList );
+        var $pen,
+            timer,
+            gap = 100;
+
+        $pen = this.generateTemplate(pen).appendTo( this.$codepenList );
+
+        timer = setTimeout(function() {
+
+            $pen.removeClass("hidden");
+
+        }, gap*listNumber );
 
     }
-
 
 
 

@@ -244,12 +244,11 @@
             <ul class="codepen-list">
 
                 <script id="codepenTemplate" type="text/template">
-                    <li class="codepen-list__item">
+                    <li class="codepen-list__item hidden">
+                        <h4 class="codepen-list__title"><a href="{{url.details}}">{{title}}</a></h4>
                         <span class="codepen-list__statistic"><i class="codepen-list__icon codepen-list__icon--heart">a</i> {{hearts}}</span>
                         <span class="codepen-list__statistic"><i class="codepen-list__icon codepen-list__icon--eye">c</i> {{views}}</span>
                         <span class="codepen-list__statistic"><i class="codepen-list__icon codepen-list__icon--bubble">b</i> {{comments}}</span>
-                        <h4 class="codepen-list__title"><a href="{{url}}">{{title}}</a></h4>
-                        <span class="codepen-list__date">{{date}}</h4>
                     </li>
                 </script>
 
@@ -297,6 +296,7 @@
         <script src="../bower_components/google-code-prettify/src/prettify.js"></script>
         <script src="../bower_components/jquery-unorphanize/unorphanize.jquery.js"></script>
         <script src="../bower_components/jquery-waypoints/waypoints.js"></script>
+        <script src="../bower_components/jquery-memoized-ajax/jquery.memoized.ajax.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

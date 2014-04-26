@@ -7,7 +7,8 @@
     "google-code-prettify": "~1.0.1",
     "normalize.css": "~3.0.1",
     "jquery-unorphanize": "~1.0.0",
-    "jquery-waypoints": "~2.0.4"
+    "jquery-waypoints": "~2.0.4",
+    "jquery-memoized-ajax": "git://github.com/simeydotme/jquery-memoized-ajax#~0.3.0"
   },
   "devDependencies": {}
 }

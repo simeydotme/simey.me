@@ -29,6 +29,8 @@ app.flickr = {
                     "?&method=flickr.photosets.getPhotos&api_key="+this.apiKey+"&photoset_id="+this.photoset;
 
 
+        app.helpers.checkCacheTTL( "flickrCollection" , 48 );
+        app.helpers.checkCacheTTL( "flickrPhoto" , 200 );
         this.getCollection( this.collectionURL );
         
 
@@ -36,14 +38,23 @@ app.flickr = {
 
     getCollection: function( collectionURL ) {
 
-        $.getJSON( collectionURL )
+        var request = $.memoizedAjax({
 
-            .done( function(data) {
+            dataType: "jsonp",
+            jsonp: "jsonp",
+            localStorage: true,
+            cacheKey: "flickrCollection",
 
-                app.flickr.imageCollection = data.photoset.photo.reverse();
-                app.flickr.initPhotos();
+            url: collectionURL
 
-            });
+        });
+
+        request.done( function(data) {
+
+            app.flickr.imageCollection = data.photoset.photo.reverse();
+            app.flickr.initPhotos();
+
+        });
 
 
     },
@@ -81,18 +92,27 @@ app.flickr = {
                 "?format=json&jsoncallback="+
                     "?&method=flickr.photos.getInfo&api_key="+this.apiKey+"&photo_id="+photoID;
 
-        return $.getJSON( photoURL );
+        return $.memoizedAjax({
+
+            dataType: "jsonp",
+            jsonp: "jsonp",
+            localStorage: true,
+            cacheKey: "flickrPhoto",
+
+            url: photoURL
+
+        });
 
     },
 
-    renderPhoto: function( photo ) {
+    renderPhoto: function( photo , count ) {
 
         photo.done( function( data ) {
 
             var $html = app.flickr.generateTemplate( data.photo );
             $html.appendTo( app.flickr.$photobox );
 
-            app.flickr.showPhoto( $html );
+            app.flickr.showPhoto( $html , count );
 
         });
 
@@ -101,18 +121,25 @@ app.flickr = {
     initPhotos: function() {
 
         for( var i = 0; i < this.imageCount; i++ ) {
-            this.renderPhoto( this.getPhoto( i ));
+            this.renderPhoto( this.getPhoto( i ) , i );
         }
 
     },
 
-    showPhoto: function( $photo ) {
+    showPhoto: function( $photo , count ) {
 
-        setTimeout( function() {
+        var gap = 300;
+        var fastGap = 50;
 
-            $photo.addClass("show");
-
-        },200);
+        if( count < 3 ) {
+            setTimeout( function() {
+                $photo.addClass("show");
+            }, count * gap );
+        } else {
+            setTimeout( function() {
+                $photo.addClass("show");
+            }, 3 * gap + fastGap * count );
+        }
 
     }
 
