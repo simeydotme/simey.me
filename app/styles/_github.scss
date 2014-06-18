@@ -292,7 +292,6 @@
         background: transparent;
         border: none;
 
-        //position: absolute;
         left: 2em;
         right: 2em;
         margin-top: -1em;
@@ -321,5 +320,52 @@
         display: block;
 
     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and ( max-width: 520px ) {
+
+
+    .sublime-project__code {
+
+        white-space: pre-wrap;
+
+        &--indent {
+
+            padding: 0.5em 0 2em 0;
+
+        }
+
+        img { max-width: 100%; }
+
+        ol.linenums {
+
+            list-style: none;
+            padding: 0;
+
+            li {
+
+                margin-bottom: 0.5em;
+
+            }
+
+        }
+
+    }
+
+
+
+
 
 }

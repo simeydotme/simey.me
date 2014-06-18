@@ -7,6 +7,7 @@ var app = app || {};
 app.codepen = {
 
     username: "simeydotme",
+    mobileLimit: 8,
 
     pens: [
 
@@ -31,14 +32,25 @@ app.codepen = {
 
     init: function() {
 
+        app.helpers.checkCacheTTL( "codepen" , 48 );
+
         this.penCache = [];
         this.penLookup = {};
 
         this.template = $("#codepenTemplate").text();
         this.$codepenList = $(".codepen-list");
 
-        app.helpers.checkCacheTTL( "codepen" , 48 );
+        this.squishList( this.mobileLimit );
+
         this.getPens(1);
+
+    },
+
+    squishList: function( length ) {
+
+        if( $(window).width() < 800 ) {
+            this.pens = this.pens.slice( 0 , length );
+        }
 
     },
 
@@ -88,7 +100,7 @@ app.codepen = {
             pen,
             hash;
 
-        // look throught our cached pens and create
+        // look through our cached pens and create
         // a "lookup" for each one, basically creating an
         // object of each pen, with the "hash" as the objects
         // property, and the pen array as the value

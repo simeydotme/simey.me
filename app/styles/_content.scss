@@ -137,6 +137,44 @@ acronym[data-title] {
 }
 
 
+.btn,
+.btn:visited {
+
+    color: $bodyColor;
+
+    display: inline-block;
+    padding: 0.3em 1.2em 0.4em;
+    background: transparent;
+
+    border: 1px solid $bodyColor;
+    border-radius: 4px;
+
+    text-shadow: none;
+    transition: all 0.2s ease;
+
+    &[rel=external] {
+
+        &:after {
+
+            content: "\2192";
+            position: relative;
+            top: -0.05em;
+            margin-left: 1em;
+
+        }
+
+    }
+
+    &:hover {
+
+        color: #eee;
+        background: $bodyColor;
+
+
+    }
+
+}
+
 
 
 section {

@@ -1,10 +1,5 @@
 // header
 
-    $headerHeight: 90px;
-    $angle: 22deg;
-    $gap: 10px;
-    $clip: 15px;
-
 
 .header {
 
@@ -23,6 +18,14 @@
         font-family: $serif;
         text-transform: uppercase;
         font-weight: 900;
+        transition: all 0.5s ease;
+
+        @media screen and (max-width: 480px) {
+
+            opacity: 0.1;
+
+        }
+
 
     }
 
