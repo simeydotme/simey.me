@@ -17,14 +17,14 @@ app.flickr = {
         this.imageCollection = [];
 
         // please don't use my API key in your projects, it'll slow down
-        // your website as well as mine. Please get your own from 
+        // your website as well as mine. Please get your own from
         // https://www.flickr.com/services/apps/create/
         // it's totally free :)
 
         this.apiKey = "dd8e97ef9c1283583dcaf92b9ba80170";
         this.photoset = "72157634483069405";
         this.collectionURL =
-            "http://api.flickr.com/services/rest/"+
+            "https://api.flickr.com/services/rest/"+
                 "?format=json&jsoncallback="+
                     "?&method=flickr.photosets.getPhotos&api_key="+this.apiKey+"&photoset_id="+this.photoset;
 
@@ -32,7 +32,7 @@ app.flickr = {
         app.helpers.checkCacheTTL( "flickrCollection" , 48 );
         app.helpers.checkCacheTTL( "flickrPhoto" , 200 );
         this.getCollection( this.collectionURL );
-        
+
 
     },
 
@@ -62,7 +62,7 @@ app.flickr = {
     generateTemplate: function( photo ) {
 
         var src = "http://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_z.jpg";
-        
+
         var html =
             this.template
                 .replace("{{title}}", photo.title._content )
@@ -88,7 +88,7 @@ app.flickr = {
         var photoID = app.flickr.imageCollection[number].id;
 
         var photoURL =
-            "http://api.flickr.com/services/rest/"+
+            "https://api.flickr.com/services/rest/"+
                 "?format=json&jsoncallback="+
                     "?&method=flickr.photos.getInfo&api_key="+this.apiKey+"&photo_id="+photoID;
 
