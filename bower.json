@@ -10,5 +10,8 @@
     "jquery-waypoints": "~2.0.4",
     "jquery-memoized-ajax": "git://github.com/simeydotme/jquery-memoized-ajax#~0.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": "~1.11.0"
+  }
 }
