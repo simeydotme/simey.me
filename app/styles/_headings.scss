@@ -1,5 +1,5 @@
 
-    
+
     .section-header,
     .section-header-sub {
 
@@ -22,9 +22,16 @@
 
         }
 
+        @media screen and (max-width: 700px) {
+
+            letter-spacing: -2px;
+
+        }
+
         @media screen and (max-width: 480px) {
 
             font-size: 2em;
+            letter-spacing: -1px;
 
         }
 

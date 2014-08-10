@@ -2,7 +2,6 @@
 
 #github {
 
-
     color: white;
     text-shadow: 0 1px 1px rgba(0,0,0,0.7);
     box-shadow: 0 0 30px rgba(0,0,0,0.4), 0 0 50px rgba(0,0,0,0.4);
@@ -15,7 +14,7 @@
 
     .section-header {
 
-        font-family: $sans;
+        font-family: $altSans;
         font-weight: 900;
         letter-spacing: -2px;
 
@@ -33,9 +32,9 @@
     overflow: hidden;
 
     background-color: #303030;
-    background-image: 
-        url(../images/sublime/sublime-bg-icons.png), 
-        url(../images/sublime/sublime-bg-expand.png), 
+    background-image:
+        url(../images/sublime/sublime-bg-icons.png),
+        url(../images/sublime/sublime-bg-expand.png),
         url(../images/sublime/sublime-bg-top.png),
         url(../images/sublime/sublime-bg-bottom.png);
     background-repeat: no-repeat, no-repeat, repeat-x, repeat-x;
@@ -148,7 +147,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    background: url(../images/sublime/sublime-tabs-bg.png);    
+    background: url(../images/sublime/sublime-tabs-bg.png);
     overflow: hidden;
 
     &__tab {
@@ -181,7 +180,7 @@
             left: -20px;
             background: url(../images/sublime/sublime-tab-l-dark.png);
 
-        }            
+        }
 
         &:after {
 
@@ -200,7 +199,7 @@
 
                 background: url(../images/sublime/sublime-tab-l.png);
 
-            }            
+            }
 
             &:after {
 

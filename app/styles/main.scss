@@ -4,6 +4,7 @@
 $bodyColor: #23222e;
 
 $red: #A82336;
+$blue: #2aa1ec;
 
 $preBlue: #2aa1ec;
 $preYellow: #f0e68c;
@@ -16,7 +17,8 @@ $preWhite: #eee;
 
 $serif: "Merriweather", serif;
 $sans: "Lato", "Helvetica", "Segoe", sans-serif;
-$code: "Source Code Pro", "Consolas", monospace;
+$altSans: "Ubuntu", "Lato", "Helvetica", "Segoe", sans-serif;
+$code: "Anonymous Pro", "Consolas", monospace;
 
 
 
@@ -31,6 +33,7 @@ $code: "Source Code Pro", "Consolas", monospace;
 @import "content";
 
 
+@import "intro";
 @import "me";
 @import "github";
 @import "codepen";

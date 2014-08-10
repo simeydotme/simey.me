@@ -69,7 +69,7 @@ app.window = function() {
 
             var h = $(window).height();
 
-            $(".header").height( h );
+            //$(".header").height( h );
             $("body").css("padding-bottom", h * 0.5 );
 
         },
@@ -163,9 +163,7 @@ app.header = function() {
     });
 
     $headerDev.on("playAnimation", function() {
-
         $headerDev.toggleClass( openClass );
-
     });
 
 };
