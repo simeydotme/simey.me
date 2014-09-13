@@ -4,18 +4,18 @@ var app = app || {};
 
 
 $(function(){
+
     app.init();
+
 });
 
 
 app.init = function() {
 
     app.setup.init();
-    app.waypoints();
 
     app.nav();
     app.header();
-    app.github();
 
     app.window();
     app.background();
@@ -34,12 +34,16 @@ app.setup = {
     },
 
     prettify: function() {
+
         window.prettyPrint();
+
     },
 
     unorphanize: function() {
+
         $(".kill-orphans").unorphanize();
         $(".blog-link").unorphanize(4);
+
     },
 
     clipboard: function() {
@@ -68,19 +72,7 @@ app.window = function() {
         "resize.sections": function() {
 
             var h = $(window).height();
-
-            //$(".header").height( h );
             $("body").css("padding-bottom", h * 0.5 );
-
-        },
-
-        "hashchange": function() {
-
-            if( new RegExp("#github\/").test( window.location.hash ) ) {
-
-                $(window).trigger("sublimetab", window.location.hash );
-
-            }
 
         }
 
@@ -89,10 +81,6 @@ app.window = function() {
     $(window)
         .trigger("resize.sections")
         .trigger("hashchange");
-
-    if( new RegExp("#github\/").test( window.location.hash ) ) {
-        $(window).scrollTop( $("#github").offset().top + 20 );
-    }
 
 };
 

@@ -3,46 +3,52 @@
 var app = app || {};
 
 
+$(function(){
+
+    app.codepen.init();
+
+});
 
 app.codepen = {
 
     username: "simeydotme",
     mobileLimit: 8,
+    penCache: [],
+    penLookup: [],
 
     pens: [
 
-        "http://codepen.io/simeydotme/pen/xpuLs", // Zelda Loading Hearts
-        "http://codepen.io/simeydotme/pen/Dtxdu", // Fagoogly Woogley Maps
-        "http://codepen.io/simeydotme/pen/vKtbC", // Pretty Accessible Radios
-        "http://codepen.io/simeydotme/pen/JmKDi", // CSS Sexy Tabs
-        "http://codepen.io/simeydotme/pen/lthIG", // Checkbox form replacement
-        "http://codepen.io/simeydotme/pen/Gzfuh", // Futuristic Neon Saving
-        "http://codepen.io/simeydotme/pen/gkpjn", // Neon Glowy Loaders
-        "http://codepen.io/simeydotme/pen/wBlvk", // HTML5 Video Player
-        "http://codepen.io/simeydotme/pen/uijad", // Pokeball Loaders
-        "http://codepen.io/simeydotme/pen/elHok", // Sonic + Tails
-        "http://codepen.io/simeydotme/pen/mqjyh", // Reposnive Tabs
-        "http://codepen.io/simeydotme/pen/CFcke", // Chinese Character Strokes
-        "http://codepen.io/simeydotme/pen/JnFGr", // Responsive Side Menu
-        "http://codepen.io/simeydotme/pen/uoBqE", // Particools Canvas
-        "http://codepen.io/simeydotme/pen/hoixz", // CSS Cubes (less mixin)
-        "http://codepen.io/simeydotme/pen/teqLr", // 3d HTC phone animation
+        "xpuLs", // Zelda Loading Hearts
+        "Dtxdu", // Fagoogly Woogley Maps
+        "vKtbC", // Pretty Accessible Radios
+        "JmKDi", // CSS Sexy Tabs
+        "lthIG", // Checkbox form replacement
+        "Gzfuh", // Futuristic Neon Saving
+        "gkpjn", // Neon Glowy Loaders
+        "wBlvk", // HTML5 Video Player
+        "uijad", // Pokeball Loaders
+        "elHok", // Sonic + Tails
+        "mqjyh", // Reposnive Tabs
+        "CFcke", // Chinese Character Strokes
+        "JnFGr", // Responsive Side Menu
+        "uoBqE", // Particools Canvas
+        "hoixz", // CSS Cubes (less mixin)
+        "teqLr", // 3d HTC phone animation
 
     ],
 
     init: function() {
 
-        app.helpers.checkCacheTTL( "codepen" , 48 );
+        this.colors = ["cyan", "mediumpurple", "tomato", "mediumspringgreen"];
+        this.color = app.codepen.colors[ Math.floor( Math.random() * this.colors.length ) ];
 
-        this.penCache = [];
-        this.penLookup = {};
-
-        this.template = $("#codepenTemplate").text();
+        this.itemTemplate = $("#codepenTemplate").text();
+        this.dataTemplate = $("#codepenTemplateData").text();
         this.$codepenList = $(".codepen-list");
 
         this.squishList( this.mobileLimit );
-
-        this.getPens(1);
+        this.getPens( this.pens );
+        this.getPenData( 1 );
 
     },
 
@@ -54,15 +60,34 @@ app.codepen = {
 
     },
 
-    getPens: function( penPage ) {
+    getPens: function( pens ) {
 
-        var request = $.memoizedAjax({
+        var amount = pens.length,
+            index;
+
+        for( index = 0; index < amount; index++ ) {
+
+            var request = $.ajax({
+
+                dataType: "jsonp",
+                jsonp: "jsonp",
+                url: "http://codepen-awesomepi.timpietrusky.com/"+this.username+"/pen/"+pens[index]
+
+            });
+
+            request.success( app.codepen.renderPen );
+
+        }
+
+    },
+
+    getPenData: function( penPage ) {
+
+        var request = $.ajax({
 
             dataType: "jsonp",
             jsonp: "jsonp",
-            localStorage: true,
-            cacheKey: "codepen",
-            url: "http://codepen-awesomepi.timpietrusky.com/"+this.username+"/public/"+penPage
+            url: "http://codepen-awesomepi.timpietrusky.com/" + this.username + "/public/" + penPage
 
         });
 
@@ -71,7 +96,7 @@ app.codepen = {
             if( data.content !== null ) {
 
                 app.codepen.collatePens( data.content.pens );
-                app.codepen.getPens( penPage+1 );
+                app.codepen.getPenData( penPage + 1 );
 
             } else {
 
@@ -86,7 +111,7 @@ app.codepen = {
     collatePens: function( pensArray ) {
 
         for( var i = 0, len = pensArray.length; i < len; i++ ) {
-            
+
             this.penCache[ this.penCache.length ] = pensArray[i];
 
         }
@@ -104,36 +129,44 @@ app.codepen = {
         // a "lookup" for each one, basically creating an
         // object of each pen, with the "hash" as the objects
         // property, and the pen array as the value
-        
+
         for( i = 0, len = this.penCache.length; i < len; i++ ) {
-
             this.penLookup[this.penCache[i].hash] = this.penCache[i];
-
         }
 
         // and then look through the lookup for objects that match
-        // our array of hashs. 
+        // our array of hashs.
 
         for( i = 0, len = this.pens.length; i < len; i++ ) {
 
-            hash = this.pens[i].slice( this.pens[i].lastIndexOf("/")+1 , this.pens[i].length );
+            hash = this.pens[i];
             pen = this.penLookup[ hash ];
 
-            if( typeof(pen) !== "undefined" ) {
-                this.renderPen( pen , i );
+            if( typeof pen !== "undefined" ) {
+                this.renderData( pen , i );
             }
 
         }
 
     },
 
-    generateTemplate: function( pen ) {
-        
+    generateItemTemplate: function( pen ) {
+
         var html =
-            this.template
+            this.itemTemplate
+                .replace("{{hash}}", pen.hash )
                 .replace("{{title}}", pen.title )
                 .replace("{{url.details}}", pen.url.details )
-                .replace("{{url.pen}}", pen.url.pen )
+                .replace("{{url.pen}}", pen.url.pen );
+
+        return $(html);
+
+    },
+
+    generateDataTemplate: function( pen ) {
+
+        var html =
+            this.itemTemplate
                 .replace("{{hearts}}", pen.hearts )
                 .replace("{{views}}", pen.views )
                 .replace("{{comments}}", pen.comments );
@@ -142,19 +175,27 @@ app.codepen = {
 
     },
 
-    renderPen: function( pen , listNumber ) {
+    renderPen: function( pen ) {
 
-        var $pen,
-            timer,
-            gap = 100;
+        var $item = app.codepen.generateItemTemplate( pen.content.pen ),
+            color = Please.make_color({
+                base_color: app.codepen.color
+            });
 
-        $pen = this.generateTemplate(pen).appendTo( this.$codepenList );
+        $item.find(".codepen-list__cover").css("background-color", color );
 
-        timer = setTimeout(function() {
+        $item.appendTo( app.codepen.$codepenList );
 
-            $pen.removeClass("hidden");
+    },
 
-        }, gap*listNumber );
+    renderData: function( pen ) {
+
+        var $data = app.codepen.generateDataTemplate( pen );
+
+        app.codepen.$codepenList
+            .find("codepen-list__item--" + pen.hash )
+            .find(".codepen-list__cover")
+            .append( $data );
 
     }
 

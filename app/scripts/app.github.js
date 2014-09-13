@@ -3,6 +3,11 @@
 var app = app || {};
 
 
+$(function(){
+
+    app.github();
+
+});
 
 app.github = function() {
 
@@ -65,12 +70,23 @@ app.github = function() {
 
     });
 
-    $(window).on("sublimetab", function(e,href) {
+    $(window).on({
 
-        var $link = $links.filter("[href=" +href.replace("/","\\/")+ "]"),
-            $tab = $link.closest(".sublime-tabs__tab");
+        sublimetab: function( e, href ) {
 
-        $tab.trigger("activateTab",href);
+            var $link = $links.filter("[href=" +href.replace("/","\\/")+ "]"),
+                $tab = $link.closest(".sublime-tabs__tab");
+
+            $tab.trigger("activateTab", href );
+
+        },
+
+        hashchange: function() {
+
+            var hash = window.location.hash;
+            $(window).trigger( "sublimetab", hash );
+
+        }
 
     });
 
@@ -83,22 +99,22 @@ app.github = function() {
             $project = $projects.filter("[data-project-name="+ href[href.length-1] +"]");
 
         // reverse the z-order
-        $tabs
-            .each( function(k,v) {
-                $(v).css("z-index", $tabs.length - k);
-            })
-            .removeClass( activeClass );
+        $tabs.each( function(k,v) {
+
+            $(v)
+                .css("z-index", $tabs.length - k)
+                .removeClass( activeClass );
+
+        });
 
         $tab
             .addClass( activeClass )
             .css("z-index", $tabs.length + 1 );
 
         $projects.removeClass( activeClass );
-
         $project.addClass( activeClass );
 
         $title.text( $tab.children(".sublime-tabs__link").text() + " - " + titleText);
-
         $footer.text( $tab.children(".sublime-tabs__link").data("type") );
 
     });
