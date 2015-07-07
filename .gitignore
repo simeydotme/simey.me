@@ -1,17 +1,29 @@
 
+
+#--------------------------------------#
 # package managers 
-    
-    **/node_modules
-    **/bower_components
 
 
+**/node_modules/
+**/bower_components/
+
+
+
+
+#--------------------------------------#
 # build folders
-    
-    **/dist
-    **/test
 
 
+**/dist
+**/test
+
+
+
+
+
+#--------------------------------------#
 # dotfiles
 
-    .tmp
-    .sass-cache
+
+.tmp
+.sass-cache
