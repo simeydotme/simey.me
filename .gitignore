@@ -1,7 +1,17 @@
-node_modules
-dist
-.tmp
-.sass-cache
-bower_components
-test/bower_components
-ssh.exe.stackdump
+
+# package managers 
+    
+    **/node_modules
+    **/bower_components
+
+
+# build folders
+    
+    **/dist
+    **/test
+
+
+# dotfiles
+
+    .tmp
+    .sass-cache
