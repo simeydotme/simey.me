@@ -1,0 +1,21 @@
+
+    .header {
+
+        min-height: 300px;
+        text-align: center;
+
+        h1 {
+
+            font-size: 5em;
+            letter-spacing: -2px;
+
+            span {
+                
+                font-weight: normal;
+                color: darken( $color, 35% );
+
+            }
+
+        }
+
+    }
