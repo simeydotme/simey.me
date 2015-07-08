@@ -1,6 +1,8 @@
 
     html, body {
-
+        
+        font-family: "Open Sans", "Helvetica", "Arial";
+        font-size: 1.2em;
         background: $bg;
         color: $color;
 
@@ -9,5 +11,27 @@
     h1, h2, h3, h4 {
 
         font-family: $title;
+
+    }
+
+    a {
+
+        color: $link;
+        transition: all 0.2s ease;
+        text-decoration: none;
+
+        &:hover {
+
+            color: $linkHover;
+            text-shadow: 0 0 2px $link;
+
+        }
+
+    }
+
+    main.content {
+
+        max-width: 1200px;
+        margin: auto;
 
     }
