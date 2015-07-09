@@ -9,7 +9,7 @@
         autoprefixer = require("gulp-autoprefixer");
 
 
-    gulp.task("default", ["html", "img", "sass", "prefix"], function() {
+    gulp.task("default", ["html", "img", "sass"], function() {
 
         console.log("done");
 

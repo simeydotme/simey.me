@@ -2,9 +2,33 @@
     html, body {
         
         font-family: "Open Sans", "Helvetica", "Arial";
-        font-size: 1.2em;
+        font-size: 1em;
         background: $bg;
         color: $color;
+
+        @media screen and ( max-width: 1000px ) {
+            
+            font-size: 0.9em;
+
+        }
+
+    }
+
+    body {
+
+        padding: 2em;
+
+        @media screen and ( max-width: 800px ) {
+            
+            padding: 2em 0;
+
+        }
+
+    }
+
+    main {
+
+        
 
     }
 
@@ -23,15 +47,8 @@
         &:hover {
 
             color: $linkHover;
-            text-shadow: 0 0 2px $link;
+            text-shadow: 0 0 1px $linkHover;
 
         }
-
-    }
-
-    main.content {
-
-        max-width: 1200px;
-        margin: auto;
 
     }

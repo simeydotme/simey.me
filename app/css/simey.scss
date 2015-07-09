@@ -3,8 +3,10 @@
     $color: #eee;
 
     $headercolor: #62efab;
-    $link: #de6262;
-    $linkHover: #ffb88c;
+    $link: #3AB2BC;
+    $linkHover: #f27987;
+
+    $highlight: #3AB2BC;
 
     $title: "Asap", "Helvetica", "Arial";
 
@@ -14,4 +16,5 @@
     @import "svg";
 
     @import "header";
+    @import "body";
     @import "social";

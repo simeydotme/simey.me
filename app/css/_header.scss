@@ -1,12 +1,9 @@
 
-    $h: 3em;
 
     .header {
 
         text-align: center;
-        background: lighten( $bg, 2% );
-        padding: $h 0;
-        margin: 1.5em 0 1em;
+        padding: 2em 0 5em;
 
         h1 {
 
@@ -23,20 +20,6 @@
                 color: lighten( $bg, 50% );
 
             }
-
-        }
-
-    }
-
-    .description {
-
-        text-align: center;
-
-        h2 {
-            
-            font-size: 1.8em;
-            font-weight: normal;
-            margin: 1em 0 0;
 
         }
 
