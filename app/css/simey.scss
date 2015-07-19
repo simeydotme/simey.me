@@ -1,16 +1,16 @@
 
-    $bg: #202730;
+    $bg: #312b38;
+    $bgStart: #413763;
     $color: #eee;
 
     $headercolor: #62efab;
-    $link: #3AB2BC;
+    $link: #3ab2bc;
     $linkHover: #f27987;
-
-    $highlight: #3AB2BC;
+    $linkVisited: #b588f8;
 
     $title: "Asap", "Helvetica", "Arial";
 
-    @import "../../bower_components/normalize.css/normalize.css";
+    @import "../../bower_components/normalize.css/normalize";
 
     @import "base";
     @import "svg";
@@ -18,3 +18,5 @@
     @import "header";
     @import "body";
     @import "social";
+    
+    @import "posts";

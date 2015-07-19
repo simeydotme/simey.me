@@ -2,7 +2,7 @@
     .social {
 
         list-style: none;
-        font-size: 1.2em;
+        font-size: 1.5em;
         font-weight: 100;
 
         padding: 0;
@@ -12,30 +12,36 @@
         display: inline-block;
         left: 6px;
 
-        opacity: 0.3;
-        transition: opacity 0.1s ease;
-
         &__item {
 
             display: inline-block;
-            padding: 0.1em 0.2em;
-            margin: 0 0.5em;
+            padding: 0;
+            opacity: 0.3;
 
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.15s ease;
             &.twitter { transition-delay: 0s; }
             &.github { transition-delay: 0.1s; }
             &.codepen { transition-delay: 0.2s; }
 
 
-            &.twitter svg { top: 5px; }
+            &.twitter svg { top: 4px; }
             &.github svg { top: 4px; }
             &.codepen svg { top:  4.5px; }
 
+            @media screen and ( max-width: 440px ) {
+
+                opacity: 0.8;
+                font-size: 1.2em;
+
+            }
+
         }
 
-        @media screen and ( max-width: 440px ) {
-
-            opacity: 0.8;
+        &__link {
+            
+            padding: 1em 1.5em;
+            margin-left: -4px;
+            color: $headercolor;
 
         }
 
@@ -45,11 +51,10 @@
 
     header:hover .social {
 
-        opacity: 1;
-
         &__item {
 
             transform: translateY(-0.2em);
+            opacity: 1;
 
         }
 

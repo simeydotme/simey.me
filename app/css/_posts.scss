@@ -1,0 +1,53 @@
+
+
+    .posts {
+
+        width: 66%;
+
+    }
+
+    .blog-post {
+
+        
+        &__title {
+
+            font-family: inherit;
+            font-size: 2.2em;
+            font-weight: 400;
+            margin-bottom: 0;
+
+        }
+
+        &__date {
+
+            margin-top: 0;
+            color: rgba( $color, 0.7 );
+            font-weight: 100;
+
+        }
+
+        &__author {
+
+            display: inline-block;
+            margin: 0 0.5em 0 0.2em;
+
+        }
+
+        &__author-image {
+
+            max-height: 1.2em;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-right: 0.3em;
+            border-radius: 50%;
+
+        }
+
+        &__date {
+
+            padding-left: 0.7em;
+            border-left: 1px solid rgba( $color, 0.5 );
+
+        }
+
+    }

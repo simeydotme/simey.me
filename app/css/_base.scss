@@ -1,10 +1,15 @@
+    
+    // default element styles.
 
     html, body {
         
         font-family: "Open Sans", "Helvetica", "Arial";
         font-size: 1em;
-        background: $bg;
+        
         color: $color;
+        background: $bg;
+
+        min-height: 100%;
 
         @media screen and ( max-width: 1000px ) {
             
@@ -32,23 +37,49 @@
 
     }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5 {
 
         font-family: $title;
 
     }
+
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.7em; }
+    h4 { font-size: 1.4em; }
+    h5 { font-size: 1.2em; }
 
     a {
 
         color: $link;
         transition: all 0.2s ease;
         text-decoration: none;
+        
+        &:visited {
+            
+            color: $linkVisited;
+
+        }
 
         &:hover {
 
             color: $linkHover;
-            text-shadow: 0 0 1px $linkHover;
 
         }
+
+    }
+
+
+
+
+
+
+    // Helper Classes.
+
+    .hidden {
+        
+        position: absolute;
+        width: 1px; height: 1px;
+        overflow: hidden;
+        opacity: 0;
 
     }
