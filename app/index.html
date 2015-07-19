@@ -34,21 +34,21 @@
                 <ul class="social">
 
                     <li class="social__item twitter">
-                        <a href="https://twitter.com/simeydotme" title="I mostly moan on twitter...">
+                        <a href="https://twitter.com/simeydotme" class="social__link" title="I mostly moan on twitter...">
                             <i data-icon="simicon-twitter"></i>
                             <span class="hidden">&nbsp;twitter</span>
                         </a>
                     </li>
 
                     <li class="social__item github">
-                        <a href="https://github.com/simeydotme" title="social coding, and open source are my jam...">
+                        <a href="https://github.com/simeydotme" class="social__link" title="social coding, and open source are my jam...">
                             <i data-icon="simicon-github"></i>
                             <span class="hidden">&nbsp;github</span>
                         </a>
                     </li>
 
                     <li class="social__item codepen">
-                        <a href="http://codepen.io/simeydotme/" title="my codepens bring all the boys to the yard...">
+                        <a href="http://codepen.io/simeydotme/" class="social__link" title="my codepens bring all the boys to the yard...">
                             <i data-icon="simicon-codepen"></i>
                             <span class="hidden">&nbsp;codepen</span>
                         </a>
@@ -60,9 +60,84 @@
 
             <section class="content">
 
-                <section class="description">
+                <section class="posts">
                     
-                    <h2>User Experience and Creative Frontend Coder</h2>
+                    <h2 class="hidden">Posts</h2>
+
+                    <article class="blog-post">
+                        
+                        <h3 class="blog-post__title">
+                            <a href="#">Blog Post Number Uno</a>
+                        </h3>
+                        
+                        <p class="blog-post__posted">12th January, 2015</p>
+
+                    </article>
+
+                    <article class="blog-post">
+                        
+                        <h3 class="blog-post__title">
+                            <a href="#">Blog Post Number Uno</a>
+                        </h3>
+                        
+                        <p class="blog-post__posted">12th January, 2015</p>
+
+                    </article>
+
+                    <article class="blog-post">
+                        
+                        <header>
+                            
+                            <h3 class="blog-post__title">
+                                <a href="#">Blog Post Number Uno</a>
+                            </h3>
+
+                            <section class="blog-post__info">
+
+                                <a class="blog-post__author" href="#">
+                                
+                                    <img src="https://www.gravatar.com/avatar/f95828f4e92f1befebabfb7f65cdc8f2?d=404&s=250" 
+                                        alt="Simon Goellner's Avatar" 
+                                        class="blog-post__author-image">
+
+                                    Simon Goellner
+
+                                </a>
+                                
+                                <time class="blog-post__date" datetime="2014-09-27">27 September 2014</time>
+                                
+                            </section>
+
+                        </header>
+
+                        <section class="blog-post__excerpt">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus expedita 
+                            quo voluptate esse ratione facilis quibusdam vel ad, quas, ut 
+                            reiciendis laudantium odio neque voluptates adipisci, laborum 
+                            dolor saepe natus?</p>
+                        </section>
+
+                    </article>
+
+                    <article class="blog-post">
+                        
+                        <h3 class="blog-post__title">
+                            <a href="#">Blog Post Number Uno</a>
+                        </h3>
+                        
+                        <p class="blog-post__posted">12th January, 2015</p>
+
+                    </article>
+
+                    <article class="blog-post">
+                        
+                        <h3 class="blog-post__title">
+                            <a href="#">Blog Post Number Uno</a>
+                        </h3>
+                        
+                        <p class="blog-post__posted">12th January, 2015</p>
+
+                    </article>
 
                 </section>
                 
@@ -79,7 +154,7 @@
         <script type="text/javascript">
 
             WebFontConfig = { google: { 
-                families: [ 'Asap:400,700:latin', 'Open+Sans:300italic,400italic,600italic,400,300,600,700:latin' ] 
+                families: [ 'Asap:400,700:latin', 'Open+Sans:300italic,400italic,100,300,400,700:latin' ] 
             } };
 
             (function() {
