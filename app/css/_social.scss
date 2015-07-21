@@ -41,7 +41,15 @@
             
             padding: 1em 1.5em;
             margin-left: -4px;
-            color: $headercolor;
+            color: lighten( $bg, 50% );
+
+            &:hover {
+                color: white;
+            }
+
+            &:visited {
+                color: lighten( $bg, 50% );
+            }
 
         }
 

@@ -5,82 +5,99 @@
 
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        
-        <title>simey.me | Simon Goellner | Frontend &amp; UX Web Developer</title>
-        <meta name="description" 
-            content="Simon Goellner; A Creative and Passionate Frontend / UX Web Developer with a background in design. Embrace open source!">
-        
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="simon goellner; trying to make nice things on the web.">
+        
+        <title>simeydotme ≈ frontend &amp; ux developer</title>
+        
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
         <link rel="stylesheet" href="css/simey.css">
+
         <script src="js/vendor/modernizr.min.js"></script>
 
     </head>
 
     <body>
 
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+        <!--
 
+            simey: {
+
+                builds: "nice things" ,
+                    on: "the webz" ,
+               because: "users!" 
+
+            };
+
+        -->
+        
         <main>
 
             <header class="header">
 
-                <h1>@simey<span>dotme</span></h1>
+                <section class="header__title">
 
-                <ul class="social">
+                    <h1><a href="http://simey.me">@simey<span>dotme</span></a></h1>
 
-                    <li class="social__item twitter">
-                        <a href="https://twitter.com/simeydotme" class="social__link" title="I mostly moan on twitter...">
-                            <i data-icon="simicon-twitter"></i>
-                            <span class="hidden">&nbsp;twitter</span>
-                        </a>
-                    </li>
+                    <code class="header__description hidden">
+                        {
+                            <span class="description__key">builds</span>: 
+                            <span class="description__string">"nice things"</span>,
 
-                    <li class="social__item github">
-                        <a href="https://github.com/simeydotme" class="social__link" title="social coding, and open source are my jam...">
-                            <i data-icon="simicon-github"></i>
-                            <span class="hidden">&nbsp;github</span>
-                        </a>
-                    </li>
+                            <span class="description__key">on</span>: 
+                            <span class="description__string">"the web"</span>,
 
-                    <li class="social__item codepen">
-                        <a href="http://codepen.io/simeydotme/" class="social__link" title="my codepens bring all the boys to the yard...">
-                            <i data-icon="simicon-codepen"></i>
-                            <span class="hidden">&nbsp;codepen</span>
-                        </a>
-                    </li>
+                            <span class="description__key">because</span>: 
+                            <span class="description__string">"users"</span>
+                        }
+                    </code>
 
-                </ul>
+                    <ul class="social">
+
+                        <li class="social__item twitter">
+                            <a href="https://twitter.com/simeydotme" class="social__link" title="I mostly moan on twitter...">
+                                <i data-icon="simicon-twitter"></i>
+                                <span class="hidden">&nbsp;twitter</span>
+                            </a>
+                        </li>
+
+                        <li class="social__item github">
+                            <a href="https://github.com/simeydotme" class="social__link" title="social coding, and open source are my jam...">
+                                <i data-icon="simicon-github"></i>
+                                <span class="hidden">&nbsp;github</span>
+                            </a>
+                        </li>
+
+                        <li class="social__item codepen">
+                            <a href="http://codepen.io/simeydotme/" class="social__link" title="my codepens bring all the boys to the yard...">
+                                <i data-icon="simicon-codepen"></i>
+                                <span class="hidden">&nbsp;codepen</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </section>
 
             </header>
 
             <section class="content">
 
-                <section class="posts">
+                <section class="posts-list">
                     
                     <h2 class="hidden">Posts</h2>
 
                     <article class="blog-post">
                         
-                        <h3 class="blog-post__title">
-                            <a href="#">Blog Post Number Uno</a>
-                        </h3>
-                        
-                        <p class="blog-post__posted">12th January, 2015</p>
+                        <header>
+                            
+                            <h3 class="blog-post__title">
+                                <a href="#">Blog Post Number Uno</a>
+                            </h3>
+                                
+                            <time class="blog-post__date" datetime="2014-09-27">27 September 2014</time>
 
-                    </article>
-
-                    <article class="blog-post">
-                        
-                        <h3 class="blog-post__title">
-                            <a href="#">Blog Post Number Uno</a>
-                        </h3>
-                        
-                        <p class="blog-post__posted">12th January, 2015</p>
+                        </header>
 
                     </article>
 
@@ -91,51 +108,24 @@
                             <h3 class="blog-post__title">
                                 <a href="#">Blog Post Number Uno</a>
                             </h3>
-
-                            <section class="blog-post__info">
-
-                                <a class="blog-post__author" href="#">
                                 
-                                    <img src="https://www.gravatar.com/avatar/f95828f4e92f1befebabfb7f65cdc8f2?d=404&s=250" 
-                                        alt="Simon Goellner's Avatar" 
-                                        class="blog-post__author-image">
-
-                                    Simon Goellner
-
-                                </a>
-                                
-                                <time class="blog-post__date" datetime="2014-09-27">27 September 2014</time>
-                                
-                            </section>
+                            <time class="blog-post__date" datetime="2014-09-27">27 September 2014</time>
 
                         </header>
 
-                        <section class="blog-post__excerpt">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus expedita 
-                            quo voluptate esse ratione facilis quibusdam vel ad, quas, ut 
-                            reiciendis laudantium odio neque voluptates adipisci, laborum 
-                            dolor saepe natus?</p>
-                        </section>
-
                     </article>
 
                     <article class="blog-post">
                         
-                        <h3 class="blog-post__title">
-                            <a href="#">Blog Post Number Uno</a>
-                        </h3>
-                        
-                        <p class="blog-post__posted">12th January, 2015</p>
+                        <header>
+                            
+                            <h3 class="blog-post__title">
+                                <a href="#">Blog Post Number Uno</a>
+                            </h3>
+                                
+                            <time class="blog-post__date" datetime="2014-09-27">27 September 2014</time>
 
-                    </article>
-
-                    <article class="blog-post">
-                        
-                        <h3 class="blog-post__title">
-                            <a href="#">Blog Post Number Uno</a>
-                        </h3>
-                        
-                        <p class="blog-post__posted">12th January, 2015</p>
+                        </header>
 
                     </article>
 
@@ -153,17 +143,23 @@
 
         <script type="text/javascript">
 
-            WebFontConfig = { google: { 
-                families: [ 'Asap:400,700:latin', 'Open+Sans:300italic,400italic,100,300,400,700:latin' ] 
-            } };
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Asap:400,700:latin",
+                        "Open+Sans:300italic,100,300,400,700:latin",
+                        "Inconsolata:400,700:latin"
+                    ]
+                }
+            };
 
             (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                  '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript'; wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wf, s);
-            })(); 
+                var wf = document.createElement("script");
+                wf.src = ("https:" == document.location.protocol ? "https" : "http") +
+                  "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript"; wf.async = "true";
+                var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(wf, s);
+            })();
 
         </script>
 
@@ -176,7 +172,7 @@
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
             e.src="https://www.google-analytics.com/analytics.js";
             r.parentNode.insertBefore(e,r)}(window,document,"script","ga"));
-            
+
             ga("create","UA-15937605-6","auto");
             ga("send","pageview");
 

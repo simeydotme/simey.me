@@ -1,5 +1,11 @@
     
     // default element styles.
+    
+    * {
+
+        box-sizing: border-box;
+        
+    }
 
     html, body {
         
@@ -68,7 +74,11 @@
 
     }
 
+    code, pre {
 
+        font-family: $code;
+
+    }
 
 
 

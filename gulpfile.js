@@ -13,7 +13,7 @@ var gulp = require("gulp"),
 
 
 
-gulp.task("default", ["clean", "html", "js", "img", "sass"], function() {
+gulp.task("default", ["html", "js", "img", "sass"], function() {
 
     console.log("done");
 
@@ -26,7 +26,7 @@ gulp.task("default", ["clean", "html", "js", "img", "sass"], function() {
 
 
 
-gulp.task("html", function() {
+gulp.task("html", ["clean:html"], function() {
 
     var i = /<i data-icon="(.*)"><\/i>/g,
         o = "<svg class=\"$1\" role=\"presentation\"><use xlink:href=\"img/svgdefs.svg#$1\"></use></svg>";
@@ -86,17 +86,23 @@ gulp.task("img", ["clean:img"], function() {
 
 
 
-gulp.task("clean", [
+gulp.task("clean", function() {
 
-    "clean:sass",
-    "clean:js",
-    "clean:img"],
+    return gulp
+        .src("./dist", { read: false })
+        .pipe( clean() );
 
-    function() {
+    console.log("\n All clean! \n");
 
-        console.log("All clean!");
+});
 
-    });
+gulp.task("clean:html", function() {
+
+    return gulp
+        .src("./dist/**/*.html", { read: false })
+        .pipe( clean() );
+
+});
 
 gulp.task("clean:js", function() {
 
