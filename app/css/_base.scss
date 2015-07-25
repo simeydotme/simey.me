@@ -43,12 +43,6 @@
 
     }
 
-    h1, h2, h3, h4, h5 {
-
-        font-family: $title;
-
-    }
-
     h2 { font-size: 2em; }
     h3 { font-size: 1.7em; }
     h4 { font-size: 1.4em; }
@@ -91,5 +85,11 @@
         width: 1px; height: 1px;
         overflow: hidden;
         opacity: 0;
+
+    }
+
+    .heading {
+
+        font-family: $title;
 
     }

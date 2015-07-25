@@ -13,54 +13,31 @@
 
             padding: 2em 0 5em;
 
-            h1 {
+        }
 
-                font-size: 3.5em;
-                letter-spacing: -2px;
-                vertical-align: middle;
+        &__simey {
 
-                line-height: 1;
-                margin-bottom: 1.5em;
+            font-size: 3.5em;
+            letter-spacing: -2px;
+            vertical-align: middle;
 
-                a {
+            line-height: 1;
+            margin-bottom: 1.5em;
 
-                    color: $headercolor;
+            a {
 
-                }
-
-                span {
-                    
-                    font-weight: normal;
-                    color: lighten( $bg, 55% );
-
-                }
+                color: $headercolor;
 
             }
 
         }
 
-        &__description {
-            
-            display: block;
-            padding: 1em;
-            margin: 1em;
+        &__dotme {
+                
+            font-weight: normal;
+            color: lighten( $bg, 55% );
 
         }
 
     }
-
-    .description {
-
-        &__key {
-
-            color: lighten( #A2FFD2, 8% );
-
-        }
-
-        &__string {
-            
-            color: lighten( #FFEBC8, 4% );
-
-        }
-
-    }
+    
